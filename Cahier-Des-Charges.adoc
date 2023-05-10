@@ -8,10 +8,10 @@ Projet : Dayly Bank
 ##################################################################################
 
 Sommaire :
- .  1 - Sujet
- .  2 - Analyse de la v0 (pré-existante)
- .  3 - Besoins de l'application
- .  4 - Contraintes techniques et organisationnelles
+ 1 - Sujet
+ 2 - Analyse de la v0 (pré-existante)
+ 3 - Besoins de l'application
+ 4 - Contraintes techniques et organisationnelles
   
 1 - Sujet
 
