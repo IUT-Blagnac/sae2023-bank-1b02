@@ -1,0 +1,54 @@
+##################################################################################
+
+Cahier des charges
+Equipe : 1B2 (Berdinel - Soldevilla - Mauriac - Balasch)
+Version : 1.0
+Date : 10/05/2023
+Projet : Dayly Bank
+##################################################################################
+
+Sommaire :
+ 1 - Sujet +
+ 2 - Analyse de la v0 (pré-existante)
+ 3 - Besoins de l'application
+ 4 - Contraintes techniques et organisationnelles
+  
+1 - Sujet
+
+  Contexte :
+  La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires. Le travail sera basé sur une application existante nommée "Daily Bank" qui nécessitera des ajustements pour répondre aux nouveaux besoins de la banque. Cette application sera déployée dans les 100 agences que compte son réseau.
+
+  Objectifs :
+    Intégrer de nouvelles fonctionnalités dans une première version et compléter celle-ci au fur et à mesure afin de donner une version finale aussi efficace que possible.
+
+2 - Analyse de la V0 (pré-existante)
+
+  Dans la v0, un chef d’agence peut :
+    Rendre inactif un client
+  
+  et un guichetier peut :
+    Créer un nouveau client
+    Consulter un compte
+    Modifier les informations d'un client (adresse, téléphone, ...)
+    Débiter un compte (BD)
+
+3 - Besoins de la v1 de l'application
+  Dans la v1 de l'application, un guichetier devra être en capacité de :
+    Créditer/débiter un compte
+    Créer un compte
+    Effectuer un virement de compte à compte
+    Clôturer un compte
+  
+  et un chef d'agence doit pouvoir :
+    Gérer les employés (CRUD)
+  
+4 - Contraintes techniques & organisationnelles
+  L'équipe doit faire attention à respecter ces contraintes afin de livrer un projet conforme à l'objectif :
+    - Définir un même outil de travail pour toute l'équipe afin de faciliter les échanges et la structuration du code
+    - Intégrer toutes les fonctionnalités nécessaires à l'application
+    - Répartir efficacement les tâches en fonction des préférences et facilités de chacun
+    - Respecter la date butoir (16/05/2023)
+    - Assurer un suivi d'avancement du projet afin de toujours être capable de situer la progression de celui-ci
+    
+  C'est un projet qui demande de l'implication et de l'organisation, et cette première version sera la passerelle entre l'ancienne application
+  et celle définie par notre objectif.
