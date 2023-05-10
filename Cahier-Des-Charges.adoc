@@ -8,15 +8,15 @@ Projet : Dayly Bank
 ##################################################################################
 
 Sommaire :
-  1 - Sujet
-  2 - Analyse de la v0 (pré-existante)
-  3 - Besoins de l'application
-  4 - Contraintes techniques et organisationnelles
+ .  1 - Sujet
+ .  2 - Analyse de la v0 (pré-existante)
+ .  3 - Besoins de l'application
+ .  4 - Contraintes techniques et organisationnelles
   
 1 - Sujet
 
   Contexte :
-    La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires. Le travail sera basé sur une application existante nommée "Daily Bank" qui nécessitera des ajustements pour répondre aux nouveaux besoins de la banque. Cette application sera déployée dans les 100 agences que compte son réseau.
+  La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires. Le travail sera basé sur une application existante nommée "Daily Bank" qui nécessitera des ajustements pour répondre aux nouveaux besoins de la banque. Cette application sera déployée dans les 100 agences que compte son réseau.
 
   Objectifs :
     Intégrer de nouvelles fonctionnalités dans une première version et compléter celle-ci au fur et à mesure afin de donner une version finale aussi efficace que possible.
