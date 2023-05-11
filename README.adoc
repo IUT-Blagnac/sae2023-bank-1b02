@@ -1,7 +1,10 @@
 === Exemple readme étudiant
 
 ==== Présentation de l'équipe et rôles respectifs
--
+- Aidan BALASCH - Membre du meilleur groupe de la SAÉ
+- Bernat SOLDEVILA - Membre du meilleur groupe de la SAÉ 
+- Hugo BERDINEL - Membre du meilleur groupe de la SAÉ
+- Jimmy MAURIAC - Membre du meilleur groupe de la SAÉ
 
 ==== Répartition des tâches et état d'avancement
 [options="header,footer"]
@@ -42,7 +45,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 | Date    | Nom         |  Lien     | Retour
 | Sem.19  | CDC V1      |           | D
 |         |Gantt V1 Prévu|          | D
-| 16/05   | CdC V2final|             |  
+| 16/05   | CdC V2final|            |  
 |         | Gantt V1 Réalisé |      |     
 |         | Gantt V2 Prevu|         |     
 |         | Doc. Tec. V1 |          |    
