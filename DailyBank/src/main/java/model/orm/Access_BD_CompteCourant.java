@@ -185,7 +185,6 @@ public class Access_BD_CompteCourant {
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
 			
-
 			Connection con = LogToDatabase.getConnexion();
 
 			String query = "INSERT INTO COMPTECOURANT VALUES ("+"seq_id_compte.NEXTVAL" + ", " + "?" + ", " + "?" + ", "

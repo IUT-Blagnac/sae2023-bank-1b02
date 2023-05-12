@@ -29,6 +29,13 @@ public class ComptesManagement {
 	private DailyBankState dailyBankState;
 	private Client clientDesComptes;
 
+	/**
+	 * Constructeur de la classe ComptesManagement
+	 * 
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param client
+	 */
 	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
 
 		this.clientDesComptes = client;
@@ -55,17 +62,26 @@ public class ComptesManagement {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Méthode permettant d'afficher la fenêtre de gestion des comptes
+	 */
 	public void doComptesManagementDialog() {
 		this.cmcViewController.displayDialog();
 	}
-
+	/**
+	 * Méthode permettant de gerer les opérations d'un compte
+	 * @param compte
+	 */
 	public void gererOperationsDUnCompte(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dailyBankState,
 				this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
 
+	/**
+	 * Méthode permettant de créer un compte
+	 * @return compte créé
+	 */
 	public CompteCourant creerNouveauCompte() {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dailyBankState);
@@ -86,7 +102,10 @@ public class ComptesManagement {
 		}
 		return compte;
 	}
-
+	/**
+	 * Méthode permettant de recuperer les comptes d'un client
+	 * @return liste des comptes d'un client
+	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
 
