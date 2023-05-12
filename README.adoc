@@ -1,23 +1,27 @@
-=== Exemple readme étudiant
+= SAÉ -  Développement d'une application
 
 ==== Présentation de l'équipe et rôles respectifs
 - Aidan BALASCH - Membre du meilleur groupe de la SAÉ
 - Bernat SOLDEVILA - Membre du meilleur groupe de la SAÉ 
 - Hugo BERDINEL - Membre du meilleur groupe de la SAÉ
-- Jimmy MAURIAC - Membre du meilleur groupe de la SAÉ
+- Jimmy MAURIAC - Membre du meilleur groupe de la SAÉ 
+
+
+==== GANTT 
+link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
 
 ==== Répartition des tâches et état d'avancement
 [options="header,footer"]
 |=======================
 |Version|rôle              |use case   |cas...                 | Aidan | Bernat | Hugo  | Jimmy
-|1      |Chef d’Agence  |CRUD employé  |C                      |   x   |        |       |
-|1      |Chef d’Agence  |CRUD employé  |R                      |       |        |   x   |
-|1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   x   |
-|1      |Chef d’Agence  |CRUD employé  |D                      |   x   |        |       |
-|1      |Guichetier     | Compte | Créer                       |       |   x    |       |
-|1      |Guichetier     | Compte | Créditer/Débiter            |       |        |       |   x
-|1      |Guichetier     | Compte | Effectuer un virement       |       |   x    |       |
-|1      |Guichetier     | Compte | Clôturer                    |       |        |       |   x
+|1      |Chef d’Agence  |CRUD employé  |C                      |   D   |        |       |
+|1      |Chef d’Agence  |CRUD employé  |R                      |   D   |        |       |
+|1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   D   |
+|1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   D   |
+|1      |Guichetier     | Compte | Créer                       |       |   D    |       |
+|1      |Guichetier     | Compte | Créditer/Débiter            |       |        |       |   D
+|1      |Guichetier     | Compte | Effectuer un virement       |       |   D    |       |
+|1      |Guichetier     | Compte | Clôturer                    |       |        |       |   D
 |2      |Chef d’Agence  | Compte | Débit exceptionnel          |       |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler emprunt            |       |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler assurance          |       |        |       |
@@ -32,10 +36,11 @@
 |=======================
 
 
+
 Chaque étudiant doit mettre son nom sur une des colonnes étudiant.
 Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a développé en indiquant
 
-*	*F* pour fonctionnel ou
+*	*F* pour fonctionnel 
 *	*D* pour encore en Développement
 
 ==== Livrables
