@@ -62,7 +62,7 @@ public class EmployeEditorPaneController {
 			this.txtLogin.setDisable(false);
 			this.txtMdp.setDisable(false);
 			
-			this.lblMessage.setText("Informations sur le nouveau client");
+			this.lblMessage.setText("Informations sur le nouveau employe");
 			this.butOk.setText("Ajouter");
 			this.butCancel.setText("Annuler");
 			break;
