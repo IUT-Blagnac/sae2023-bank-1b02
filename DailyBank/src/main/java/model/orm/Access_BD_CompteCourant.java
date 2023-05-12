@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.data.CompteCourant;
+import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.ManagementRuleViolation;
@@ -169,4 +170,59 @@ public class Access_BD_CompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+
+	/**
+	 * Créer un compte pour l'id  fourni (idNumCompte).
+	 *
+	 * @param idNumCompte id du compte (clé primaire)
+	 * @return Le compte ou null si non trouvé
+	 * @throws RowNotFoundOrTooManyRowsException La requête renvoie plus de 1 ligne
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 */
+	public void insertCompteCourrant(CompteCourant cc)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "INSERT INTO COMPTECOURANT VALUES ("+"seq_id_compte.NEXTVAL" + ", " + "?" + ", " + "?" + ", "
+					+ "?" + ", " +"?"+")"; 
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, cc.debitAutorise);
+			pst.setDouble(2, cc.solde);
+			pst.setInt(3, cc.idNumCli);
+			pst.setString(4, cc.estCloture);
+			
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
+			query = "SELECT seq_id_compte.CURRVAL from DUAL";
+
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
+
+			ResultSet rs = pst2.executeQuery();
+			rs.next();
+			cc.idNumCompte = rs.getInt(1);
+
+			con.commit();
+			rs.close();
+			pst2.close();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		}
+	}
+
 }
