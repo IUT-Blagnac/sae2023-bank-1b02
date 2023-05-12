@@ -127,7 +127,6 @@ public class EmployesManagementController {
 
 	@FXML
 	private void doModifierEmploye() {
-		/**
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Employe cliMod = this.oListEmployes.get(selectedIndice);
@@ -136,7 +135,6 @@ public class EmployesManagementController {
 				this.oListEmployes.set(selectedIndice, result);
 			}
 		}
-		*/
 	}
 
 	@FXML

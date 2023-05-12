@@ -52,15 +52,13 @@ public class EmployesManagement {
 		this.cmcViewController.displayDialog();
 	}
 
-	/**
 	public Employe modifierEmploye(Employe c) {
-		// Copie de modifierClient -> A faire
-		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dailyBankState);
-		Client result = cep.doClientEditorDialog(c, EditionMode.MODIFICATION);
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
+		Employe result = cep.doEmployeEditorDialog(c, EditionMode.MODIFICATION);
 		if (result != null) {
 			try {
-				Access_BD_Client ac = new Access_BD_Client();
-				ac.updateClient(result);
+				Access_BD_Employe ac = new Access_BD_Employe();
+				ac.updateEmploye(result);
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
@@ -74,7 +72,6 @@ public class EmployesManagement {
 		}
 		return result;
 	}
-	*/
 
 	public Employe nouveauEmploye() {
 		Employe employe;
