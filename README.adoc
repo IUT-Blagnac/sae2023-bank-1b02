@@ -14,8 +14,8 @@ link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
 [options="header,footer"]
 |=======================
 |Version|rôle              |use case   |cas...                 | Aidan | Bernat | Hugo  | Jimmy
-|1      |Chef d’Agence  |CRUD employé  |C                      |   D   |        |       |
-|1      |Chef d’Agence  |CRUD employé  |R                      |   D   |        |       |
+|1      |Chef d’Agence  |CRUD employé  |C                      |   F   |        |       |
+|1      |Chef d’Agence  |CRUD employé  |R                      |   F   |        |       |
 |1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   D   |
 |1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   D   |
 |1      |Guichetier     | Compte | Créer                       |       |   D    |       |
