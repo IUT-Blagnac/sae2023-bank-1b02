@@ -10,6 +10,9 @@
 ==== GANTT 
 link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
 
+==== Cahier de charges
+link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[Cahier des charges v1]
+
 ==== Répartition des tâches et état d'avancement
 [options="header,footer"]
 |=======================
