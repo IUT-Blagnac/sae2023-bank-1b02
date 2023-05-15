@@ -45,7 +45,9 @@ public class OperationsManagementController {
 		this.compteConcerne = compte;
 		this.configure();
 	}
-
+	/**
+	 * Configuration de la fenêtre et de ses composants
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
@@ -55,7 +57,9 @@ public class OperationsManagementController {
 		this.updateInfoCompteClient();
 		this.validateComponentState();
 	}
-
+	/**
+	 * Affiche la fenêtre de gestion des opérations
+	 */
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
@@ -85,6 +89,9 @@ public class OperationsManagementController {
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Enregistre un débit sur le compte courant
+	 */
 	@FXML
 	private void doDebit() {
 
@@ -107,10 +114,14 @@ public class OperationsManagementController {
 		}
 	}
 
+	// Non implémenté => désactivé
 	@FXML
 	private void doAutre() {
 	}
 
+	/**
+	 * valide l'état des composants de la fenêtre
+	 */
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnCredit.setDisable(false);
