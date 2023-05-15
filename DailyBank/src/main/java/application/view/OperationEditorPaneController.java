@@ -119,13 +119,18 @@ public class OperationEditorPaneController {
 	@FXML
 	private Button btnCancel;
 
-	
+	/**
+	 * Action sur le bouton cancel : fermeture de la fenêtre sans rien faire
+	 */
 	@FXML
 	private void doCancel() {
 		this.operationResultat = null;
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Action sur le bouton ok : validation de la saisie en fonction du type d'opération et fermeture de la fenêtre
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.categorieOperation) {
