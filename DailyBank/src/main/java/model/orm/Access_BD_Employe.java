@@ -219,6 +219,8 @@ public class Access_BD_Employe {
 	}
 	
 	/**
+	 * @author hugob
+	 * 
 	 * Mise à jour d'un Employé.
 	 *
 	 * employe.idEmploye est la clé primaire et doit exister tous les autres champs
@@ -265,6 +267,8 @@ public class Access_BD_Employe {
 	}
 	
 	/**
+	 * @author hugob
+	 * 
 	 * Suppression d'un Employé.
 	 *
 	 * employe.idEmploye est la clé primaire et doit exister. 

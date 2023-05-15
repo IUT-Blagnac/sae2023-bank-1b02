@@ -53,6 +53,8 @@ public class EmployesManagement {
 	}
 
 	/**
+	 * @author hugob
+	 * 
 	 * getEmployes : récupération de la liste des employés
 	 * 
 	 * @param c IN : critère de recherche
@@ -153,6 +155,8 @@ public class EmployesManagement {
 	}
 	
 	/**
+	 * @author hugob
+	 * 
 	 * supprimerEmploye : Suppression d'un employé
 	 * 
 	 * @return Employe : l'employé à supprimer

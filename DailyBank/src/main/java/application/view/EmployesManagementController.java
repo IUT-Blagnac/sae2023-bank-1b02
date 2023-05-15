@@ -129,6 +129,8 @@ public class EmployesManagementController {
 
 
 	/**
+	 * @author hugob
+	 * 
 	 * doEffacerEmploye : efface l'employé sélectionné dans la liste
 	 */
 	@FXML
