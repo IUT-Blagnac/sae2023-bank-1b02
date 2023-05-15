@@ -51,8 +51,8 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien     | Retour
-| Sem.19  | CDC V1      |           | D  Manque les liens vers les livrables !! Attention !! Du coup pas de retours possibles.
-|         |Gantt V1 Prévu|          | D
+| Sem.19  | CDC V1      |       link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[lien]    | D  Manque les liens vers les livrables !! Attention !! Du coup pas de retours possibles.
+|         |Gantt V1 Prévu|     link:Gestion%20de%20projet/gantt.pdf[lien]     | D
 | 16/05   | CdC V2final|            |  
 |         | Gantt V1 Réalisé |      |     
 |         | Gantt V2 Prevu|         |     
