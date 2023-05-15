@@ -17,7 +17,7 @@ link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
 |1      |Chef d’Agence  |CRUD employé  |C                      |   F   |        |       |
 |1      |Chef d’Agence  |CRUD employé  |R                      |   F   |        |       |
 |1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   F   |
-|1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   D   |
+|1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   F   |
 |1      |Guichetier     | Compte | Créer                       |       |   D    |       |
 |1      |Guichetier     | Compte | Créditer/Débiter            |       |        |       |   D
 |1      |Guichetier     | Compte | Effectuer un virement       |       |   D    |       |
