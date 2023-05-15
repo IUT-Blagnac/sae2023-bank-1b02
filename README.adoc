@@ -8,7 +8,7 @@
 
 
 ==== GANTT 
-link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
+link:Gestion%20de%20projet/gantt.pdf[Gantt v1 prévu]
 
 ==== Cahier de charges
 link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[Cahier des charges v1]
@@ -19,10 +19,10 @@ link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[Cahier des charges v1]
 |Version|rôle              |use case   |cas...                 | Aidan | Bernat | Hugo  | Jimmy
 |1      |Chef d’Agence  |CRUD employé  |C                      |   F   |        |       |
 |1      |Chef d’Agence  |CRUD employé  |R                      |   F   |        |       |
-|1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   D   |
+|1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   F   |
 |1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   D   |
 |1      |Guichetier     | Compte | Créer                       |       |   F    |       |
-|1      |Guichetier     | Compte | Créditer/Débiter            |       |   D    |       |   
+|1      |Guichetier     | Compte | Créditer/Débiter            |       |   F    |       |   
 |1      |Guichetier     | Compte | Effectuer un virement       |       |        |       |   D
 |1      |Guichetier     | Compte | Clôturer                    |       |        |       |   D
 |2      |Chef d’Agence  | Compte | Débit exceptionnel          |       |        |       |
