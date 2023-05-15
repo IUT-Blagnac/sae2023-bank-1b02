@@ -152,6 +152,14 @@ public class EmployesManagement {
 		return listeEmp;
 	}
 	
+	/**
+	 * supprimerEmploye : Suppression d'un employé
+	 * 
+	 * @return Employe : l'employé à supprimer
+	 * 
+	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
+	 * @throws ApplicationException : erreur d'accès à la base de données
+	 */
 	public Employe supprimerEmploye(Employe emp){
 		
 		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);

@@ -143,6 +143,9 @@ public class EmployesManagementController {
 		}
 	}
 
+	/**
+	 * doSupprimerEmploye : supprime un employé 
+	 */
 	@FXML
 	private void doSupprimerEmploye() {
 
