@@ -79,6 +79,9 @@ public class EmployesManagementController {
 		this.primaryStage.close();
 	}
 
+	/**
+	 * doRechercher : recherche des clients en BD et affichage dans la liste
+	 */
 	@FXML
 	private void doRechercher() {
 		int numEmploye;
@@ -125,6 +128,9 @@ public class EmployesManagementController {
 	}
 
 
+	/**
+	 * doEffacerEmploye : efface l'employé sélectionné dans la liste
+	 */
 	@FXML
 	private void doModifierEmploye() {
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
@@ -141,7 +147,9 @@ public class EmployesManagementController {
 	private void doSupprimerEmploye() {
 	}
 
-
+	/**
+	 * doNouveauEmploye : crée un nouveau employé
+	 */
 	@FXML
 	private void doNouveauEmploye() {
 		Employe client;
