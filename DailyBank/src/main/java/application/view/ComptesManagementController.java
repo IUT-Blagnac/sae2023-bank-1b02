@@ -39,7 +39,9 @@ public class ComptesManagementController {
 		this.clientDesComptes = client;
 		this.configure();
 	}
-
+	/**
+	 * Configuration de la fenêtre
+	 */
 	private void configure() {
 		String info;
 
@@ -59,6 +61,9 @@ public class ComptesManagementController {
 		this.validateComponentState();
 	}
 
+	/**
+	 * Affichage des comptes du client
+	 */
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
@@ -83,11 +88,17 @@ public class ComptesManagementController {
 	@FXML
 	private Button btnSupprCompte;
 
+	/**
+	 * Fermeture de la fenêtre
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Affichage des opérations du compte sélectionné
+	 */
 	@FXML
 	private void doVoirOperations() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
@@ -99,14 +110,22 @@ public class ComptesManagementController {
 		this.validateComponentState();
 	}
 
+	/**
+	 * Modification du compte sélectionné
+	 */
 	@FXML
 	private void doModifierCompte() {
 	}
 
+	/**
+	 * Suppression du compte sélectionné
+	 */
 	@FXML
 	private void doSupprimerCompte() {
 	}
-
+/**
+ * Ouverture d'une fenêtre de création d'un nouveau compte
+ */
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -116,6 +135,9 @@ public class ComptesManagementController {
 		}
 	}
 
+	/**
+	 * Chargement de la liste des comptes du client
+	 */
 	private void loadList() {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cmDialogController.getComptesDunClient();
@@ -123,6 +145,9 @@ public class ComptesManagementController {
 		this.oListCompteCourant.addAll(listeCpt);
 	}
 
+	/**
+	 * Validation de l'état des composants
+	 */
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnModifierCompte.setDisable(true);

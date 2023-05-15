@@ -37,14 +37,23 @@ public class CompteEditorPaneController {
 		this.dailyBankState = _dbstate;
 		this.configure();
 	}
-
+	/**
+	 * Méthode de configuration de la fenêtre
+	 * 
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
 		this.txtDecAutorise.focusedProperty().addListener((t, o, n) -> this.focusDecouvert(t, o, n));
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
 	}
-
+	/**
+	 * Méthode de gestion de la fermeture de la fenêtre
+	 * @param client le client concerné
+	 * @param cpte le compte concerné
+	 * @param mode le mode d'édition
+	 * @return
+	 */
 	public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
 		this.clientDuCompte = client;
 		this.editionMode = mode;
@@ -103,6 +112,7 @@ public class CompteEditorPaneController {
 		return null;
 	}
 
+	
 	private Object focusDecouvert(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -119,7 +129,13 @@ public class CompteEditorPaneController {
 		}
 		return null;
 	}
-
+	/**
+	 * Modification du solde du compte sur interface
+	 * @param txtField le champ de texte
+	 * @param oldPropertyValue l'ancienne valeur
+	 * @param newPropertyValue la nouvelle valeur
+	 * @return null
+	 */
 	private Object focusSolde(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -158,12 +174,18 @@ public class CompteEditorPaneController {
 	@FXML
 	private Button btnCancel;
 
+	/**
+	 * Annulation de la saisie, fermeture de la fenêtre
+	 */
 	@FXML
 	private void doCancel() {
 		this.compteResultat = null;
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Validation de la saisie, fermeture de la fenêtre
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.editionMode) {
@@ -187,6 +209,10 @@ public class CompteEditorPaneController {
 
 	}
 
+	/**
+	 * Vérification de la validité de la saisie
+	 * @return true si la saisie est valide
+	 */
 	private boolean isSaisieValide() {
 
 		return true;

@@ -94,7 +94,10 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
-
+	/**
+	 * Enregistre un crédit sur le compte courant
+	 * 
+	 */
 	@FXML
 	private void doCredit() {
 		Operation op = this.omDialogController.enregistrerCredit();
