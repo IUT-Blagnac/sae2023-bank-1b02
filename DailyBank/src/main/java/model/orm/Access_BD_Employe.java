@@ -263,4 +263,45 @@ public class Access_BD_Employe {
 			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	/**
+	 * Suppression d'un Employé.
+	 *
+	 * employe.idEmploye est la clé primaire et doit exister. 
+	 *
+	 * @param employe IN Employe employe (clé primaire).
+	 * 
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 * 
+	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
+	 *                                           ligne
+	 */
+	public void removeEmploye(Employe employe) 
+			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException   {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			
+			String query = "DELETE FROM Employe" +  " WHERE idEmploye = " + "? ";
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, employe.idEmploye);
+			
+			System.err.println(query);
+			
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
+						"Delete anormal (Supression de moins ou plus d'une ligne)", null, result);
+			}
+			
+			con.commit();
+			
+		}catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.DELETE, "Erreur accès", e);
+		}
+	}
 }

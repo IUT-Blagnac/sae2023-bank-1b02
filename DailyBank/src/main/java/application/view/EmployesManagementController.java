@@ -139,6 +139,15 @@ public class EmployesManagementController {
 
 	@FXML
 	private void doSupprimerEmploye() {
+
+		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Employe emp = this.oListEmployes.get(selectedIndice);
+			Employe result = this.cmDialogController.supprimerEmploye(emp);
+			if(result != null) {
+				this.oListEmployes.remove(result);
+			}
+		}
 	}
 
 
