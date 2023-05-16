@@ -81,6 +81,7 @@ public class ComptesManagement {
 	/**
 	 * Méthode permettant de créer un compte
 	 * @return compte créé
+	 * @author SOLDEVILA Bernat
 	 */
 	public CompteCourant creerNouveauCompte() {
 		CompteCourant compte;
