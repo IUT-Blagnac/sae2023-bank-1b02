@@ -103,7 +103,7 @@ public class OperationsManagementController {
 	}
 	/**
 	 * Enregistre un crédit sur le compte courant
-	 * 
+	 * @author SOLDEVILA Bernat
 	 */
 	@FXML
 	private void doCredit() {
