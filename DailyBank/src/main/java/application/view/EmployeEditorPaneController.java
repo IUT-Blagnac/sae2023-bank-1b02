@@ -131,12 +131,18 @@ public class EmployeEditorPaneController {
 	@FXML
 	private Button butCancel;
 
+	/**
+	 * doCancel : gestion de l'appui sur le bouton Annuler
+	 */
 	@FXML
 	private void doCancel() {
 		this.employeResultat = null;
 		this.primaryStage.close();
 	}
 
+	/**
+	 * doAjouter : gestion de l'appui sur le bouton Ajouter
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.editionMode) {
@@ -160,6 +166,11 @@ public class EmployeEditorPaneController {
 
 	}
 
+	/**
+	 * isSaisieValide : vérifie que les données saisies sont valides
+	 * 
+	 * @return true si les données sont valides, false sinon
+	 */
 	private boolean isSaisieValide() {
 		this.employeEdite.nom = this.txtNom.getText().trim();
 		this.employeEdite.prenom = this.txtPrenom.getText().trim();

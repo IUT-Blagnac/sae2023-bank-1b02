@@ -8,7 +8,10 @@
 
 
 ==== GANTT 
-link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
+link:Gestion%20de%20projet/gantt.pdf[Gantt v1 prévu]
+
+==== Cahier de charges
+link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[Cahier des charges v1]
 
 ==== Répartition des tâches et état d'avancement
 [options="header,footer"]
@@ -18,9 +21,9 @@ link:Gestion%20de%20projet/gantt.pdf[Gantt v1]
 |1      |Chef d’Agence  |CRUD employé  |R                      |   F   |        |       |
 |1      |Chef d’Agence  |CRUD employé  |U                      |       |        |   F   |
 |1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   F   |
-|1      |Guichetier     | Compte | Créer                       |       |   D    |       |
-|1      |Guichetier     | Compte | Créditer/Débiter            |       |        |       |   D
-|1      |Guichetier     | Compte | Effectuer un virement       |       |   D    |       |
+|1      |Guichetier     | Compte | Créer                       |       |   F    |       |
+|1      |Guichetier     | Compte | Créditer/Débiter            |       |   F    |       |   
+|1      |Guichetier     | Compte | Effectuer un virement       |       |        |       |   D
 |1      |Guichetier     | Compte | Clôturer                    |       |        |       |   D
 |2      |Chef d’Agence  | Compte | Débit exceptionnel          |       |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler emprunt            |       |        |       |
@@ -48,8 +51,8 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien     | Retour
-| Sem.19  | CDC V1      |           | D
-|         |Gantt V1 Prévu|          | D
+| Sem.19  | CDC V1      |       link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[lien]    | D  Manque les liens vers les livrables !! Attention !! Du coup pas de retours possibles.
+|         |Gantt V1 Prévu|     link:Gestion%20de%20projet/gantt-V1.pdf[lien]     | D
 | 16/05   | CdC V2final|            |  
 |         | Gantt V1 Réalisé |      |     
 |         | Gantt V2 Prevu|         |     

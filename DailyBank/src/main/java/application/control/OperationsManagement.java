@@ -62,6 +62,10 @@ public class OperationsManagement {
 		this.omcViewController.displayDialog();
 	}
 
+	/**
+	 * execute la requête de débit sur le compte courant
+	 * @return opération enregistrée ou null si annulation
+	 */
 	public Operation enregistrerDebit() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
@@ -85,7 +89,38 @@ public class OperationsManagement {
 		}
 		return op;
 	}
+	/**
+	 * execute la requête de crédit sur le compte courant
+	 * @return opération enregistrée ou null si annulation
+	 * @author SOLDEVILA Bernat
+	 */
+	public Operation enregistrerCredit() {
 
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.CREDIT);
+		if (op != null) {
+			try {
+				Access_BD_Operation ao = new Access_BD_Operation();
+
+				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	/**
+	 * Recupere la liste des opérations et le solde du compte courant 
+	 * @return paire de valeurs avec les operations et le solde du compte
+	 */
 	public PairsOfValue<CompteCourant, ArrayList<Operation>> operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();
 
