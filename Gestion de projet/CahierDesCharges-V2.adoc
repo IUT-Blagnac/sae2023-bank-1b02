@@ -2,14 +2,14 @@
 
 Cahier des charges +
 Equipe : 1B2 (Berdinel - Soldevilla - Mauriac - Balasch) +
-Version : 1.0 +
-Date : 10/05/2023 +
+Version : 2.0 +
+Date : 16/05/2023 +
 Projet : Daily Bank +
 ##################################################################################
 
 Sommaire : +
  1 - Sujet +
- 2 - Analyse de la v0 (pré-existante) +
+ 2 - Analyse de la v1 +
  3 - Besoins de l'application +
  4 - Contraintes techniques et organisationnelles +
   
@@ -22,30 +22,38 @@ Sommaire : +
    Cette application sera déployée dans les 100 agences que compte son réseau.
 
   Objectifs :
-    Intégrer de nouvelles fonctionnalités dans une première version et compléter celle-ci 
-    au fur et à mesure afin de donner une version finale aussi efficace que possible.
+    Ajouter les nouvelles fonctionnalités nécessaires à la v1 afin de permettre à l'application d'être complète et en capacité d'être mise en service.
+    L'objectif est donc de concrétiser l'application et de pouvoir présenter à la banque un projet complet dans les temps.
 
-2 - Analyse de la V0 (pré-existante)
+2 - Analyse de la V1
 
-  Dans la v0, un chef d’agence peut :
+  Dans la v1, un chef d’agence peut :
     Rendre inactif un client
+    Créer un profil pour les nouveaux employés
+    Accéder aux profils des employés
+    Modifier le profil des employés 
+    Supprimer un employé 
   
   et un guichetier peut :
     Créer un nouveau client
     Consulter un compte
     Modifier les informations d'un client (adresse, téléphone, ...)
-    Débiter un compte (BD)
-
-3 - Besoins de la v1 de l'application
-
-  Dans la v1 de l'application, un guichetier devra être en capacité de :
-    Créditer/débiter un compte
-    Créer un compte
-    Effectuer un virement de compte à compte
+    Débiter un compte 
+    Créditer un compte
     Clôturer un compte
+    Effectuer un virement 
+    Créer un compte bancaire
+
+3 - Besoins de la v2 de l'application
+
+  Dans la v2 de l'application, un guichetier devra être en capacité de :
+   Générer un relevé mensuel d'un compte en PDF
+   Faire le CRUD des prélèvements automatique
   
-  et un chef d'agence doit pouvoir :
-    Gérer les employés (CRUD)
+  un chef d'agence doit pouvoir :
+    Effectuer un débit exceptionnel
+    Simuler un emprunt
+    Simuler une assurance d'emprunt
   
 4 - Contraintes techniques & organisationnelles
 
@@ -53,8 +61,8 @@ Sommaire : +
     - Définir un même outil de travail pour toute l'équipe afin de faciliter les échanges et la structuration du code
     - Intégrer toutes les fonctionnalités nécessaires à l'application
     - Répartir efficacement les tâches en fonction des préférences et facilités de chacun
-    - Respecter la date butoir (16/05/2023)
+    - Respecter la date butoir (26/05/2023)
     - Assurer un suivi d'avancement du projet afin de toujours être capable de situer la progression de celui-ci
     
-  C'est un projet qui demande de l'implication et de l'organisation, et cette première version sera la passerelle entre l'ancienne application
-  et celle définie par notre objectif.
+  C'est un projet qui demande de l'implication et de l'organisation, et cette seconde version (probablement finale) sera le fruit de notre
+  travail que nous soumettrons à la banque.
