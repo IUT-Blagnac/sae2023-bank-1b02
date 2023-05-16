@@ -81,11 +81,16 @@ public class EmployeEditorPaneController {
 			// ce mode n'est pas utilisé pour les Clients :
 			// la suppression d'un client n'existe pas il faut que le chef d'agence
 			// bascule son état "Actif" à "Inactif"
-			ApplicationException ae = new ApplicationException(Table.NONE, Order.OTHER, "SUPPRESSION CLIENT NON PREVUE",
-					null);
-			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
-			ed.doExceptionDialog();
-
+			
+			this.txtIdEmp.setDisable(true);
+            this.txtNom.setDisable(true);
+            this.txtPrenom.setDisable(true);
+            this.txtLogin.setDisable(true);
+            this.txtMdp.setDisable(true);
+            this.lblMessage.setText("Informations employé");
+            this.butOk.setText("Supprimer");
+            this.butCancel.setText("Annuler");
+            	
 			break;
 		}
 		// Paramétrages spécifiques pour les chefs d'agences
