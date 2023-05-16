@@ -53,14 +53,20 @@ public class EmployesManagement {
 	}
 
 	/**
+	 * @author hugob
+	 * 
+	 * getEmployes : récupération de la liste des employés
+	 * 
+	 * @param c IN : critère de recherche
+	 * @return ArrayList<Employe> : liste des employés
+	 */
 	public Employe modifierEmploye(Employe c) {
-		// Copie de modifierClient -> A faire
-		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dailyBankState);
-		Client result = cep.doClientEditorDialog(c, EditionMode.MODIFICATION);
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
+		Employe result = cep.doEmployeEditorDialog(c, EditionMode.MODIFICATION);
 		if (result != null) {
 			try {
-				Access_BD_Client ac = new Access_BD_Client();
-				ac.updateClient(result);
+				Access_BD_Employe ac = new Access_BD_Employe();
+				ac.updateEmploye(result);
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
@@ -74,8 +80,15 @@ public class EmployesManagement {
 		}
 		return result;
 	}
-	*/
 
+	/**
+	 * nouveauEmploye : Création d'un nouvel employé
+	 * 
+	 * @return Employe : nouvel employé créé
+	 * 
+	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
+	 * @throws ApplicationException : erreur d'accès à la base de données
+	 */
 	public Employe nouveauEmploye() {
 		Employe employe;
 		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
@@ -106,7 +119,17 @@ public class EmployesManagement {
 	}
 	*/
 	
-	
+	/**
+	 * getlisteEmployes : Retourne la liste des employes correspondant aux critères de recherche
+	 * 
+	 * @param _numEmp IN : numéro de l'employé recherché
+	 * @param _debutNom IN : début du nom de l'employé recherché
+	 * @param _debutPrenom IN : début du prénom de l'employé recherché
+	 * @return ArrayList<Employe> : liste des employés correspondant aux critères de recherche
+	 * 
+	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
+	 * @throws ApplicationException : erreur d'accès à la base de données
+	 */
 	public ArrayList<Employe> getlisteEmployes(int _numEmp, String _debutNom, String _debutPrenom) {
 		ArrayList<Employe> listeEmp = new ArrayList<>();
 		try {
@@ -129,5 +152,37 @@ public class EmployesManagement {
 			listeEmp = new ArrayList<>();
 		}
 		return listeEmp;
+	}
+	
+	/**
+	 * @author hugob
+	 * 
+	 * supprimerEmploye : Suppression d'un employé
+	 * 
+	 * @return Employe : l'employé à supprimer
+	 * 
+	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
+	 * @throws ApplicationException : erreur d'accès à la base de données
+	 */
+	public Employe supprimerEmploye(Employe emp){
+		
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
+		Employe result = cep.doEmployeEditorDialog(emp, EditionMode.SUPPRESSION);
+		if (result != null) {
+			try {
+				Access_BD_Employe ac = new Access_BD_Employe();
+				ac.removeEmploye(emp);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
 	}
 }

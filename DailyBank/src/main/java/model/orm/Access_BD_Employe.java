@@ -217,4 +217,95 @@ public class Access_BD_Employe {
 			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
 		}
 	}
+	
+	/**
+	 * @author hugob
+	 * 
+	 * Mise à jour d'un Employé.
+	 *
+	 * employe.idEmploye est la clé primaire et doit exister tous les autres champs
+	 * sont des mises à jour. employe.idAg non mis à jour (un employé ne change
+	 * d'agence que par delete/insert)
+	 *
+	 * @param employe IN employe.idEmploye (clé primaire) doit exister
+	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
+	 *                                           ligne
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 */
+	public void updateEmploye(Employe employe)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsAccess = "
+					+ "? , " + "login = " + "? , " + "motPasse = " + "? "
+					+ "WHERE idEmploye = ? ";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, employe.nom);
+			pst.setString(2, employe.prenom);
+			pst.setString(3, employe.droitsAccess);
+			pst.setString(4, employe.login);
+			pst.setString(5, employe.motPasse);
+			pst.setInt(6, employe.idEmploye);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+	
+	/**
+	 * @author hugob
+	 * 
+	 * Suppression d'un Employé.
+	 *
+	 * employe.idEmploye est la clé primaire et doit exister. 
+	 *
+	 * @param employe IN Employe employe (clé primaire).
+	 * 
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 * 
+	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
+	 *                                           ligne
+	 */
+	public void removeEmploye(Employe employe) 
+			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException   {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			
+			String query = "DELETE FROM Employe" +  " WHERE idEmploye = " + "? ";
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, employe.idEmploye);
+			
+			System.err.println(query);
+			
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
+						"Delete anormal (Supression de moins ou plus d'une ligne)", null, result);
+			}
+			
+			con.commit();
+			
+		}catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.DELETE, "Erreur accès", e);
+		}
+	}
 }
