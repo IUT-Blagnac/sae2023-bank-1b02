@@ -170,6 +170,35 @@ public class Access_BD_CompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	// crée par jimmy
+	public void cloturerCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+	DatabaseConnexionException, ManagementRuleViolation {
+	try {
+
+		CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
+		Connection con = LogToDatabase.getConnexion();
+		String query = "UPDATE CompteCourant SET " + "estCloture = ? " + "WHERE idNumCompte = ?";
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setString(1, "O");
+		pst.setInt(2, cc.idNumCompte);
+
+		System.err.println(query);
+
+		int result = pst.executeUpdate();
+		pst.close();
+		if (result != 1) {
+			con.rollback();
+			throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+					"Update anormal (update de moins ou plus d'une ligne)", null, result);
+		}
+		con.commit();
+	} catch (SQLException e) {
+		throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+	}
+	}
+	
+	
+	
 
 	/**
 	 * Créer un compte pour l'id  fourni (idNumCompte).
