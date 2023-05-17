@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.OperationsManagement;
+import application.control.VirementManagement;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
@@ -26,6 +27,8 @@ public class OperationsManagementController {
 
 	// Contrôleur de Dialogue associé à OperationsManagementController
 	private OperationsManagement omDialogController;
+	
+	private VirementManagement vmDialogController;
 
 	// Fenêtre physique ou est la scène contenant le fichier xml contrôlé par this
 	private Stage primaryStage;
@@ -100,6 +103,7 @@ public class OperationsManagementController {
 	 */
 	@FXML
 	private void doCredit() {
+		
 		Operation op = this.omDialogController.enregistrerCredit();
 		if (op != null) {
 			this.updateInfoCompteClient();
@@ -109,12 +113,25 @@ public class OperationsManagementController {
 
 	@FXML
 	private void doAutre() {
+		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte);
+		this.vmDialogController.doVirementManagementDialog();
 	}
 
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
+
+ 		// modifié par jimmy
+		if (compteConcerne.estCloture.equals("O")) {
+			this.btnCredit.setDisable(true);
+			this.btnDebit.setDisable(true);
+		}
+		else {
+			this.btnDebit.setDisable(false);
+			this.btnCredit.setDisable(false);
+		}
+
 	}
 	/**
 	 * Met à jour les informations affichées sur le client et le compte courant
