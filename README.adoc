@@ -17,8 +17,8 @@
 |1      |Chef d’Agence  |CRUD employé  |D                      |       |        |   F   |
 |1      |Guichetier     | Compte | Créer                       |       |   F    |       |
 |1      |Guichetier     | Compte | Créditer/Débiter            |       |   F    |       |   
-|1      |Guichetier     | Compte | Effectuer un virement       |       |        |       |   D
-|1      |Guichetier     | Compte | Clôturer                    |       |        |       |   D
+|1      |Guichetier     | Compte | Effectuer un virement       |       |        |       |   F
+|1      |Guichetier     | Compte | Clôturer                    |       |        |       |   F
 |2      |Chef d’Agence  | Compte | Débit exceptionnel          |       |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler emprunt            |       |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler assurance          |       |        |       |
@@ -52,7 +52,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 |         | Gantt V2 Prevu|   link:Gestion%20de%20projet/GANTT-V2.pdf[lien]     |     
 |         | Doc. Tec. V1 |          |    
 |         | Doc User V1 |   link:Gestion%20de%20projet/Documentation-utilisateur.pdf[lien]        |
-|         | Recette V1  |           | 
+|         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | 
 |         | Suivi projet V1|        | 
 | 26/05   | Gantt V2  réalisé|      | 
 |         | Doc. Util. V2 |         |         
