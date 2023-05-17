@@ -129,6 +129,8 @@ public class EmployesManagementController {
 
 
 	/**
+	 * @author hugob
+	 * 
 	 * doEffacerEmploye : efface l'employé sélectionné dans la liste
 	 */
 	@FXML
@@ -143,8 +145,20 @@ public class EmployesManagementController {
 		}
 	}
 
+	/**
+	 * doSupprimerEmploye : supprime un employé 
+	 */
 	@FXML
 	private void doSupprimerEmploye() {
+
+		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Employe emp = this.oListEmployes.get(selectedIndice);
+			Employe result = this.cmDialogController.supprimerEmploye(emp);
+			if(result != null) {
+				this.oListEmployes.remove(result);
+			}
+		}
 	}
 
 	/**

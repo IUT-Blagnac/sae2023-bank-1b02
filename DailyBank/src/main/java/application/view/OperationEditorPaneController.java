@@ -46,7 +46,8 @@ public class OperationEditorPaneController {
 	 * Affichage de la fenêtre de dialogue pour la saisie d'une opération
 	 * @param cpte compte courant concerné
 	 * @param mode mode de l'opération (débit ou crédit)
-	 * @return
+	 * @return 
+	 * @author SOLDEVILA Bernat
 	 */
 	public Operation displayDialog(CompteCourant cpte, CategorieOperation mode) {
 		this.categorieOperation = mode;
@@ -119,13 +120,19 @@ public class OperationEditorPaneController {
 	@FXML
 	private Button btnCancel;
 
-	
+	/**
+	 * Action sur le bouton cancel : fermeture de la fenêtre sans rien faire
+	 */
 	@FXML
 	private void doCancel() {
 		this.operationResultat = null;
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Action sur le bouton ok : validation de la saisie en fonction du type d'opération et fermeture de la fenêtre
+	 *@author SOLDEVILA Bernat
+	*/
 	@FXML
 	private void doAjouter() {
 		switch (this.categorieOperation) {

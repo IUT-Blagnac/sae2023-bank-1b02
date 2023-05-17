@@ -163,7 +163,7 @@ public class ComptesManagementController {
 	}
 
 	/**
-	 * Chargement de la liste des comptes du client
+	 * Chargement de la liste des comptes du client 
 	 */
 	private void loadList() {
 		ArrayList<CompteCourant> listeCpt;

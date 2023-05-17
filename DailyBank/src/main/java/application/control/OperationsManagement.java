@@ -92,6 +92,7 @@ public class OperationsManagement {
 	/**
 	 * execute la requête de crédit sur le compte courant
 	 * @return opération enregistrée ou null si annulation
+	 * @author SOLDEVILA Bernat
 	 */
 	public Operation enregistrerCredit() {
 

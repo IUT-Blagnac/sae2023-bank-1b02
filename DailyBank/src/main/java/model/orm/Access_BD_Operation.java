@@ -193,6 +193,7 @@ public class Access_BD_Operation {
 	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
 	 *                                    formée ou autre)
 	 * @throws DatabaseConnexionException Erreur de connexion
+	 * @author SOLDEVILA Bernat
 	 */
 	public void insertCredit(int idNumCompte, double montant, String typeOp)
 			throws DatabaseConnexionException, DataAccessException {

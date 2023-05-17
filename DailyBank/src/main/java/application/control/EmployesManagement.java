@@ -53,6 +53,8 @@ public class EmployesManagement {
 	}
 
 	/**
+	 * @author hugob
+	 * 
 	 * getEmployes : récupération de la liste des employés
 	 * 
 	 * @param c IN : critère de recherche
@@ -150,5 +152,37 @@ public class EmployesManagement {
 			listeEmp = new ArrayList<>();
 		}
 		return listeEmp;
+	}
+	
+	/**
+	 * @author hugob
+	 * 
+	 * supprimerEmploye : Suppression d'un employé
+	 * 
+	 * @return Employe : l'employé à supprimer
+	 * 
+	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
+	 * @throws ApplicationException : erreur d'accès à la base de données
+	 */
+	public Employe supprimerEmploye(Employe emp){
+		
+		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
+		Employe result = cep.doEmployeEditorDialog(emp, EditionMode.SUPPRESSION);
+		if (result != null) {
+			try {
+				Access_BD_Employe ac = new Access_BD_Employe();
+				ac.removeEmploye(emp);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
 	}
 }
