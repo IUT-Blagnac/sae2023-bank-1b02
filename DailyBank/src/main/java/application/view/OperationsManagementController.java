@@ -121,7 +121,7 @@ public class OperationsManagementController {
 	// Non implémenté => désactivé
 	@FXML
 	private void doAutre() {
-		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte);
+		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte, this.compteConcerne);
 		this.vmDialogController.doVirementManagementDialog();
 	}
 

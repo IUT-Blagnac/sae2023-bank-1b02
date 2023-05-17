@@ -1,6 +1,7 @@
 package application.view;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.ComptesManagement;
@@ -31,16 +32,19 @@ public class VirementManagementController {
 	// Fenêtre physique ou est la scène contenant le fichier xml contrôlé par this
 	private Stage primaryStage;
 
+	private CompteCourant compteConcerne;
+
 	// Données de la fenêtre
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> oListCompteCourant;
 
 	// Manipulation de la fenêtre
-	public void initContext(Stage _containingStage, VirementManagement _vm, DailyBankState _dbstate, Client client) {
+	public void initContext(Stage _containingStage, VirementManagement _vm, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.vmDialogController = _vm;
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
 		this.clientDesComptes = client;
+		this.compteConcerne = compte;
 		this.configure();
 	}
 	/**
@@ -50,15 +54,16 @@ public class VirementManagementController {
 		String info;
 
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
+		
 		this.oListCompteCourant = FXCollections.observableArrayList();
 		this.lvComptes.setItems(this.oListCompteCourant);
 		this.lvComptes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvComptes.getFocusModel().focus(-1);
 		this.lvComptes.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 
-		info = this.clientDesComptes.nom + "  " + this.clientDesComptes.prenom + "  (id : "
-				+ this.clientDesComptes.idNumCli + ")";
+		info = "Cpt. : " + this.compteConcerne.idNumCompte + "  "
+				+ String.format(Locale.ENGLISH, "%12.02f", this.compteConcerne.solde) + "  /  "
+				+ String.format(Locale.ENGLISH, "%8d", this.compteConcerne.debitAutorise);
 		this.lblInfosClient.setText(info);
 
 		this.loadList();
@@ -115,6 +120,7 @@ public class VirementManagementController {
 	private void loadList() {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.vmDialogController.getComptesDunClient();
+		// ici
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
@@ -123,14 +129,14 @@ public class VirementManagementController {
 	 * Validation de l'état des composants
 	 */
 	private void validateComponentState() {
-		// // Non implémenté => désactivé
-		// //modfifié par jimmy
-		// int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		// CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
-		// if (selectedIndice >= 0) {
+		// Non implémenté => désactivé
+		//modfifié par jimmy
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+		if (selectedIndice >= 0) {
 			
-		// } else {
+		} else {
 
-		// }
+		}
 	}
 }

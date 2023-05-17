@@ -28,6 +28,7 @@ public class VirementManagement {
 	private VirementManagementController vmcViewController;
 	private DailyBankState dailyBankState;
 	private Client clientDesComptes;
+	private CompteCourant compteConcerne;
 
 	/**
 	 * Constructeur de la classe ComptesManagement
@@ -36,8 +37,8 @@ public class VirementManagement {
 	 * @param _dbstate
 	 * @param client
 	 */
-	public VirementManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
-
+	public VirementManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
+		this.compteConcerne = compte;
 		this.clientDesComptes = client;
 		this.dailyBankState = _dbstate;
 		try {
@@ -56,7 +57,7 @@ public class VirementManagement {
 			this.primaryStage.setResizable(false);
 
 			this.vmcViewController = loader.getController();
-			this.vmcViewController.initContext(this.primaryStage, this, _dbstate, client);
+			this.vmcViewController.initContext(this.primaryStage, this, _dbstate, client, compte);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,10 +86,12 @@ public class VirementManagement {
 			ed.doExceptionDialog();
 			this.primaryStage.close();
 			listeCpt = new ArrayList<>();
+			System.out.println("array1");
 		} catch (ApplicationException ae) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
 			ed.doExceptionDialog();
 			listeCpt = new ArrayList<>();
+			System.out.println("array2");
 		}
 		return listeCpt;
 	}

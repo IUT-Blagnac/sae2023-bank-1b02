@@ -176,11 +176,14 @@ public class ComptesManagementController {
 	 * Validation de l'état des composants
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		//modfifié par jimmy
 		this.btnModifierCompte.setDisable(true);
+		this.btnSupprCompte.setDisable(true);
+		this.btnCloturerCompte.setDisable(true);
+		this.btnVoirOpes.setDisable(true);
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+		
 		if (cpt.estCloture.equals("O")) {
 		btnCloturerCompte.setDisable(true);
 		}
