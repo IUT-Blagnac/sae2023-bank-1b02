@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.orm.Access_BD_CompteCourant;
 
 public class ComptesManagementController {
 
@@ -87,6 +88,8 @@ public class ComptesManagementController {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
+	@FXML
+	private Button btnCloturerCompte;
 
 	/**
 	 * Fermeture de la fenêtre
@@ -118,10 +121,34 @@ public class ComptesManagementController {
 	}
 
 	/**
-	 * Suppression du compte sélectionné
+	 * suppression du compte sélectionné
 	 */
 	@FXML
 	private void doSupprimerCompte() {
+	}
+
+	/** JavaDoc of doSupprimerCompte()
+	* Suppression du compte sélectionné
+	*crée par jimmy
+	*/
+	@FXML
+	private void doCloturerCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+		
+		Access_BD_CompteCourant cc = new Access_BD_CompteCourant();
+		if (selectedIndice >= 0) {
+			try {
+				cc.cloturerCompteCourant(cpt);
+				//disable the button on list 
+				this.lvComptes.getSelectionModel();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 /**
  * Ouverture d'une fenêtre de création d'un nouveau compte
@@ -144,18 +171,28 @@ public class ComptesManagementController {
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
-
+	
 	/**
 	 * Validation de l'état des composants
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
+		//modfifié par jimmy
 		this.btnModifierCompte.setDisable(true);
 		this.btnSupprCompte.setDisable(true);
-
+		this.btnCloturerCompte.setDisable(true);
+		this.btnVoirOpes.setDisable(true);
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+		
+		if (cpt.estCloture.equals("O")) {
+		btnCloturerCompte.setDisable(true);
+		}
+		else {
+			btnCloturerCompte.setDisable(false);
+		}
 		if (selectedIndice >= 0) {
 			this.btnVoirOpes.setDisable(false);
+
 		} else {
 			this.btnVoirOpes.setDisable(true);
 		}

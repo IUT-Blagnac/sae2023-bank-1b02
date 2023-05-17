@@ -109,7 +109,7 @@ public class ComptesManagement {
 	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
-
+		
 		try {
 			Access_BD_CompteCourant acc = new Access_BD_CompteCourant();
 			listeCpt = acc.getCompteCourants(this.clientDesComptes.idNumCli);
