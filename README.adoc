@@ -47,7 +47,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 | Date    | Nom         |  Lien     | Retour
 | Sem.19  | CDC V1      |       link:Gestion%20de%20projet/Cahier-Des-Charges-V1.adoc[lien]    | D  Manque les liens vers les livrables !! Attention !! Du coup pas de retours possibles.
 |         |Gantt V1 Prévu|     link:Gestion%20de%20projet/gantt-V1.pdf[lien]     | d
-| 16/05   | CdC V2final|    link:Gestion%20de%20projet/CahierDesCharges-V2.adoc[lien]        |  
+| 16/05   | CdC V2final|    link:Gestion%20de%20projet/CahierDesCharges-V2.adoc[lien]        |  Manque sommaire interactif. Contexte trop succint et pas de problématique  !! Je n'ai pas de présentation de l'existant ! Je n'ai pas de fonctions commentées, elles ne sont pas priorisées, je n'ai pas les UC, je n'ai pas les règles de gestion ! Je n'ai que des contraintes orga , rien sur les contraintes techniques, les livrables attendus... bref une copie du sujet qui n'est pas le travail demandé. note 07/20
 |         | Gantt V1 Réalisé |  link:Gestion%20de%20projet/GANTT-V1-REALISE.pdf[lien]    |     
 |         | Gantt V2 Prevu|   link:Gestion%20de%20projet/GANTT-V2.pdf[lien]     |     
 |         | Doc. Tec. V1 |    link:Gestion%20de%20projet/Documentation-technique-V1.pdf[lien]      |    
