@@ -53,6 +53,9 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 |         | Doc. Tec. V1 |    link:Gestion%20de%20projet/Documentation-technique-V1.pdf[lien]      |    
 |         | Doc User V1 |   link:Gestion%20de%20projet/Documentation-utilisateur.pdf[lien]        | Attention toutes les docs sont demandées en aciidoc. Présenter les utilisateurs et classer les fonctions par utilisateur. Comment je peux vérifier que mon employé a bien été modifié ? 
 |         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | 
+|         | javadoc v1 |       |
+|         | jar v1 |       |
+|         | application v1 |       |
 |         | Suivi projet V1|        | Les noms de projets sont peu équivoques planification V2 serait mieux. Ne pas oublier les task list dans les issues.
 | 26/05   | Gantt V2  réalisé|      | 
 |         | Doc. Util. V2 |         |         
