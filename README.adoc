@@ -52,7 +52,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 |         | Gantt V2 Prevu|   link:Gestion%20de%20projet/GANTT-V2.pdf[lien]     |     
 |         | Doc. Tec. V1 |    link:Gestion%20de%20projet/Documentation-technique-V1.pdf[lien]      | https://github.com/IUT-Blagnac/sae2023-bank-1b02/blob/main/retour%20doc%20technique%20v1.odt[retour doc technique]   
 |         | Doc User V1 |   link:Gestion%20de%20projet/Documentation-utilisateur.pdf[lien]        | Attention toutes les docs sont demandées en aciidoc. Présenter les utilisateurs et classer les fonctions par utilisateur. Comment je peux vérifier que mon employé a bien été modifié ? 
-|         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | 
+|         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | Il manque créditer compte, les virement et le CRUD des employés n'est pas complet. QUand j'ajoute un employé que se passer-il si je ne valide pas ??
 |         | javadoc v1 |       |
 |         | jar v1 |       |
 |         | application v1 |       |
