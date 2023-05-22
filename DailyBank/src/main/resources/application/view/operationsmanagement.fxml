@@ -18,33 +18,50 @@
          <center>
             <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER">
+                  <GridPane alignment="CENTER" prefHeight="200.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="20.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" text="Enregistrer Débit" GridPane.rowIndex="1">
+                        <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" text="Enregistrer Débit">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button fx:id="btnCredit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" text="Enregistrer Crédit" GridPane.rowIndex="2">
+                        <Button fx:id="btnCredit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" text="Enregistrer Crédit" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button fx:id="btnAutre" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAutre" text="Effectuer un virement" GridPane.rowIndex="3">
+                        <Button fx:id="btnAutre" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAutre" text="Effectuer un virement" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnDebitExep" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebitExep" text="Débit exeptionnel" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
                   </GridPane>
                </children>
                <BorderPane.margin>

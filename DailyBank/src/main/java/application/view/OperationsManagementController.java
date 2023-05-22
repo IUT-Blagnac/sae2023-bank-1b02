@@ -88,6 +88,8 @@ public class OperationsManagementController {
 	private Button btnCredit;
 	@FXML 
 	private Button btnAutre;
+	@FXML 
+	private Button btnDebitExep;
 
 	@FXML
 	private void doCancel() {
@@ -126,6 +128,16 @@ public class OperationsManagementController {
 		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte, this.compteConcerne);
 		this.vmDialogController.doVirementManagementDialog();
 	}
+	
+	@FXML
+	private void doDebitExep() {
+		
+		Operation op = this.omDialogController.enregistrerDebitExeptionnel();
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
+	}
 
 	/**
 	 * valide l'état des composants de la fenêtre
@@ -144,6 +156,9 @@ public class OperationsManagementController {
 		else {
 			this.btnDebit.setDisable(false);
 			this.btnCredit.setDisable(false);
+		}
+		if(this.dailyBankState.isChefDAgence()) {
+			this.btnDebitExep.setDisable(false);
 		}
 
 	}
