@@ -183,13 +183,20 @@ public class ComptesManagementController {
 		this.btnVoirOpes.setDisable(true);
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			this.btnVoirOpes.setDisable(false);
 			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+			
+			
+			this.btnVoirOpes.setDisable(false);
 			if (cpt.estCloture.equals("O")) {
 				btnCloturerCompte.setDisable(true);
 				}
 				else {
-					btnCloturerCompte.setDisable(false);
+					if (cpt.solde != 0) {
+						this.btnCloturerCompte.setDisable(true);
+					}
+					else {
+						btnCloturerCompte.setDisable(false);
+					}
 				}
 		} else {
 			this.btnVoirOpes.setDisable(true);
