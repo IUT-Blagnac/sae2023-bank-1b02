@@ -86,6 +86,8 @@ public class OperationsManagementController {
 	private Button btnDebit;
 	@FXML
 	private Button btnCredit;
+	@FXML 
+	private Button btnAutre;
 
 	@FXML
 	private void doCancel() {
@@ -137,6 +139,7 @@ public class OperationsManagementController {
 		if (compteConcerne.estCloture.equals("O")) {
 			this.btnCredit.setDisable(true);
 			this.btnDebit.setDisable(true);
+			this.btnAutre.setDisable(true);
 		}
 		else {
 			this.btnDebit.setDisable(false);
