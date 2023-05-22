@@ -25,7 +25,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="264.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER" prefHeight="178.0" prefWidth="187.0">
+                  <GridPane alignment="CENTER" prefHeight="230.0" prefWidth="187.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -56,11 +56,6 @@
                               <Insets bottom="5.0" top="5.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button" visible="false" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </Button>
                         <Button fx:id="btnSupprCompte" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimerCompte" text="Supprimer compte" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="5.0" top="5.0" />
@@ -77,7 +72,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="-20.0" />
+                        <Insets />
                      </VBox.margin>
                   </GridPane>
                </children>
