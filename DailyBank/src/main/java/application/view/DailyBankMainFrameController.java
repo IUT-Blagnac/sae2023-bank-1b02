@@ -101,6 +101,8 @@ public class DailyBankMainFrameController {
 	@FXML
 	private MenuItem mitemQuitter;
 	@FXML
+	private MenuItem mitemBatch1;
+	@FXML
 	private Button btnConn;
 	@FXML
 	private Button btnDeconn;
@@ -168,8 +170,10 @@ public class DailyBankMainFrameController {
 			this.lblEmpPrenom.setText(e.prenom);
 			if (this.dailyBankState.isChefDAgence()) {
 				this.mitemEmploye.setDisable(false);
+				this.mitemBatch1.setDisable(false);
 			} else {
 				this.mitemEmploye.setDisable(true);
+				this.mitemBatch1.setDisable(true);
 			}
 			this.mitemClient.setDisable(false);
 			this.mitemConnexion.setDisable(true);
@@ -214,6 +218,14 @@ public class DailyBankMainFrameController {
 				"Livraison prévue\nEn juin " + current_date.getYear(), AlertType.INFORMATION);
 		*/
 		this.dbmfDialogController.gestionEmployes();
+	}
+	
+	/**
+	 * Action menu batch, execute les batch (fonction pour test)
+	 */
+	@FXML
+	private void doBatchOption() {
+		this.dbmfDialogController.batchExecute();
 	}
 
 	/*

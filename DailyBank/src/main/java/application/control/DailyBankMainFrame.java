@@ -6,6 +6,8 @@ import application.view.DailyBankMainFrameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.orm.LogToDatabase;
@@ -128,5 +130,14 @@ public class DailyBankMainFrame extends Application {
 	public void gestionEmployes() {
 		EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dailyBankState);
 		cm.doEmployeManagementDialog();
+	}
+	
+	/**
+	 * Lance le batch manuellement
+	 */
+	public void batchExecute() {
+		Alert batchAlert = new Alert(AlertType.INFORMATION);
+		batchAlert.setHeaderText("Fonction en développement :)");
+		batchAlert.showAndWait();
 	}
 }
