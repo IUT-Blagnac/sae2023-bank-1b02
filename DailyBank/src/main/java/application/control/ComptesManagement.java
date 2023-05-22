@@ -68,6 +68,7 @@ public class ComptesManagement {
 	public void doComptesManagementDialog() {
 		this.cmcViewController.displayDialog();
 	}
+	
 	/**
 	 * Méthode permettant de gerer les opérations d'un compte
 	 * @param compte
@@ -76,6 +77,17 @@ public class ComptesManagement {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dailyBankState,
 				this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
+	}
+	
+	/**
+	 * Méthode permettant de voir les prélèvements d'un compte
+	 * @param compte
+	 * @author BALASCH Aidan
+	 */
+	public void voirPrelevementsDUnCompte(CompteCourant cpt) {
+		PrelevementsManagement om = new PrelevementsManagement(this.primaryStage, this.dailyBankState,
+				this.clientDesComptes, cpt);
+		om.doPrelevementsManagementDialog();
 	}
 
 	/**
