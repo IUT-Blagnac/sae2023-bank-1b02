@@ -90,6 +90,10 @@ public class ComptesManagementController {
 	private Button btnSupprCompte;
 	@FXML
 	private Button btnCloturerCompte;
+	@FXML
+	private Button btnVoirPrel;
+	@FXML
+	private Button btnSimulEmpr;
 
 	/**
 	 * Fermeture de la fenêtre
@@ -118,6 +122,13 @@ public class ComptesManagementController {
 	 */
 	@FXML
 	private void doModifierCompte() {
+	}
+	
+	@FXML
+	private void doVoirPrelevement() {
+	}
+	@FXML
+	private void doSimulerEmprunt() {
 	}
 
 	/**
