@@ -1,9 +1,6 @@
 [.text-center]
-============================
 image:media/logo.png"[image,width=124,height=124] +
 S2.01 - Documentation technique  Groupe 1B02 
-============================
-
 [.text-center]
 = SAÉ 2.01
 [.text-center]
