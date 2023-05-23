@@ -101,7 +101,7 @@ public class OperationsManagement {
 		if (op != null) {
 			try {
 				Access_BD_Operation ao = new Access_BD_Operation();
-
+				
 				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
 
 			} catch (DatabaseConnexionException e) {

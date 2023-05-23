@@ -151,15 +151,15 @@ public class ComptesManagementController {
 		if (selectedIndice >= 0) {
 			try {
 				cc.cloturerCompteCourant(cpt);
-				//disable the button on list 
 				this.lvComptes.getSelectionModel();
+				
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
-		
+		this.loadList();
 	}
 /**
  * Ouverture d'une fenêtre de création d'un nouveau compte
@@ -182,7 +182,12 @@ public class ComptesManagementController {
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
-	
+	/**
+	 * Mise à jour des informations des comptes
+	 */
+
+
+
 	/**
 	 * Validation de l'état des composants
 	 */
