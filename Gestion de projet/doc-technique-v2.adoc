@@ -1,1 +1,63 @@
+[[doctech]]
+= SAÉ 2.01 - Documentation technique
 
+[[sommaire]]
+== Sommaire
+:doctype: book
+:toc: macro
+:toc-title:
+:toclevels: 3
+:sectanchors:
+:toc-placement!:
+
+
+[[introduction]]
+== 0- Introduction
+Ce document présente la documentation technique de l'application DailyBank. Il est destiné aux développeurs et aux administrateurs système.
+
+[[presentation]]
+== 1- Présentation de l'application
+
+=== 1.1- Contexte
+La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
+
+Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque.
+
+Cette application sera déployée dans les 100 agences que compte son réseau. Le rôle de l'application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d'un guichet de la banque.
+
+
+[[architecture]]
+== 2- Architecture
+
+=== 2.1- Prérequis
+Pour pouvoir installer l'application, il faut disposer des éléments suivants :
+
+* Système d'exploitation : Windows 7 ou supérieur
+* Version de Java : 1.7 ou supérieur
+* Base de données Oracle fonctionnelle
+
+=== 2.2- Installation
+Pour installer l'application, il faut suivre les étapes suivantes :
+
+* Executer le script SQL de création de la base de données
+* Télécharger le fichier Java de l'application
+* Executer le fichier Java de l'application
+
+
+=== 2.3- Utilisateurs
+L'application est utilisée par les employés de la banque. Chaque employé dispose d'un compte utilisateur qui lui permet de se connecter à l'application avec différentes permissions.
+
+==== 2.3.1- Chef d'agence
+
+
+==== 2.3.2- Guichetier
+
+
+[[fonctionnalites]]
+== 3- Fonctionnalités
+
+[[version1]]
+=== Version 1
+
+[[version2]]
+=== Version 2
