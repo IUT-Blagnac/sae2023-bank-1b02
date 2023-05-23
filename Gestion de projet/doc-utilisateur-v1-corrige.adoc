@@ -74,7 +74,8 @@ image:media/modifemploye.png"[image,width=400,height=200] image:media/modifierlo
 Pour effacer un employé, s’identifier en tant que chef d’agence puis aller dans Gestion -> Employés. Une fois la page de gestion des employés ouverte, cliquer sur “Rechercher” puis sélectionner l’employé à supprimer. Ensuite, cliquer sur le bouton “Effacer employé” puis, dans la nouvelle page qui s’ouvre, cliquer sur le bouton “Supprimer”.
 image:media/employe.png"[image,width=400,height=200] image:media/rechercheclient.png"[image,width=400,height=200] +
  image:media/effaceremploye.png"[image,width=400,height=200] image:media/modifierlogin.png"[image,width=400,height=200] +
-
+  +
+  +
 
 
 == Guichetier
