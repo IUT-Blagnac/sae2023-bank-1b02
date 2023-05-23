@@ -7,7 +7,7 @@ S2.01 - Documentation technique  Groupe 1B02
 === Documentation 
 [.text-center]
 === technique
-___
+
 = Sommaire
 . Présentation de l'appplication
 .  Installation / Utilisation
@@ -29,14 +29,14 @@ ___
 - Installation utilisation ✓
 - Fonctionnement - chaque étudiant identifie sa partie -  Résultats produits avec jeux d'essai commentés ✓
 
-___
+
 = Présentation de  l'appplication
 La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
 Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque.
  Cette application sera déployée dans les 100 agences que compte son réseau.
 	Le rôle de l’application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d’un guichet de la banque.
 
-___
+
 =  Installation / Utilisation
 Tout d’abord nous allons devoir nous rendre sur le repository ou se trouve l’application, sur  github et récupérer la dernière version de l’application disponible. Il faut également prendre en compte qu’il vous faudra une version récente de java. 
 
