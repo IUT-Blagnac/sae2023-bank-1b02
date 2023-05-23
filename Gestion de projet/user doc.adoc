@@ -1,0 +1,124 @@
+[.text-center]
+============================
+image:media/logo.png"[image,width=124,height=124] +
+S2.01 - Documentation technique  Groupe 1B02 
+============================
+
+[.text-center]
+= SAÉ 2.01
+[.text-center]
+=== Documentation 
+[.text-center]
+=== technique
+___
+= Sommaire
+. Présentation de l'appplication
+.  Installation / Utilisation
+. Fonctionnement
+.. Chef d’agence
+... Créer des employés (A. B.)
+... Voir les employés (A. B.)
+... Modifier les employés (H. B.)
+... Effacer les employés (H. B.)
+.. Guichetier
+... Créer un compte (B. S.)
+... Créditer / Débiter sur un compte (B. S.)
+... Effectuer un virement (J. M.)
+... Clôturer un compte (J. M.)
+. Résultats produits
+
+- Page de garde, Sommaire ✓
+- Présentation générale, rôle de l' application ✓
+- Installation utilisation ✓
+- Fonctionnement - chaque étudiant identifie sa partie -  Résultats produits avec jeux d'essai commentés ✓
+
+___
+= Présentation de  l'appplication
+La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
+Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque.
+ Cette application sera déployée dans les 100 agences que compte son réseau.
+	Le rôle de l’application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d’un guichet de la banque.
+
+___
+=  Installation / Utilisation
+Tout d’abord nous allons devoir nous rendre sur le repository ou se trouve l’application, sur  github et récupérer la dernière version de l’application disponible. Il faut également prendre en compte qu’il vous faudra une version récente de java. 
+
+Une fois installée vous disposez d’un fichier dailyBank-VX.Jar, cliquez dessus et attendez que la page de connexion s’ouvre. +
+
+image:media/icon.png"[image,width=150,height=150] +
+ +
+ A présent, dès que vous cliquez sur le fichier de l’application vous pourrez accéder à l’application, appuyez sur Connexion pour débuter. +
+  +
+image:media/principal.png"[image,width=400,height=200] +
+ +
+
+= Fonctionnement
+== Chef d’agence
+==== Créer des employés (A. B.)
+Pour la création d’un employé, il est nécessaire de s’identifier en tant que chef d’agence. Une fois sur l’application, on doit aller sur Gestion -> Employés et sur la nouvelle fenêtre, appuyez “Nouveau employé”. Une autre fenêtre va apparaître, après avoir rempli les champs, il suffit d’appuyer sur “Ajouter” pour créer l’employé. 
+image:media/employe.png"[image,width=400,height=200] +
+image:media/nouvelemploye.png"[image,width=400,height=200]  image:media/ajouteremploye.png"[image,width=400,height=200]
+ +
+ +
+==== Voir les employés (A. B.)
+Pour visualiser la liste d’employés, il est nécessaire de s’identifier en tant que chef d’agence. Une fois sur l’application, on doit aller sur Gestion -> Employés. Il est possible de filtrer les résultats avec le numéro, nom et prénom. Une fois remplit, il suffit de cliquer sur “Rechercher” pour tout voir.
+
+==== Modifier les employés (H. B.) 
+Pour modifier un employé de la liste, s’identifier en tant que chef d’agence puis aller dans Gestion -> Employés. Une fois la page de gestion des employés ouverte, cliquer sur “Rechercher” puis sélectionner l’employé à modifier. Cliquer sur le bouton
+“Modifier employé”, puis modifier les champs désirés et finir en appuyant sur “Modifier”. +
+
+image:media/employe.png"[image,width=400,height=200] image:media/rechercheclient.png"[image,width=400,height=200] +
+ +
+image:media/modifemploye.png"[image,width=400,height=200] image:media/modifierlogin.png"[image,width=400,height=200] +
+ +
+
+
+==== Effacer les employés (H. B.) 
+Pour effacer un employé, s’identifier en tant que chef d’agence puis aller dans Gestion -> Employés. Une fois la page de gestion des employés ouverte, cliquer sur “Rechercher” puis sélectionner l’employé à supprimer. Ensuite, cliquer sur le bouton “Effacer employé” puis, dans la nouvelle page qui s’ouvre, cliquer sur le bouton “Supprimer”.
+image:media/employe.png"[image,width=400,height=200] image:media/rechercheclient.png"[image,width=400,height=200] +
+ image:media/effaceremploye.png"[image,width=400,height=200] image:media/modifierlogin.png"[image,width=400,height=200] +
+
+
+
+== Guichetier
+==== Créer un compte (B. S.) 
+Afin de créer un compte, commencez par cliquer sur bouton du menu Gestion puis Clients. +
+ Appuyez tout d’abord sur Rechercher puis sélectionnez le client concerné. Par la suite appuyez sur le bouton "Comptes client".
+ +
+ image:media/client.png"[image,width=600,height=400] + 
+ +
+À partir de cette fenêtre vous pouvez observer les détails des comptes du client, pour continuer la création du nouveau compte appuyez sur Nouveau compte. +
+ +
+ Avec l’ouverture de cette fenêtre vous pouvez saisir le découvert autorisé ainsi que le solde au moment du premier dépôt dans les champs dédiés. Une fois les champs complétés appuyez sur le bouton Ajouter, si il n’y à aucun problème le compte apparaîtra sur la fenêtre précédente. +
+ image:media/gestioncompte.png"[image,width=400,height=200] +
+
+
+==== Créditer / Débiter sur un compte (B. S.)
+
+En repartant depuis le début, cliquez sur bouton du menu Gestion puis Clients, Vous devez avoir cette fenêtre: +
+Appuyez tout d’abord sur Rechercher puis sélectionnez le client concerné. Par la suite appuyez sur le bouton "Comptes client". +
+image:media/clientcompte.png"[image,width=600,height=400] +
+ +
+ Sur cette fenêtre, sélectionnez le compte concerné puis cliquez sur le bouton Voir opérations.
+image:media/gestionope.png"[image,width=600,height=400] +
+ +
+À partir de cette fenêtre sélectionnez soit Enregistrer Débit ou alors Enregistrer Crédit, puis à partir de l’interface qui s’est ouverte vous pouvez sélectionner le type d’opération ainsi que le montant de l’opération.
+image:media/enregistrerope.png"[image,width=600,height=400] +
+ +
+Pour effectuer l’opération, cliquez sur le bouton Effectuer Crédit.
+
+==== Effectuer un virement (J. M.)
+Pour effectuer un virement, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton effectuer un virement, +
+image:media/effectuervirement.png"[image,width=600,height=400] +
+ +
+ Dans la nouvelle fenêtre il suffit de sélectionner le compte crédité (1) et saisir le montant dans la zone de texte (2) puis cliquer sur effectuer un virement (3) +
+image:media/virement.png"[image,width=600,height=400] +
+ +
+
+==== Clôturer un compte (J. M.)
+Lorsque vous voulez clôturer un compte bancaire d’un utilisateur, rendez vous dans la liste de ses comptes et cliquez sur le bouton clôturer. +
+image:media/cloturercompte.png"[image,width=600,height=400] +
+ +
+ 
+= Résultats produits
+Voir cahier de recettes.
