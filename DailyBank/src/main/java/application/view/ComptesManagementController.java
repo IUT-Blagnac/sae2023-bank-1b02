@@ -208,6 +208,8 @@ public class ComptesManagementController {
 		this.btnSupprCompte.setDisable(true);
 		this.btnCloturerCompte.setDisable(true);
 		this.btnVoirOpes.setDisable(true);
+		this.btnVoirPrel.setDisable(true);
+		
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);

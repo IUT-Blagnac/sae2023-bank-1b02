@@ -57,7 +57,7 @@ public class PrelevementsManagement {
 			this.primaryStage.setResizable(false);
 
 			this.omcViewController = loader.getController();
-			this.omcViewController.initContext(this.primaryStage, this, _dbstate);
+			this.omcViewController.initContext(this.primaryStage, this, _dbstate, client, compteConcerne);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,6 +67,7 @@ public class PrelevementsManagement {
 	public void doPrelevementsManagementDialog() {
 		this.omcViewController.displayDialog();
 	}
+	
 	/**
 	 * Nouveau prelevement sur le compte courant
 	 * @return prelevement enregistré ou null si annulation
@@ -80,10 +81,9 @@ public class PrelevementsManagement {
 		if (prelev != null) {
 			try {
 				Access_BD_Prelevements ao = new Access_BD_Prelevements();
-
-				//ao.insertPrelevement(0, 0, null, 0);
-				ao.insertPrelevement(prelev.montant, prelev.dateRecurrente, prelev.beneficiaire, this.compteConcerne.idNumCompte);;
-
+				int idPrelev = ao.insertPrelevement(prelev.montant, prelev.dateRecurrente, prelev.beneficiaire, this.compteConcerne.idNumCompte);
+				prelev.idPrelev = idPrelev;
+				
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
@@ -95,6 +95,39 @@ public class PrelevementsManagement {
 				prelev = null;
 			}
 		}
+		
 		return prelev;
+	}
+	
+	/**
+	 * Recupere la liste des opérations et le solde du compte courant 
+	 * @return paire de valeurs avec les operations et le solde du compte
+	 */
+	public PairsOfValue<CompteCourant, ArrayList<Prelevement>> operationsEtSoldeDunCompte() {
+		ArrayList<Prelevement> listeOP = new ArrayList<>();
+
+		try {
+			// Relecture BD du solde du compte
+			Access_BD_CompteCourant acc = new Access_BD_CompteCourant();
+			this.compteConcerne = acc.getCompteCourant(this.compteConcerne.idNumCompte);
+
+			// lecture BD de la liste des opérations du compte de l'utilisateur
+			Access_BD_Prelevements ao = new Access_BD_Prelevements();
+			listeOP = ao.getPrelevements(this.compteConcerne.idNumCompte);
+
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+			ed.doExceptionDialog();
+			this.primaryStage.close();
+			listeOP = new ArrayList<>();
+			
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+			ed.doExceptionDialog();
+			listeOP = new ArrayList<>();
+			
+		}
+		
+		return new PairsOfValue<>(this.compteConcerne, listeOP);
 	}
 }

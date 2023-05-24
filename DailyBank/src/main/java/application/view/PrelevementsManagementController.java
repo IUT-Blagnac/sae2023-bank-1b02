@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.PrelevementsManagement;
+import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,12 +38,15 @@ public class PrelevementsManagementController {
 	private ObservableList<Prelevement> oListPrelevements;
 	private Prelevement selectedPrelevement;
 	
+	
 
 	// Manipulation de la fenêtre
-	public void initContext(Stage _containingStage, PrelevementsManagement _om, DailyBankState _dbstate) {
+	public void initContext(Stage _containingStage, PrelevementsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
 		this.omDialogController = _om;
+		this.clientDuCompte = client;
+		this.compteConcerne = compte;
 		this.configure();
 	}
 	
@@ -57,7 +61,7 @@ public class PrelevementsManagementController {
 		this.lvPrelevements.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.lvPrelevements.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 		
-		//this.updateInfoCompteClient();
+		this.updateInfoCompteClient();
 		this.validateComponentState();
 	}
 	
@@ -143,7 +147,7 @@ public class PrelevementsManagementController {
 	/**
 	 * Met à jour les informations affichées sur le client et le compte courant
 	 */
-	/*
+	
 	private void updateInfoCompteClient() {
 		PairsOfValue<CompteCourant, ArrayList<Prelevement>> opesEtCompte;
 		opesEtCompte = this.omDialogController.operationsEtSoldeDunCompte();
@@ -167,5 +171,5 @@ public class PrelevementsManagementController {
 
 		this.validateComponentState();
 	}
-	*/
+	
 }

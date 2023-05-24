@@ -119,43 +119,34 @@ public class Access_BD_Prelevements {
 	 * @throws DatabaseConnexionException Erreur de connexion
 	 * @throws DataAccessException Erreur d'accès aux données (requête mal formée ou autre)
 	*/
-	public void insertPrelevement(double montant, int date, String beneficiaire,int idNumCompte)
-			throws DatabaseConnexionException, DataAccessException {
-		Connection con = LogToDatabase.getConnexion();
-//		try {
-//			System.out.println(montant + "-" +date + "-" +beneficiaire+ "-" +idNumCompte );
-//			
-//
-//			//String query = "INSERT INTO prelevementautomatique VALUES (" + "seq_id_client.NEXTVAL" + ", " + "?" + ", " + "?" + ", "
-//			//		+ '?' + ", " + "?" + ")";
-//			String query = "INSERT INTO prelevementautomatique ( IDPRELEV,montant,DATERECURRENTE,BENEFICIAIRE,IDNUMCOMPTE) VALUES (seq_id_prelevauto.nextval,"+montant+","+date+",'"+beneficiaire+"',"+idNumCompte+");";
-//			PreparedStatement pst = con.prepareStatement(query);
-//			/*pst.setDouble(1, montant);
-//			pst.setInt(2, date);
-//			pst.setString(3, beneficiaire);
-//			pst.setInt(4, idNumCompte);
-//*/
-//			System.err.println(query);
-//
-//			int result = pst.executeUpdate();
-//			System.out.println(result);
-//			pst.close();
-//			
-//			
-//		} catch (SQLException e) {
-//			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
-//		}
-		try {
-            PreparedStatement pst = con.prepareStatement("INSERT INTO prelevementautomatique ( IDPRELEV,montant,DATERECURRENTE,BENEFICIAIRE,IDNUMCOMPTE) VALUES (seq_id_prelevauto.nextval, ? , ? , ? , ? );");
-            pst.setDouble(1, montant);
-            pst.setInt(2, date);
-			pst.setString(3,  beneficiaire);
+	public int insertPrelevement(double montant, int date, String beneficiaire, int idNumCompte) throws DatabaseConnexionException, DataAccessException {
+		try {			
+			Connection con = LogToDatabase.getConnexion();
+			String query = "INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + '?' + ", " + "?" + ")";
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			pst.setDouble(1, montant);
+			pst.setInt(2, date);
+			pst.setString(3, beneficiaire);
 			pst.setInt(4, idNumCompte);
-            
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+			System.err.println(query);
+			pst.executeUpdate();
+			
+			PreparedStatement pst2 = con.prepareStatement("SELECT seq_id_prelevAuto.CURRVAL from DUAL");
+			ResultSet rs2 = pst2.executeQuery();
+			rs2.next();
+			int newPrelev  = rs2.getInt(1);
+			
+			pst.close();
+			rs2.close();
+			con.commit();
+			
+			return newPrelev;
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}
 	}
 
 	/**
