@@ -156,7 +156,7 @@ Classes concernées :
 * application.view.ComptesManagementController(validateComponentState)
 * application.view.OperationManagementController(validateComponentState)
 
-[[fonctionnalitesv2]]]
+[[fonctionnalitesv2]]
 === 3.2- Fonctionnalités de la version 2
 ==== 3.2.1- Débit exceptionnel (B. S.)
 
