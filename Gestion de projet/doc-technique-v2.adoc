@@ -15,20 +15,64 @@
 == 0- Introduction
 Ce document présente la documentation technique de l'application DailyBank. Il est destiné aux développeurs et aux administrateurs système.
 
+=== 0.1- Objectif
+L'objectif de ce document est de présenter l'architecture de l'application, les fonctionnalités de l'application ainsi que les procédures d'installation et de mise à jour de l'application.
+
+=== 0.2- Portée
+Ce document est destiné aux développeurs et aux administrateurs système. Il est à jour au 24/05/2022.
+
+=== 0.3- Références
+==== 0.3.1- Documents de référence
+// Lien doc utilisateur
+// Lien cahier de recette
+
 [[presentation]]
 == 1- Présentation de l'application
 
+[[contexte]]
 === 1.1- Contexte
 La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
 
-Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque.
+Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque. Elle va permettre de gérer les employés : créer un employé, le modifier, le supprimer ou afficher son profil.
 
 Cette application sera déployée dans les 100 agences que compte son réseau. Le rôle de l'application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d'un guichet de la banque.
 
+[[aplication]]
+=== 1.2- Application DailyBank
+[[aplicationv0]]
+==== 1.2.1- Versión 0
+Le diagramme de classe de la version 0 de l'application est le suivant :
+
+"digramme image"
+
+Il permet de mettre en place toutes les fonctionnalitées dont l'application dispose dans sa version 0 : 
+	
+Pour un guichetier, créer un nouveau client, consulter un compte, modifier les infos d'un client et débiter un compte.
+Pour un chef d'agence, rendre un client inactif ainsi que toutes les fonctionnalités d'un guichetier.
+
+Ces fonctionnalités sont représentées par le use case suivant : 
+
+"use case 1"
+
+[[aplicationv1]]
+==== 1.2.2- Versión 1
+La version 0 de l'application a ensuite été améliorée, ce qui a engendré la version 1 de l'application. Dans cette version développée par notre équipe, de nouvelles fonctionnalités ont été ajoutées.
+
+
+Les nouvelles fonctionnalités implémentées à ajouter aux anciennes  sont les suivantes : 
+* Pour un guichetier, créer un nouveau compte, clôturer un compte, créditer un compte et effectuer un virement entre comptes.
+* Pour un chef d'agence, créer un profil d'employé, afficher un profil d'employé, modifier un profil d'employé et supprimer un profil d'employé.
+
+Ces nouvelles fonctionnalitées peuvent être illustrées par le use case suivant : 
+
+"use case 2"
+
+En résumé, l'application permet de gérer les employés et les clients de plusieurs agences bancaires. Chaque agence bancaire comporte deux types d'employés, les guichetiers et les chefs d'agence. Ces derniers ont chacun certaines fonctionnalités à dispositions présentées ci-dessus. Une agence  peut avoir un seul chef d'agence ou aucun chef d'agence et au moins un guichetier. Le chef d'agence peut rendre un client inactif, cela signifie que ce client ne pourra plus effectuer d'opération sur son compte (débit, crédit, virement).  
 
 [[architecture]]
 == 2- Architecture
 
+[[prerequis]]
 === 2.1- Prérequis
 Pour pouvoir installer l'application, il faut disposer des éléments suivants :
 
@@ -36,6 +80,7 @@ Pour pouvoir installer l'application, il faut disposer des éléments suivants :
 * Version de Java : 1.7 ou supérieur
 * Base de données Oracle fonctionnelle
 
+[[installation]]
 === 2.2- Installation
 Pour installer l'application, il faut suivre les étapes suivantes :
 
@@ -43,21 +88,92 @@ Pour installer l'application, il faut suivre les étapes suivantes :
 * Télécharger le fichier Java de l'application
 * Executer le fichier Java de l'application
 
+[[structure]]
+=== 2.3- Structure de l'application
 
-=== 2.3- Utilisateurs
-L'application est utilisée par les employés de la banque. Chaque employé dispose d'un compte utilisateur qui lui permet de se connecter à l'application avec différentes permissions.
+"img structure"
 
-==== 2.3.1- Chef d'agence
-
-
-==== 2.3.2- Guichetier
+Les deux images ci-dessus représentent la structure de fichiers de l'application. La version de Java est Java 11 et la base de données de l'application est développée sous Oracle SQL 22.2. Le script de la BD disponible ici : lien.
 
 
 [[fonctionnalites]]
 == 3- Fonctionnalités
 
-[[version1]]
-=== Version 1
+[[fonctionnalitesv1]]
+=== 3.1- Fonctionnalités de la version 1
+==== 3.1.1- Créer un employé (A. B.)
+Classes concernées :
 
-[[version2]]
-=== Version 2
+* application.control.EmployesManagement ( nouveauEmploye )
+* application.view.EmployesManagementController ( doNouveauEmploye )
+* model.orm.Acces_BD_Employe ( insertEmploye )
+
+==== 3.1.2- Afficher un employé (A. B.)
+Classes concernées : 
+
+* application.control.EmployesManagement ( getlisteEmployes )
+* application.view.EmployesManagementController ( doRechercher )
+* model.orm.Acces_BD_Employe ( getEmploye )
+
+==== 3.1.3- Modifier un employé (H. B.)
+Classes concernées :
+
+* application.control.EmployesManagement ( modifierEmploye )
+* application.view.EmployesManagementController ( doModifierEmploye )
+* model.orm.Acces_BD_Employe ( updateEmploye )
+
+==== 3.1.4- Supprimer un employé (H. B.)
+Classes concernées : 
+
+* application.control.EmployesManagement ( supprimerEmploye )
+* application.view.EmployesManagementController ( doSupprimerEmploye )
+* model.orm.Acces_BD_Employe  ( removeEmploye )
+
+==== 3.1.5- Créer un compte (B. S.)
+Classes concernées : 
+
+* application.control.ComptesManagement ( creerNouveauCompte )
+* model.orm.Access_BD_CompteCourant ( insertCompteCourrant )
+* application.view.ComptesManagementController ( doNouveauCompte )
+
+==== 3.1.6- Créditer/Débiter sur u compte (B. S.)
+Classes concernées:
+
+* application.view.OperationsManagementController ( doCredit )
+* model.orm.Access_BD_Operation ( insertCredit )
+* application.control.OperationsManagement ( enregistrerCredit )
+* application.view.OperationEditorPaneController ( doAjouter -> case crédit , displayDialog -> case crédit )
+
+==== 3.1.7- Efectuer un virement (J. M.)
+
+
+
+==== 3.1.7- Clôturer un compte (J. M.)
+Classes concernées : 
+
+* model.orm.Access_BD_CompteCourant (cloturerCompteCourant)
+* application.view.ComptesManagementController(doSupprimerCompte)
+* application.view.ComptesManagementController(validateComponentState)
+* application.view.OperationManagementController(validateComponentState)
+
+[[fonctionnalitesv2]]]
+=== 3.2- Fonctionnalités de la version 2
+==== 3.2.1- Débit exceptionnel (B. S.)
+
+==== 3.2.2- Simuler un emprunt (H. B.)
+
+==== 3.2.3- Simuler assurance (H. B.)
+
+==== 3.2.4- Relevé format PDF (J. M.)
+
+==== 3.2.5- Creation d'un prélèvement (B. S.)
+
+==== 3.2.6- Afficher les prélèvements (A. B.)
+
+==== 3.2.7- Modifier un prélèvement (J. M.)
+
+==== 3.2.8- Supprimer un prélèvement
+
+==== 3.2.9- Prélèvements automatiques (A. B.)
+
+==== 3.2.10- Relevés mensuels (A. B.)
