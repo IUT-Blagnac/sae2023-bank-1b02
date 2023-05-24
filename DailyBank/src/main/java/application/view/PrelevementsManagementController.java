@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Employe;
 import model.data.Prelevement;
 
 public class PrelevementsManagementController {
@@ -120,9 +121,17 @@ public class PrelevementsManagementController {
 	// TODO
 	@FXML
 	private void doSupprimer() {
-		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Fonction en développement :) (suprr "+ this.selectedPrelevement.idPrelev +")");
-		batchAlert.showAndWait();
+		int selectedIndice = this.lvPrelevements.getSelectionModel().getSelectedIndex();
+		
+		if (selectedIndice >= 0) {
+			Prelevement pvm = this.oListPrelevements.get(selectedIndice);
+			Prelevement result = this.omDialogController.supprimerPrelevement(pvm);
+			if(result != null) {
+				System.out.println("delete prelev");
+				//this.oListPrelevements.remove(result);
+				this.updateInfoCompteClient();
+			}
+		}
 	}
 
 	/**

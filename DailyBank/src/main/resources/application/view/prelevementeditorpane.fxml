@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PrelevementEditorPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PrelevementEditorPaneController">
    <top>
       <Label fx:id="lblTitre" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="borderlight" text="Informations sur le nouveau prelevement" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -24,13 +24,13 @@
    <center>
       <GridPane styleClass="borderlight" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" percentWidth="0.0" prefWidth="190.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="278.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" percentWidth="0.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="150.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -44,7 +44,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" text="Date recurrente" GridPane.rowIndex="1">
+            <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="132.0" text="Date recurrente" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -54,8 +54,8 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtMontant" GridPane.columnIndex="1" />
-            <TextField fx:id="txtDateRecurrente" layoutX="171.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtMontant" maxWidth="85.0" prefHeight="25.0" prefWidth="85.0" text="00.00" GridPane.columnIndex="1" />
+            <TextField fx:id="txtDateRecurrente" layoutX="171.0" layoutY="23.0" maxWidth="60.0" prefHeight="25.0" prefWidth="60.0" text="01" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtBeneficiaire" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
@@ -63,7 +63,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#doAjouter" prefHeight="37.0" prefWidth="83.0" text="Valider">
+            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#doAjouter" prefHeight="30.0" text="Valider">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>

@@ -58,9 +58,12 @@ public class PrelevementEditorPaneController {
 	public Prelevement displayDialog( Prelevement pvmt, EditionMode mode) {
 		this.editionMode = mode;
 		if (pvmt == null) {
-			this.prelevementEdite = new Prelevement(0, 0, 0, "", 0);
+			this.prelevementEdite = new Prelevement(0, 0, 1, "", 0);
 		} else {
 			this.prelevementEdite = new Prelevement(pvmt);
+			this.txtDateRecurrente.setText(""+this.prelevementEdite.dateRecurrente);
+			this.txtBeneficiaire.setText(""+this.prelevementEdite.beneficiaire);
+			this.txtMontant.setText(""+this.prelevementEdite.montant);
 		}
 		this.prelevementResultat = null;
 		
@@ -76,10 +79,24 @@ public class PrelevementEditorPaneController {
 			return null;
 		// break;
 		case SUPPRESSION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de prelevement n'est pas implémenté",
-					null, AlertType.ERROR);
-			return null;
-		// break;
+			this.lblTitre.setText("Informations sur le prélèvement à supprimer");
+			this.btnOk.setText("Supprimer");
+			this.btnCancel.setText("Annuler");
+			
+			this.txtMontant.setDisable(true);
+			this.txtMontant.setEditable(false);
+			this.txtMontant.setStyle("-fx-opacity: 1; ");
+			
+			this.txtBeneficiaire.setDisable(true);
+			this.txtBeneficiaire.setEditable(false);
+			this.txtBeneficiaire.setStyle("-fx-opacity: 1; ");
+			
+			this.txtDateRecurrente.setDisable(true);
+			this.txtDateRecurrente.setEditable(false);
+			this.txtDateRecurrente.setStyle("-fx-opacity: 1; ");
+			
+			
+			break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -90,7 +107,7 @@ public class PrelevementEditorPaneController {
 		// initialisation du contenu des champs
 		//----POUR MODIF PRELEVEMENT AJOUTER LES VALEURS PAR DEFAULT ICI
 		
-		this.prelevementResultat = null;
+		//this.prelevementResultat = null;
 		
 
 		this.primaryStage.showAndWait();
@@ -130,16 +147,18 @@ public class PrelevementEditorPaneController {
 		if (oldPropertyValue) {
 			try {
 				double val;
+				this.txtMontant.setStyle("-fx-text-fill: black; ");
 				val = Double.parseDouble(this.txtMontant.getText().trim());
 				if (val < 0) {
 					throw new NumberFormatException();
 				}
 				this.prelevementEdite.montant = val;
 			} catch (NumberFormatException nfe) {
-				this.txtMontant.setText(String.format(Locale.ENGLISH, "%f", this.prelevementEdite.montant));
+				this.txtMontant.setText(String.format(Locale.ENGLISH, "%3.2f", this.prelevementEdite.montant));
+				this.txtMontant.setStyle("-fx-text-fill: red; ");
 			}
 		}
-		this.txtMontant.setText(String.format(Locale.ENGLISH, "%f", this.prelevementEdite.montant));
+		this.txtMontant.setText(String.format(Locale.ENGLISH, "%3.2f", this.prelevementEdite.montant));
 		return null;
 	}
 	
@@ -154,14 +173,16 @@ public class PrelevementEditorPaneController {
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
 			try {
+				this.txtDateRecurrente.setStyle("-fx-text-fill: black; ");
 				double val;
 				val = Double.parseDouble(this.txtDateRecurrente.getText().trim());
-				if (val < 0 || val >31) {
+				if (val < 0.1 || val >31) {
 					throw new NumberFormatException();
 				}
 				this.prelevementEdite.dateRecurrente = ( int ) val;
 			} catch (NumberFormatException nfe) {
 				this.txtDateRecurrente.setText(String.format(Locale.ENGLISH, "%01d", this.prelevementEdite.dateRecurrente));
+				this.txtDateRecurrente.setStyle("-fx-text-fill: red; ");
 			}
 		}
 		this.txtDateRecurrente.setText(String.format(Locale.ENGLISH, "%01d", this.prelevementEdite.dateRecurrente));
@@ -178,6 +199,7 @@ public class PrelevementEditorPaneController {
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
 			try {
+				this.txtBeneficiaire.setStyle("");
 				String val;
 				val = this.txtBeneficiaire.getText().trim();
 				
@@ -234,7 +256,11 @@ public class PrelevementEditorPaneController {
 		if ( this.prelevementEdite.montant < 0) {
 			System.out.println("Montant invalide");
 			return false;
-		} else {
+		} else if (this.prelevementEdite.beneficiaire == "") {
+			this.txtBeneficiaire.setStyle("-fx-control-inner-background: #ffcbca; ");
+			System.out.println("Aucun bénéficiaire fourni");
+			return false;
+		}else {
 			return true;
 		}
 	}
