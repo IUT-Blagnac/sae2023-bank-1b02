@@ -1,5 +1,8 @@
 package application.control;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.StageManagement;
@@ -11,6 +14,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.data.Prelevement;
+import model.orm.Access_BD_Prelevements;
+import model.orm.exception.ApplicationException;
+import model.orm.exception.DatabaseConnexionException;
 
 public class BatchManagement {
 
@@ -54,9 +61,49 @@ public class BatchManagement {
 		}
 	}
 	
-	public void doBatchFunction() {
+	public void efectuerPrelevAutomatiques () {
+		ArrayList<Prelevement> alPrelevements;
+		LocalDate currentdate = LocalDate.now();
+		int cptModifCounter = 0;
+		int currentDay = currentdate.getDayOfMonth();
+		
+		try {
+			Access_BD_Prelevements ao = new Access_BD_Prelevements();
+			alPrelevements = ao.getPrelevementsParJour(currentDay);
+			int currentClient = -1;
+			
+			for (int i=0; i<alPrelevements.size(); i++) {
+				Prelevement prelev = alPrelevements.get(i);
+			
+				if ((currentClient == -1) || !(currentClient == prelev.idNumCompte)) {
+					currentClient = prelev.idNumCompte;
+					cptModifCounter++;
+				}
+				
+				System.out.println(prelev.idNumCompte + ", " + prelev.montant + ", Prélèvement automatique : "+ prelev.beneficiaire);
+				// ao.insertDebit(compteClient.idNumCompte, prelev.montant, "Prélèvement automatique : "+ prelev.beneficiaire);
+			}
+			
+			Alert batchAlert = new Alert(AlertType.INFORMATION);
+			batchAlert.setHeaderText("Prélèvements automatiques pour le jour "+ currentDay);
+			batchAlert.setContentText("Dans cette exécution, "+ alPrelevements.size() + " prélèvements ont été réalisés sur "+ cptModifCounter +" comptes différentes.");
+			batchAlert.showAndWait();
+			
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+			ed.doExceptionDialog();
+
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+			ed.doExceptionDialog();
+		}
+		
+	}
+	
+	
+	public void genererRelevesMensuels () {
 		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Fonction en développement :)");
+		batchAlert.setHeaderText("Relevés mensuels en dev");
 		batchAlert.showAndWait();
 	}
 }

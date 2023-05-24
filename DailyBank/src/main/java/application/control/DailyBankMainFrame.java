@@ -131,10 +131,18 @@ public class DailyBankMainFrame extends Application {
 	}
 	
 	/**
-	 * Lance le batch manuellement
+	 * Lance le batch de prévèvement automatique
 	 */
-	public void batchExecute() {
+	public void batchPrelAutoExecute() {
 		BatchManagement cm = new BatchManagement(this.primaryStage, this.dailyBankState);
-		cm.doBatchFunction();
+		cm.efectuerPrelevAutomatiques();
+	}
+	
+	/**
+	 * Lance le batch des relevés mensuels
+	 */
+	public void batchRelMensExecute() {
+		BatchManagement cm = new BatchManagement(this.primaryStage, this.dailyBankState);
+		cm.genererRelevesMensuels();
 	}
 }

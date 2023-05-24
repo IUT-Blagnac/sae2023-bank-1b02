@@ -37,14 +37,15 @@
                         <MenuItem fx:id="mitemEmploye" disable="true" mnemonicParsing="false" onAction="#doEmployeOption" text="Employés" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Batch">
+                     <items>
+                        <MenuItem fx:id="mitemBatchPrelAuto" disable="true" mnemonicParsing="false" onAction="#doBatchPrelAuto" text="Efect. prélèvs. autom." />
+                        <MenuItem fx:id="mitemBatchRelMens" mnemonicParsing="false" onAction="#doBatchRelMens" text="Gen. reléves mensuels" />
+                     </items>
+                  </Menu>
                 <Menu mnemonicParsing="false" text="?">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#doActionAide" text="Aide" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Batch">
-                     <items>
-                        <MenuItem fx:id="mitemBatch1" disable="true" mnemonicParsing="false" onAction="#doBatchOption" text="Efectuer batch (dev)" />
                      </items>
                   </Menu>
               </menus>

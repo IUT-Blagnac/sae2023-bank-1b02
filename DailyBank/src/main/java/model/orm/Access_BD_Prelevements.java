@@ -65,6 +65,47 @@ public class Access_BD_Prelevements {
 			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
 		}
 	}
+	
+	/**
+	 * Recherche de touts les prélèvements d'un jour.
+	 *
+	 * @param numJour jour dont on cherche toutes les prélèvements automatiques
+	 * @return Toutes les prélèvements automatiques, liste vide si pas de prélèvements
+	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
+	 *                                    formée ou autre)
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 */
+	public ArrayList<Prelevement> getPrelevementsParJour(int numJour) throws DataAccessException, DatabaseConnexionException {
+
+		ArrayList<Prelevement> alResult = new ArrayList<>();
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			String query = "SELECT * FROM PrelevementAutomatique WHERE dateRecurrente = ?";
+			query += " ORDER BY idNumCompte";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			//pst.setInt(1, numJour);
+			pst.setInt(1, 23);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				int idPrelev = rs.getInt("idPrelev");
+				double montant = rs.getDouble("montant");
+				int dateRecurrente = rs.getInt("dateRecurrente");
+				String beneficiaire = rs.getString("beneficiaire");
+				int idNumCompteTrouve = rs.getInt("idNumCompte");
+
+				alResult.add(new Prelevement(idPrelev, montant, dateRecurrente, beneficiaire, idNumCompteTrouve));
+			}
+
+			rs.close();
+			pst.close();
+			return alResult;
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
+		}
+	}
 
 	/**
 	 * Recherche d'une opération par son id.
