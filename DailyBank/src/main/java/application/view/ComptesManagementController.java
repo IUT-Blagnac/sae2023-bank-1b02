@@ -133,7 +133,7 @@ public class ComptesManagementController {
 	private void doVoirPrelevement() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		
-		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState, this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
+		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
 		cm.doPrelevementsManagementDialog();
 	}
 	

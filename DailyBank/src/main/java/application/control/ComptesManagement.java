@@ -84,12 +84,12 @@ public class ComptesManagement {
 	 * @param compte
 	 * @author BALASCH Aidan
 	 */
+	/*
 	public void voirPrelevementsDUnCompte(CompteCourant cpt) {
-		PrelevementsManagement om = new PrelevementsManagement(this.primaryStage, this.dailyBankState,
-				this.clientDesComptes, cpt);
+		PrelevementsManagement om = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, cpt);
 		om.doPrelevementsManagementDialog();
 	}
-
+*/
 	/**
 	 * Méthode permettant de créer un compte
 	 * @return compte créé
