@@ -133,7 +133,7 @@ public class ComptesManagementController {
 	private void doVoirPrelevement() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		
-		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState, this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
+		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
 		cm.doPrelevementsManagementDialog();
 	}
 	
@@ -208,6 +208,8 @@ public class ComptesManagementController {
 		this.btnSupprCompte.setDisable(true);
 		this.btnCloturerCompte.setDisable(true);
 		this.btnVoirOpes.setDisable(true);
+		this.btnVoirPrel.setDisable(true);
+		
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
