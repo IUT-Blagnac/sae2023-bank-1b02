@@ -5,7 +5,7 @@
 :Entreprise: DailyBank
 :Equipe: 1B02
 
-Créé par : Aidan et l'équipe
+Créé par : BALASCH, SOLDEVILA, MAURIAC, BERDINEL
 Créé pour :  L'équipe de développement et l'équipe de test de DailyBank 👌
 
 
@@ -105,6 +105,21 @@ Ordinateur sous Windows ou OS équivalent.
 ...
 
 |====
+|====
+>|Cas de test 4+|Test-01-02-04
+>|Titre 4+|Clôturer un compte
+>|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Cloturer compte". ^|La page de création de cloturation s’affiche. ^|La gestion des comptes d'un client est ouverte, un compte est sélectionné ^|OK
+^|All_G_CB.2 ^|Confirmer . ^|La page des comptes du client s’affiche avec le compte clôture ^|le Compte n'a pas d'argent et n'en doit pas ^|OK
+^|All_G_CB.2 ^|Annuler . ^|La page des comptes du client s’affiche avec aucun changement. ^|... ^|OK
+...
+
+|====
+
 
 
 ==== 1.3 Gestion des opérations :
@@ -128,7 +143,8 @@ autorisé est de -100 euros.
 autorisé est de -100 euros.
  ^|OK
   
- 5+|
+|====
+|====
  
 >|Cas de test 4+|Test-01-03-02
 >|Titre 4+|Créditer un compte
@@ -142,6 +158,26 @@ autorisé est de -100 euros.
  ^|OK 
 
 |====
+
+==== 1.3 bis Gestion des virements :
+|====
+
+>|Cas de test 4+|Test-01-03-03
+>|Titre 4+|Effectuer un virement
+>|Objectif 4+| Vérifier qu'il est possible de faire un virement d'effectuer un virement d'un compte à un autre
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.1 ^|Cliquer sur le bouton "Effectuer virement". ^|La page des virements  s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant", appuier sur le bouton "Valider" ^|50 euros nous sont debités et sont crédités au compte sélectionné. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de au moins 50 euros de plus que le découvert autorisé. + 
+Un compte destinataire doit être sélectionné.
+ ^|OK
+ ^|All_G_COP.3  ^|Rentrer un montant 50 dans le champ "Montant", appuier sur le bouton "Annuler" ^|La fenêtre de virement se ferme, aucun argent n'est débité ni crédité a personne^| Un compte destinataire doit être sélectionné.
+ ^|OK
+  
+|====
+
 
 
 
@@ -165,10 +201,7 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
 ^|C_G_C.1    ^|Sélectionner le bouton "Inactif" et confirmer. ^|...  ^|Un client actif est sélectionné ... ^| ...
 
-5+|
 
-5+|Commentaire : REVOIR AVEC
- *clôturés*.|
 
 |====
 
@@ -185,6 +218,51 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
 ^|C_G_C.1    ^|Cliquer sur "Nouveau employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de création s'ouvre.  ^| ... ^| OK
 ^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Ajouter". ^|La fenêtre de création se ferme, l'employé est créé.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de création se ferme, aucun employé n'est crée.  ^| Aucune ^| OK
+
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Consulter un employé
+>|Objectif 4+| Consulter les compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur Gestion > Employés. ^|Une nouvelle fenêtre s'ouvre avec la fenêtre de consultation.  ^| L'utilisateur est connecté. ^| OK
+^|C_G_C.1    ^|Cliquer sur le bouton "Rechercher". ^|Les comptes des employés s'affichent.  ^|... ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-04
+>|Titre 4+|Modifier un employé
+>|Objectif 4+| Vérifier qu'il est possible de modifier un compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Modifier employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de modification s'ouvre.  ^| Un employé est sélectionné ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Ajouter". ^|La fenêtre de modification se ferme, l'employé est modifié.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de modification se ferme.  ^| Aucune ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-05
+>|Titre 4+|Supprimer un employé
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Effacer employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de création s'ouvre.  ^| Un employé est sélectionné ^| OK
+^|C_G_C.2    ^|Appuyer "Supprimer". ^|La fenêtre de suppréssion se ferme, l'employé est supprimé.  ^| ... ^| OK
+^|C_G_C.2    ^|Appuyer "Annuler". ^|La fenêtre de suppréssion se ferme, l'employé n'est pas supprimé.  ^| ... ^| OK
 5+|
 
 |====

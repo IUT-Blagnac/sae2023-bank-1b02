@@ -90,6 +90,33 @@ public class OperationsManagement {
 		return op;
 	}
 	/**
+	 * execute la requête de débit sur le compte courant
+	 * @return opération enregistrée ou null si annulation
+	 */
+	public Operation enregistrerDebitExeptionnel() {
+
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.DEBIT);
+		if (op != null) {
+			try {
+				Access_BD_Operation ao = new Access_BD_Operation();
+
+				ao.insertDebitExeptionnel(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	/**
 	 * execute la requête de crédit sur le compte courant
 	 * @return opération enregistrée ou null si annulation
 	 * @author SOLDEVILA Bernat

@@ -3,7 +3,9 @@ package application.view;
 import java.util.ArrayList;
 
 import application.DailyBankState;
+import application.control.ClientsManagement;
 import application.control.ComptesManagement;
+import application.control.PrelevementsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -124,9 +126,17 @@ public class ComptesManagementController {
 	private void doModifierCompte() {
 	}
 	
+	/**
+	 * Voir prélèvements du compte sélectionné
+	 */
 	@FXML
 	private void doVoirPrelevement() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		
+		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState, this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
+		cm.doPrelevementsManagementDialog();
 	}
+	
 	@FXML
 	private void doSimulerEmprunt() {
 	}
@@ -172,6 +182,7 @@ public class ComptesManagementController {
 			this.oListCompteCourant.add(compte);
 		}
 	}
+	
 
 	/**
 	 * Chargement de la liste des comptes du client 
@@ -205,23 +216,20 @@ public class ComptesManagementController {
 			this.btnVoirOpes.setDisable(false);
 			if (cpt.estCloture.equals("O")) {
 				btnCloturerCompte.setDisable(true);
+				btnVoirPrel.setDisable(true);
+			}
+			else {
+				btnVoirPrel.setDisable(false);
+				
+				if (cpt.solde != 0) {
+					this.btnCloturerCompte.setDisable(true);
 				}
 				else {
-					if (cpt.solde != 0) {
-						this.btnCloturerCompte.setDisable(true);
-					}
-					else {
-						btnCloturerCompte.setDisable(false);
-					}
+					btnCloturerCompte.setDisable(false);
 				}
+			}
 		} else {
 			this.btnVoirOpes.setDisable(true);
 		}
-		
-		
-		
-			
-
-		
 	}
 }
