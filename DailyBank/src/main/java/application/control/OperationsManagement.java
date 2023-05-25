@@ -170,12 +170,17 @@ public class OperationsManagement {
             document.open();
 
             Font largeFont = new Font(Font.FontFamily.HELVETICA, 35); 
-			Font midFont = new Font(Font.FontFamily.HELVETICA, 35); // Définir une taille de police plus grande
+			Font midFont = new Font(Font.FontFamily.HELVETICA, 20); // Définir une taille de police plus grande
             document.add(new Paragraph("Banque ZID-ANE", largeFont));
-			// document.add(new Paragraph("Banque XYZ"))
-            document.add(new Paragraph(""+this.dailyBankState.getAgenceActuelle().adressePostaleAg+"\nNumero de telephone: 06449643489\nemail: emailpro.@banque.com"));
-            document.add(new Paragraph("\n---------------------------------------------\nNuméro de compte : "+ this.compteConcerne.idNumCompte+"\nTitulaire du compte : "+this.clientDuCompte.nom+" "+this.clientDuCompte.prenom+"\nAdresse postal: "+ this.clientDuCompte.adressePostale +"\nNumero de telephone: "+ this.clientDuCompte.telephone +"\nEmail: "+ this.clientDuCompte.email +"\n---------------------------------------------\n"));
-
+            document.add(new Paragraph(""+this.dailyBankState.getAgenceActuelle().nomAg+"\n"+this.dailyBankState.getAgenceActuelle().adressePostaleAg+"\n06449643489\nemailpro.@banque.com\n\n"));
+			
+            document.add(new Paragraph("---------------------------------------------\nNuméro de compte : "+ this.compteConcerne.idNumCompte+"\nTitulaire du compte : "+this.clientDuCompte.nom+" "+this.clientDuCompte.prenom+"\nAdresse postal: "+ this.clientDuCompte.adressePostale +"\ntelephone: "+ this.clientDuCompte.telephone +"\nEmail: "+ this.clientDuCompte.email+"\n\n"));
+			if (this.compteConcerne.estCloture.equals("O") ) {
+				document.add(new Paragraph("Compte Cloturé", largeFont));
+			}
+			document.add(new Paragraph("---------------------------------------------"));
+            document.add(new Paragraph("Liste operations", midFont));
+			document.add(new Paragraph("---------------------------------------------\n\n"));
 
 			PdfPTable table = new PdfPTable(5); // Création du tableau à 4 colonnes
 			table.setWidthPercentage(100);
@@ -189,24 +194,24 @@ public class OperationsManagement {
 			this.compteConcerne = opesEtCompte.getLeft();
 			listeOP = opesEtCompte.getRight();
 			double solde=0;
+			double totalcredits=0;
+			double totaldebits=0;
 			for (Operation op : listeOP) {
 				solde = solde + op.montant;
 				if (op.montant < 0) {
 					addOperation(table, op.dateOp.toGMTString(), ""+op.idTypeOp, ""+op.montant, "", ""+solde);
+					totalcredits = totalcredits + op.montant;
 				} else {
 					addOperation(table, op.dateOp.toGMTString(), ""+op.idTypeOp, "", ""+op.montant, ""+solde);
+					totaldebits = totaldebits + op.montant;
 				}
 			}
             document.add(table);
 
 			// Récapitulatif
-            document.add(new Paragraph("---------------------------------------------"));
+            document.add(new Paragraph("\n---------------------------------------------"));
             document.add(new Paragraph("Récapitulatif", midFont));
-            document.add(new Paragraph("---------------------------------------------"));
-            document.add(new Paragraph("Nombre total d'opérations : "+listeOP.size()));
-
-            // Calcul du solde total
-            document.add(new Paragraph("Solde total : " + this.compteConcerne.solde + " €"));
+            document.add(new Paragraph("---------------------------------------------\nNombre total d'opérations : "+listeOP.size()+"\nTotal des debits: "+totaldebits+"€\nTotal des credits: "+totalcredits+"€\nSolde total : " + this.compteConcerne.solde + " €"));
 
             document.close();
             System.out.println("Le relevé des opérations a été créé avec succès !");
