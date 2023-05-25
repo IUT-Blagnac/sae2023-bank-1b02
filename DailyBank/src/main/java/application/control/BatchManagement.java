@@ -15,6 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Prelevement;
+import model.orm.Access_BD_CompteCourant;
+import model.orm.Access_BD_Operation;
 import model.orm.Access_BD_Prelevements;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
@@ -69,8 +71,10 @@ public class BatchManagement {
 		
 		try {
 			Access_BD_Prelevements ao = new Access_BD_Prelevements();
+			Access_BD_Operation op = new Access_BD_Operation();
 			alPrelevements = ao.getPrelevementsParJour(currentDay);
 			int currentClient = -1;
+			int debitRealises = 0;
 			
 			for (int i=0; i<alPrelevements.size(); i++) {
 				Prelevement prelev = alPrelevements.get(i);
@@ -80,13 +84,29 @@ public class BatchManagement {
 					cptModifCounter++;
 				}
 				
-				System.out.println(prelev.idNumCompte + ", " + prelev.montant + ", Prélèvement automatique : "+ prelev.beneficiaire);
-				// ao.insertDebit(compteClient.idNumCompte, prelev.montant, "Prélèvement automatique : "+ prelev.beneficiaire);
+				try {
+					op.insertDebit(prelev.idNumCompte, prelev.montant, "Prélèvement automatique");
+					debitRealises++;
+					System.out.println(prelev.idNumCompte + ", " + prelev.montant + ", Prélèvement automatique : "+ prelev.beneficiaire);
+					
+				} catch (DatabaseConnexionException e) {
+					ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+					ed.doExceptionDialog();
+					this.primaryStage.close();
+					
+				} catch (ApplicationException ae) {
+					Alert batchAlert = new Alert(AlertType.ERROR);
+					batchAlert.setHeaderText("Prélèvement automatique NON EFECTUÉ pour le compte "+ prelev.idNumCompte);
+					batchAlert.setContentText("Découvert autorisé dépassé, le prélèvement "+ prelev.idPrelev +" ("+ prelev.beneficiaire +", "+ prelev.montant +"€) n'a pas été efectué.");
+					System.err.println("ERR : "+ prelev.idNumCompte + ", " + prelev.montant + ", Prélèvement automatique : "+ prelev.beneficiaire);
+					batchAlert.showAndWait();
+					
+				}
 			}
 			
 			Alert batchAlert = new Alert(AlertType.INFORMATION);
 			batchAlert.setHeaderText("Prélèvements automatiques pour le jour "+ currentDay);
-			batchAlert.setContentText("Dans cette exécution, "+ alPrelevements.size() + " prélèvements ont été réalisés sur "+ cptModifCounter +" comptes différentes.");
+			batchAlert.setContentText("Dans cette exécution, "+ debitRealises +"/"+ alPrelevements.size() + " prélèvements ont été réalisés sur "+ cptModifCounter +" comptes différentes.");
 			batchAlert.showAndWait();
 			
 		} catch (DatabaseConnexionException e) {
