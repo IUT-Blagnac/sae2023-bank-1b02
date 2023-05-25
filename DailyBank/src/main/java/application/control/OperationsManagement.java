@@ -201,7 +201,7 @@ public class OperationsManagement {
 
 			// Récapitulatif
             document.add(new Paragraph("---------------------------------------------"));
-            document.add(new Paragraph("Récapitulatif"), midFont);
+            document.add(new Paragraph("Récapitulatif", midFont));
             document.add(new Paragraph("---------------------------------------------"));
             document.add(new Paragraph("Nombre total d'opérations : "+listeOP.size()));
 
