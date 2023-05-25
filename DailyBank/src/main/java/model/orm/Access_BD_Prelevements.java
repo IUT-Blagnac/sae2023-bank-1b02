@@ -86,8 +86,7 @@ public class Access_BD_Prelevements {
 			query += " ORDER BY idNumCompte";
 
 			PreparedStatement pst = con.prepareStatement(query);
-			//pst.setInt(1, numJour);
-			pst.setInt(1, 23);
+			pst.setInt(1, numJour);
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
