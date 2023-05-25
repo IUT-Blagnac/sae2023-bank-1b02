@@ -67,7 +67,6 @@ public class VirementManagement {
 	 * Méthode permettant d'afficher la fenêtre de gestion des comptes
 	 */
 	public void doVirementManagementDialog() {
-		System.out.println("eheheh");
 		this.vmcViewController.displayDialog();
 	}
 

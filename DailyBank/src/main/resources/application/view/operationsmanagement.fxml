@@ -24,6 +24,7 @@
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="20.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -53,7 +54,12 @@
                               <Insets bottom="5.0" top="5.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="btnDebitExep" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebitExep" text="Débit exeptionnel" GridPane.rowIndex="3">
+                        <Button fx:id="btnRelevePdf" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doRelevePdf" text="relevé pdf" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnDebitExep1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebitExep" text="Débit exeptionnel" GridPane.rowIndex="3">
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
                            </padding>

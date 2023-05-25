@@ -1,6 +1,15 @@
 package application.control;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import application.DailyBankApp;
 import application.DailyBankState;
@@ -8,6 +17,8 @@ import application.tools.CategorieOperation;
 import application.tools.PairsOfValue;
 import application.tools.StageManagement;
 import application.view.OperationsManagementController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -28,6 +39,7 @@ public class OperationsManagement {
 	private OperationsManagementController omcViewController;
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
+	private ObservableList<Operation> oListOperations;
 
 	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
@@ -144,6 +156,73 @@ public class OperationsManagement {
 		}
 		return op;
 	}
+	
+	
+	
+	/**
+	 * fonction qui creer le pdf des operations du compte courant en utilisant itext
+	 */
+	public void genererRelevePdf(){
+		Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Releve.pdf"));
+
+            document.open();
+
+            Font largeFont = new Font(Font.FontFamily.HELVETICA, 35); 
+			Font midFont = new Font(Font.FontFamily.HELVETICA, 35); // Définir une taille de police plus grande
+            document.add(new Paragraph("Banque ZID-ANE", largeFont));
+			// document.add(new Paragraph("Banque XYZ"))
+            document.add(new Paragraph(""+this.dailyBankState.getAgenceActuelle().adressePostaleAg+"\nNumero de telephone: 06449643489\nemail: emailpro.@banque.com"));
+            document.add(new Paragraph("\n---------------------------------------------\nNuméro de compte : "+ this.compteConcerne.idNumCompte+"\nTitulaire du compte : "+this.clientDuCompte.nom+" "+this.clientDuCompte.prenom+"\nAdresse postal: "+ this.clientDuCompte.adressePostale +"\nNumero de telephone: "+ this.clientDuCompte.telephone +"\nEmail: "+ this.clientDuCompte.email +"\n---------------------------------------------\n"));
+
+
+			PdfPTable table = new PdfPTable(5); // Création du tableau à 4 colonnes
+			table.setWidthPercentage(100);
+            table.addCell("Date");
+            table.addCell("Opération");
+            table.addCell("Débit");
+            table.addCell("Crédit");
+            table.addCell("Solde");
+			PairsOfValue<CompteCourant, ArrayList<Operation>> opesEtCompte = this.operationsEtSoldeDunCompte();
+            ArrayList<Operation> listeOP;
+			this.compteConcerne = opesEtCompte.getLeft();
+			listeOP = opesEtCompte.getRight();
+			double solde=0;
+			for (Operation op : listeOP) {
+				solde = solde + op.montant;
+				if (op.montant < 0) {
+					addOperation(table, op.dateOp.toGMTString(), ""+op.idTypeOp, ""+op.montant, "", ""+solde);
+				} else {
+					addOperation(table, op.dateOp.toGMTString(), ""+op.idTypeOp, "", ""+op.montant, ""+solde);
+				}
+			}
+            document.add(table);
+
+			// Récapitulatif
+            document.add(new Paragraph("---------------------------------------------"));
+            document.add(new Paragraph("Récapitulatif"), midFont);
+            document.add(new Paragraph("---------------------------------------------"));
+            document.add(new Paragraph("Nombre total d'opérations : "+listeOP.size()));
+
+            // Calcul du solde total
+            document.add(new Paragraph("Solde total : " + this.compteConcerne.solde + " €"));
+
+            document.close();
+            System.out.println("Le relevé des opérations a été créé avec succès !");
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+	public static void addOperation(PdfPTable table, String date, String operation, String debit, String credit, String solde) {
+        table.addCell(date);
+        table.addCell(operation);
+        table.addCell(debit);
+        table.addCell(credit);
+        table.addCell(solde);
+    }
+
 	/**
 	 * Recupere la liste des opérations et le solde du compte courant 
 	 * @return paire de valeurs avec les operations et le solde du compte

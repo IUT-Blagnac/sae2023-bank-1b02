@@ -90,6 +90,8 @@ public class OperationsManagementController {
 	private Button btnAutre;
 	@FXML 
 	private Button btnDebitExep;
+	@FXML
+	private Button btnRelevePdf;
 
 	@FXML
 	private void doCancel() {
@@ -138,6 +140,12 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
+
+	@FXML
+	private void doRelevePdf() {
+		this.omDialogController.genererRelevePdf();
+	}
+
 
 	/**
 	 * valide l'état des composants de la fenêtre
