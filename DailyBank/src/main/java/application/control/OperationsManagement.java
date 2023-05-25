@@ -1,5 +1,7 @@
 package application.control;
 
+import java.beans.EventHandler;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
@@ -165,10 +169,24 @@ public class OperationsManagement {
 	public void genererRelevePdf(){
 		Document document = new Document();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Releve.pdf"));
+        	FileChooser fileChooser = new FileChooser();
+        	fileChooser.setTitle("Save");
 
+        	// Créer un filtre d'extension pour les fichiers PDF
+        	ExtensionFilter pdfFilter = new ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
+        	fileChooser.getExtensionFilters().add(pdfFilter);
+
+        	// Afficher le dialogue et récupérer le fichier choisi
+        	File selectedFile = fileChooser.showSaveDialog(this.primaryStage);
+
+        	if (selectedFile != null) {
+        	    String selectedFilePath = selectedFile.getAbsolutePath();
+        	    // Utilisez le chemin du fichier choisi
+        	    PdfWriter.getInstance(document, new FileOutputStream(selectedFilePath));
+        	}
+            
             document.open();
-
+            
             Font largeFont = new Font(Font.FontFamily.HELVETICA, 35); 
 			Font midFont = new Font(Font.FontFamily.HELVETICA, 20); // Définir une taille de police plus grande
             document.add(new Paragraph("Banque ZID-ANE", largeFont));
