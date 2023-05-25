@@ -124,14 +124,20 @@ public class BatchManagement {
 	
 	public void genererRelevesMensuels () {
 		ArrayList<CompteCourant> alCc;
+		LocalDate currentdate = LocalDate.now();
+		int currentMonth = currentdate.getMonthValue();
+		int currentYear = currentdate.getYear();
+		String releveName;
 		
 		try {
 			Access_BD_CompteCourant cc = new Access_BD_CompteCourant();
 			alCc = cc.getAllActiveCompteCourants();
 			
 			for (int i=0; i<alCc.size(); i++) {
-				CompteCourant currentCompte = alCc.get(i);
-				System.out.println(currentCompte.idNumCompte);
+				CompteCourant cCompte = alCc.get(i);
+				releveName = cCompte.idNumCli+ "-" +cCompte.idNumCompte+ " Relevé mensuel " +currentMonth+ "-" +currentYear;
+						
+				System.out.println(releveName);
 			}
 			
 		} catch (DatabaseConnexionException e) {
