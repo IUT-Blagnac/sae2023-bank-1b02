@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.EditionMode;
 import application.tools.CategorieOperation;
+import application.tools.EditionMode;
 import application.tools.PairsOfValue;
 import application.tools.StageManagement;
 import application.view.OperationsManagementController;
@@ -29,13 +31,12 @@ public class PrelevementsManagement {
 	private Stage primaryStage;
 	private DailyBankState dailyBankState;
 	private PrelevementsManagementController omcViewController;
-	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
+	private Prelevement prelevementConcerne;
 
-	public PrelevementsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
+	public PrelevementsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant cpt) {
 
-		this.clientDuCompte = client;
-		this.compteConcerne = compte;
+		this.compteConcerne = cpt;
 		this.dailyBankState = _dbstate;
 		
 		try {
@@ -56,7 +57,7 @@ public class PrelevementsManagement {
 			this.primaryStage.setResizable(false);
 
 			this.omcViewController = loader.getController();
-			this.omcViewController.initContext(this.primaryStage, this, _dbstate, client, this.compteConcerne);
+			this.omcViewController.initContext(this.primaryStage, this, _dbstate, client, compteConcerne);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,65 +67,62 @@ public class PrelevementsManagement {
 	public void doPrelevementsManagementDialog() {
 		this.omcViewController.displayDialog();
 	}
-
-	/**
-	 * execute la requête de débit sur le compte courant
-	 * @return opération enregistrée ou null si annulation
-	 
-	public Operation enregistrerDebit() {
-
-		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
-		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.DEBIT);
-		if (op != null) {
-			try {
-				Access_BD_Operation ao = new Access_BD_Operation();
-
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-
-			} catch (DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
-				ed.doExceptionDialog();
-				this.primaryStage.close();
-				op = null;
-			} catch (ApplicationException ae) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
-				ed.doExceptionDialog();
-				op = null;
-			}
-		}
-		return op;
-	}
-	*/
 	
 	/**
-	 * execute la requête de crédit sur le compte courant
-	 * @return opération enregistrée ou null si annulation
-	 * @author SOLDEVILA Bernat
+	 * Nouveau prelevement sur le compte courant
+	 * @return prelevement enregistré ou null si annulation
 	 
-	public Operation enregistrerCredit() {
-
-		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
-		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.CREDIT);
-		if (op != null) {
+	 */
+	public Prelevement enregistrerPrelevement() {
+		
+		PrelevementEditorPane oep = new PrelevementEditorPane(this.primaryStage, this.dailyBankState);
+		Prelevement prelev = oep.doPrelevementEditorDialog(null, EditionMode.CREATION);
+		
+		if (prelev != null) {
 			try {
-				Access_BD_Operation ao = new Access_BD_Operation();
-
-				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-
+				Access_BD_Prelevements ao = new Access_BD_Prelevements();
+				int idPrelev = ao.insertPrelevement(prelev.montant, prelev.dateRecurrente, prelev.beneficiaire, this.compteConcerne.idNumCompte);
+				prelev.idPrelev = idPrelev;
+				
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
 				this.primaryStage.close();
-				op = null;
+				prelev = null;
 			} catch (ApplicationException ae) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
 				ed.doExceptionDialog();
-				op = null;
+				prelev = null;
 			}
 		}
-		return op;
+		
+		return prelev;
 	}
-	*/
+	
+	public Prelevement supprimerPrelevement(Prelevement prvmt) {
+		PrelevementEditorPane oep = new PrelevementEditorPane(this.primaryStage, this.dailyBankState);
+		Prelevement prelev = oep.doPrelevementEditorDialog(prvmt, EditionMode.SUPPRESSION);
+		
+		if (prelev != null) {
+			try {
+				Access_BD_Prelevements ao = new Access_BD_Prelevements();
+				ao.deletePrelevement(prelev.idPrelev);
+								
+				
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				prelev = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				prelev = null;
+			}
+		}
+		
+		return prelev;
+	}
 	
 	/**
 	 * Recupere la liste des opérations et le solde du compte courant 

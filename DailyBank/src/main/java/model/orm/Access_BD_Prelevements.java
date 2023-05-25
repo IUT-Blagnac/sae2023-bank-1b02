@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import model.data.Client;
 import model.data.Operation;
 import model.data.Prelevement;
 import model.orm.exception.DataAccessException;
@@ -65,109 +66,115 @@ public class Access_BD_Prelevements {
 			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
 		}
 	}
-
+	
 	/**
-	 * Recherche d'une opération par son id.
+	 * Recherche de touts les prélèvements d'un jour.
 	 *
-	 * @param idOperation id de l'opération recherchée (clé primaire)
-	 * @return une Operation ou null si non trouvé
-	 * @throws RowNotFoundOrTooManyRowsException La requête renvoie plus de 1 ligne
-	 * @throws DataAccessException               Erreur d'accès aux données (requête
-	 *                                           mal formée ou autre)
-	 * @throws DatabaseConnexionException        Erreur de connexion
-	 
-	public Operation getOperation(int idOperation)
-		throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+	 * @param numJour jour dont on cherche toutes les prélèvements automatiques
+	 * @return Toutes les prélèvements automatiques, liste vide si pas de prélèvements
+	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
+	 *                                    formée ou autre)
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 */
+	public ArrayList<Prelevement> getPrelevementsParJour(int numJour) throws DataAccessException, DatabaseConnexionException {
 
-		Operation operationTrouvee;
+		ArrayList<Prelevement> alResult = new ArrayList<>();
 
 		try {
 			Connection con = LogToDatabase.getConnexion();
-			String query = "SELECT * FROM Operation  where" + " idOperation = ?";
+			String query = "SELECT * FROM PrelevementAutomatique WHERE dateRecurrente = ?";
+			query += " ORDER BY idNumCompte";
 
 			PreparedStatement pst = con.prepareStatement(query);
-			pst.setInt(1, idOperation);
+			pst.setInt(1, numJour);
 
 			ResultSet rs = pst.executeQuery();
-
-			if (rs.next()) {
-				int idOperationTrouve = rs.getInt("idOperation");
+			while (rs.next()) {
+				int idPrelev = rs.getInt("idPrelev");
 				double montant = rs.getDouble("montant");
-				Date dateOp = rs.getDate("dateOp");
-				Date dateValeur = rs.getDate("dateValeur");
+				int dateRecurrente = rs.getInt("dateRecurrente");
+				String beneficiaire = rs.getString("beneficiaire");
 				int idNumCompteTrouve = rs.getInt("idNumCompte");
-				String idTypeOp = rs.getString("idTypeOp");
 
-				operationTrouvee = new Operation(idOperationTrouve, montant, dateOp, dateValeur, idNumCompteTrouve,
-						idTypeOp);
-			} else {
-				rs.close();
-				pst.close();
-				return null;
+				alResult.add(new Prelevement(idPrelev, montant, dateRecurrente, beneficiaire, idNumCompteTrouve));
 			}
 
-			if (rs.next()) {
-				rs.close();
-				pst.close();
-				throw new RowNotFoundOrTooManyRowsException(Table.Operation, Order.SELECT,
-						"Recherche anormale (en trouve au moins 2)", null, 2);
-			}
 			rs.close();
 			pst.close();
-			return operationTrouvee;
+			return alResult;
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
 		}
 	}
-	*/
+
 
 	/**
-	 * Enregistrement d'un débit.
-	 *
-	 * Se fait par procédure stockée : - Vérifie que le débitAutorisé n'est pas
-	 * dépassé <BR />
-	 * - Enregistre l'opération <BR />
-	 * - Met à jour le solde du compte. <BR />
-	 *
-	 * @param idNumCompte compte débité
-	 * @param montant     montant débité
-	 * @param typeOp      libellé de l'opération effectuée (cf TypeOperation)
-	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
-	 *                                    formée ou autre)
+	 * Insertion d'un prélèvement dans la base de données.
+	 * 
+	 * @param montant montant du prélèvement
+	 * @param date date du prélèvement (date récurrente)
+	 * @param beneficiaire bénéficiaire du prélèvement (exemple : EDF)
+	 * @param idNumCompte id du compte sur lequel le prélèvement est effectué
 	 * @throws DatabaseConnexionException Erreur de connexion
-	 * @throws ManagementRuleViolation    Si dépassement découvert autorisé
-	 
-	public void insertDebit(int idNumCompte, double montant, String typeOp)
-			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
-		try {
+	 * @throws DataAccessException Erreur d'accès aux données (requête mal formée ou autre)
+	*/
+	public int insertPrelevement(double montant, int date, String beneficiaire, int idNumCompte) throws DatabaseConnexionException, DataAccessException {
+		try {			
 			Connection con = LogToDatabase.getConnexion();
-			CallableStatement call;
+			String query = "INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL" + ", " + "?" + ", " + "?" + ", " + '?' + ", " + "?" + ")";
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			pst.setDouble(1, montant);
+			pst.setInt(2, date);
+			pst.setString(3, beneficiaire);
+			pst.setInt(4, idNumCompte);
 
-			String q = "{call Debiter (?, ?, ?, ?)}";
-			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
-			call = con.prepareCall(q);
-			// Paramètres in
-			call.setInt(1, idNumCompte);
-			// 1 -> valeur du premier paramètre, cf. déf procédure
-			call.setDouble(2, montant);
-			call.setString(3, typeOp);
-			// Paramètres out
-			call.registerOutParameter(4, java.sql.Types.INTEGER);
-			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
-
-			call.execute();
-
-			int res = call.getInt(4);
-
-			if (res != 0) { // Erreur applicative
-				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
-						"Erreur de règle de gestion : découvert autorisé dépassé", null);
-			}
+			System.err.println(query);
+			pst.executeUpdate();
+			
+			PreparedStatement pst2 = con.prepareStatement("SELECT seq_id_prelevAuto.CURRVAL from DUAL");
+			ResultSet rs2 = pst2.executeQuery();
+			rs2.next();
+			int newPrelev  = rs2.getInt(1);
+			
+			pst.close();
+			rs2.close();
+			con.commit();
+			
+			return newPrelev;
+			
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
 	}
-	*/
+
+	/**
+	 * Suppression d'un prélèvement dans la base de données.
+	 * 
+	 * @param idPrelev id du prélèvement à supprimer
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 * @throws DataAccessException Erreur d'accès aux données (requête mal formée ou autre)
+	 * 
+	 */
+	public void deletePrelevement(int idPrelev) throws DatabaseConnexionException, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM prelevementautomatique WHERE idPrelev = ?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, idPrelev);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.DELETE, "Erreur accès", e);
+		}
+	}
+
 
 	/*
 	 * Fonction utilitaire qui retourne un ordre sql "to_date" pour mettre une date

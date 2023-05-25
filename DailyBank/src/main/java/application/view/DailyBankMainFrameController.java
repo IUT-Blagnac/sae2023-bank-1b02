@@ -101,7 +101,9 @@ public class DailyBankMainFrameController {
 	@FXML
 	private MenuItem mitemQuitter;
 	@FXML
-	private MenuItem mitemBatch1;
+	private MenuItem mitemBatchPrelAuto;
+	@FXML
+	private MenuItem mitemBatchRelMens;
 	@FXML
 	private Button btnConn;
 	@FXML
@@ -168,13 +170,17 @@ public class DailyBankMainFrameController {
 			this.lblAdrAg.setText(a.adressePostaleAg);
 			this.lblEmpNom.setText(e.nom);
 			this.lblEmpPrenom.setText(e.prenom);
+			
 			if (this.dailyBankState.isChefDAgence()) {
 				this.mitemEmploye.setDisable(false);
-				this.mitemBatch1.setDisable(false);
+				this.mitemBatchPrelAuto.setDisable(false);
+				this.mitemBatchRelMens.setDisable(false);
 			} else {
 				this.mitemEmploye.setDisable(true);
-				this.mitemBatch1.setDisable(true);
+				this.mitemBatchPrelAuto.setDisable(true);
+				this.mitemBatchRelMens.setDisable(true);
 			}
+			
 			this.mitemClient.setDisable(false);
 			this.mitemConnexion.setDisable(true);
 			this.mitemDeConnexion.setDisable(false);
@@ -190,6 +196,8 @@ public class DailyBankMainFrameController {
 			this.mitemEmploye.setDisable(true);
 			this.mitemConnexion.setDisable(false);
 			this.mitemDeConnexion.setDisable(true);
+			this.mitemBatchPrelAuto.setDisable(true);
+			this.mitemBatchRelMens.setDisable(true);
 			this.btnConn.setVisible(true);
 			this.btnDeconn.setVisible(false);
 		}
@@ -221,11 +229,16 @@ public class DailyBankMainFrameController {
 	}
 	
 	/**
-	 * Action menu batch, execute les batch (fonction pour test)
+	 * Action menu batch, execute le batch des prélèvements automatiques 
 	 */
 	@FXML
-	private void doBatchOption() {
-		this.dbmfDialogController.batchExecute();
+	private void doBatchPrelAuto() {
+		this.dbmfDialogController.batchPrelAutoExecute();
+	}
+	
+	@FXML
+	private void doBatchRelMens() {
+		this.dbmfDialogController.batchRelMensExecute();
 	}
 
 	/*

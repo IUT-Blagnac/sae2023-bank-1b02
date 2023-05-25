@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
-import application.control.OperationsManagement;
 import application.control.PrelevementsManagement;
-import application.control.VirementManagement;
-import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.data.Operation;
+import model.data.Employe;
 import model.data.Prelevement;
 
 public class PrelevementsManagementController {
@@ -32,8 +29,6 @@ public class PrelevementsManagementController {
 
 	// Contrôleur de Dialogue associé à OperationsManagementController
 	private PrelevementsManagement omDialogController;
-	
-	private VirementManagement vmDialogController;
 
 	// Fenêtre physique ou est la scène contenant le fichier xml contrôlé par this
 	private Stage primaryStage;
@@ -44,10 +39,10 @@ public class PrelevementsManagementController {
 	private ObservableList<Prelevement> oListPrelevements;
 	private Prelevement selectedPrelevement;
 	
+	
 
 	// Manipulation de la fenêtre
-	public void initContext(Stage _containingStage, PrelevementsManagement _om, DailyBankState _dbstate, Client client,
-			CompteCourant compte) {
+	public void initContext(Stage _containingStage, PrelevementsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
 		this.omDialogController = _om;
@@ -108,9 +103,11 @@ public class PrelevementsManagementController {
 	// TODO
 	@FXML
 	private void doAjout() {
-		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Fonction en développement :)");
-		batchAlert.showAndWait();
+		Prelevement prelev;
+		prelev = this.omDialogController.enregistrerPrelevement();
+		if (prelev != null) {
+			this.oListPrelevements.add(prelev);
+		}
 	}
 
 	// TODO
@@ -124,9 +121,17 @@ public class PrelevementsManagementController {
 	// TODO
 	@FXML
 	private void doSupprimer() {
-		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Fonction en développement :) (suprr "+ this.selectedPrelevement.idPrelev +")");
-		batchAlert.showAndWait();
+		int selectedIndice = this.lvPrelevements.getSelectionModel().getSelectedIndex();
+		
+		if (selectedIndice >= 0) {
+			Prelevement pvm = this.oListPrelevements.get(selectedIndice);
+			Prelevement result = this.omDialogController.supprimerPrelevement(pvm);
+			if(result != null) {
+				System.out.println("delete prelev");
+				//this.oListPrelevements.remove(result);
+				this.updateInfoCompteClient();
+			}
+		}
 	}
 
 	/**
@@ -151,6 +156,7 @@ public class PrelevementsManagementController {
 	/**
 	 * Met à jour les informations affichées sur le client et le compte courant
 	 */
+	
 	private void updateInfoCompteClient() {
 		PairsOfValue<CompteCourant, ArrayList<Prelevement>> opesEtCompte;
 		opesEtCompte = this.omDialogController.operationsEtSoldeDunCompte();
@@ -174,4 +180,5 @@ public class PrelevementsManagementController {
 
 		this.validateComponentState();
 	}
+	
 }

@@ -160,12 +160,13 @@ public class OperationsManagementController {
 			this.btnCredit.setDisable(true);
 			this.btnDebit.setDisable(true);
 			this.btnAutre.setDisable(true);
+			this.btnDebitExep.setDisable(true);
 		}
 		else {
 			this.btnDebit.setDisable(false);
 			this.btnCredit.setDisable(false);
 		}
-		if(this.dailyBankState.isChefDAgence()) {
+		if(this.dailyBankState.isChefDAgence() && !compteConcerne.estCloture.equals("O")) {
 			this.btnDebitExep.setDisable(false);
 		}
 
