@@ -66,6 +66,43 @@ public class Access_BD_CompteCourant {
 
 		return alResult;
 	}
+	
+	/**
+	 * Recherche de tous les CompteCourant non clôturés de la BD.
+	 *
+	 * @return Tous les CompteCourant non clôturés (ou liste vide)
+	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
+	 *                                    formée ou autre)
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 */
+	public ArrayList<CompteCourant> getAllActiveCompteCourants() throws DataAccessException, DatabaseConnexionException {
+		ArrayList<CompteCourant> alResult = new ArrayList<>();
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			String query = "SELECT * FROM CompteCourant WHERE estCloture = 'N' ORDER BY idNumCompte";
+			PreparedStatement pst = con.prepareStatement(query);
+			System.err.println(query);
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				int idNumCompte = rs.getInt("idNumCompte");
+				int debitAutorise = rs.getInt("debitAutorise");
+				double solde = rs.getDouble("solde");
+				String estCloture = rs.getString("estCloture");
+				int idNumCliTROUVE = rs.getInt("idNumCli");
+
+				alResult.add(new CompteCourant(idNumCompte, debitAutorise, solde, estCloture, idNumCliTROUVE));
+			}
+			
+			rs.close();
+			pst.close();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		}
+
+		return alResult;
+	}
 
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
@@ -170,6 +207,9 @@ public class Access_BD_CompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	
+	
 	// crée par jimmy
 	public void cloturerCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
 	DatabaseConnexionException, ManagementRuleViolation {

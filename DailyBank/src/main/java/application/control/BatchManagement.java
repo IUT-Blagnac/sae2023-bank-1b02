@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.data.CompteCourant;
 import model.data.Prelevement;
 import model.orm.Access_BD_CompteCourant;
 import model.orm.Access_BD_Operation;
@@ -122,6 +123,26 @@ public class BatchManagement {
 	
 	
 	public void genererRelevesMensuels () {
+		ArrayList<CompteCourant> alCc;
+		
+		try {
+			Access_BD_CompteCourant cc = new Access_BD_CompteCourant();
+			alCc = cc.getAllActiveCompteCourants();
+			
+			for (int i=0; i<alCc.size(); i++) {
+				CompteCourant currentCompte = alCc.get(i);
+				System.out.println(currentCompte.idNumCompte);
+			}
+			
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+			ed.doExceptionDialog();
+
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+			ed.doExceptionDialog();
+		}
+		
 		Alert batchAlert = new Alert(AlertType.INFORMATION);
 		batchAlert.setHeaderText("Relevés mensuels en dev");
 		batchAlert.showAndWait();
