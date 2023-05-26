@@ -108,6 +108,7 @@ public class OperationsManagement {
 	/**
 	 * execute la requête de débit sur le compte courant
 	 * @return opération enregistrée ou null si annulation
+	 * @author Bernat
 	 */
 	public Operation enregistrerDebitExeptionnel() {
 

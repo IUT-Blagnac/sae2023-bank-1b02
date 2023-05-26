@@ -46,7 +46,13 @@ public class PrelevementEditorPane {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Ouvre la fenêtre de dialogue de gestion d'un prélèvement
+	 * @param pvmt prélèvement à gérer
+	 * @param mode mode d'édition
+	 * @return le prélèvement géré
+	 * @author Bernat
+	 */
 	public Prelevement doPrelevementEditorDialog(Prelevement pvmt, EditionMode mode) {
 		return this.oepcViewController.displayDialog( pvmt, mode);
 	}
