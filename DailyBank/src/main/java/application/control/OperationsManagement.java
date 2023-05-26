@@ -237,7 +237,9 @@ public class OperationsManagement {
             e.printStackTrace();
         }
     }
-
+	
+	
+	
 	public static void addOperation(PdfPTable table, String date, String operation, String debit, String credit, String solde) {
         table.addCell(date);
         table.addCell(operation);

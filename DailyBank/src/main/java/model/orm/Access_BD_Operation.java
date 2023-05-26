@@ -76,19 +76,21 @@ public class Access_BD_Operation {
 	 */
 	public ArrayList<Operation> getOperationsInMonth(int idNumCompte, int numMois, int numYear) throws DataAccessException, DatabaseConnexionException {
 		ArrayList<Operation> alResult = new ArrayList<>();
-		String dateBase = numYear+ "-" +numMois;
+		String dateBase = numMois +"/"+ numYear;
 
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			String query = "SELECT * FROM Operation"
 					+ " WHERE idNumCompte = ?"
-					+ " AND dateOp BETWEEN '" +dateBase+ "-01' AND '" +dateBase+ "-31'"
+					+ " AND dateOp BETWEEN '01/" +dateBase+ "' AND '31/" +dateBase+ "'"
 					+ " ORDER BY dateOp";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, idNumCompte);
 
 			ResultSet rs = pst.executeQuery();
+			System.err.println(query);
+			
 			while (rs.next()) {
 				int idOperation = rs.getInt("idOperation");
 				double montant = rs.getDouble("montant");

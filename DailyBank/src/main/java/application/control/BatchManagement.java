@@ -1,10 +1,14 @@
 package application.control;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.GeneratePDF;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +18,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Prelevement;
+import model.orm.Access_BD_Client;
 import model.orm.Access_BD_CompteCourant;
 import model.orm.Access_BD_Operation;
 import model.orm.Access_BD_Prelevements;
@@ -125,19 +131,33 @@ public class BatchManagement {
 	public void genererRelevesMensuels () {
 		ArrayList<CompteCourant> alCc;
 		LocalDate currentdate = LocalDate.now();
+		int relevQuantity = 0;
 		int currentMonth = currentdate.getMonthValue();
 		int currentYear = currentdate.getYear();
 		String releveName;
 		
+		
 		try {
 			Access_BD_CompteCourant cc = new Access_BD_CompteCourant();
+			Access_BD_Client cl = new Access_BD_Client();
+			
+			String currentPath = System.getProperty("user.dir")+ "\\releves\\";
 			alCc = cc.getAllActiveCompteCourants();
+			
+			try {
+				Files.createDirectories(Paths.get(currentPath));
+			} catch (IOException e) {
+				
+			}
 			
 			for (int i=0; i<alCc.size(); i++) {
 				CompteCourant cCompte = alCc.get(i);
-				releveName = cCompte.idNumCli+ "-" +cCompte.idNumCompte+ " Relevé mensuel " +currentMonth+ "-" +currentYear;
-						
-				System.out.println(releveName);
+				Client cClient = cl.getClient(cCompte.idNumCli);
+				
+				releveName = cCompte.idNumCli+ "-" +cCompte.idNumCompte+ " Relevé mensuel " +currentMonth+ "-" +currentYear+ ".pdf";
+				GeneratePDF.genererRelevePdfParMois(currentPath+ releveName, cClient, cCompte, currentMonth, currentYear);
+				System.out.println("Géneration du relevé : "+ releveName);
+				relevQuantity++;
 			}
 			
 		} catch (DatabaseConnexionException e) {
@@ -149,8 +169,11 @@ public class BatchManagement {
 			ed.doExceptionDialog();
 		}
 		
+		
 		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Relevés mensuels en dev");
+		batchAlert.setTitle("Génération de relevés mensuels");
+		batchAlert.setHeaderText("Génération de relevés mensuels");
+		batchAlert.setContentText("Dans cette exécution, "+ relevQuantity +" relevés ont été générés. Ils sont disponibles dans le dossier \"releves\" du répertoire courant.");
 		batchAlert.showAndWait();
 	}
 }

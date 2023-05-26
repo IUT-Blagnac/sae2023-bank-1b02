@@ -1,11 +1,13 @@
 package application.view;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.OperationsManagement;
 import application.control.VirementManagement;
+import application.tools.GeneratePDF;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
@@ -143,7 +145,11 @@ public class OperationsManagementController {
 
 	@FXML
 	private void doRelevePdf() {
-		this.omDialogController.genererRelevePdf();
+		LocalDate currentdate = LocalDate.now();
+		int currentMonth = currentdate.getMonthValue();
+		int currentYear = currentdate.getYear();
+		
+		GeneratePDF.genererRelevePdf(clientDuCompte, compteConcerne, currentMonth, currentYear);
 	}
 
 
