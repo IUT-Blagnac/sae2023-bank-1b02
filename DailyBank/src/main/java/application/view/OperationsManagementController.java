@@ -136,6 +136,8 @@ public class OperationsManagementController {
 		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte,
 				this.compteConcerne);
 		this.vmDialogController.doVirementManagementDialog();
+		this.updateInfoCompteClient();
+		this.validateComponentState();
 	}
 
 	@FXML
