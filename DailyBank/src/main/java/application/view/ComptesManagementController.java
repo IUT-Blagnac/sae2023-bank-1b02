@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import application.DailyBankState;
 import application.control.ClientsManagement;
+import application.control.CompteEmpruntPane;
 import application.control.ComptesManagement;
 import application.control.PrelevementsManagement;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Emprunt;
 import model.orm.Access_BD_CompteCourant;
 
 public class ComptesManagementController {
@@ -136,9 +138,16 @@ public class ComptesManagementController {
 		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
 		cm.doPrelevementsManagementDialog();
 	}
-	
+
+	/**
+	 * Simule un emprunt d'une somme définie par le client
+	 * par Hugo Berdinel
+	 */
+
 	@FXML
 	private void doSimulerEmprunt() {
+		CompteEmpruntPane emp = new CompteEmpruntPane(this.primaryStage, this.dailyBankState,this.clientDesComptes);
+		emp.doEmpruntDialog();
 	}
 
 	/**
