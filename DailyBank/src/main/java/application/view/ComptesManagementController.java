@@ -130,11 +130,11 @@ public class ComptesManagementController {
 	
 	/**
 	 * Voir prélèvements du compte sélectionné
+	 * @author Bernat
 	 */
 	@FXML
 	private void doVoirPrelevement() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		
 		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
 		cm.doPrelevementsManagementDialog();
 	}
