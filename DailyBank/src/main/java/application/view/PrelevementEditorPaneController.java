@@ -74,10 +74,15 @@ public class PrelevementEditorPaneController {
 			this.btnCancel.setText("Annuler");
 			break;
 		case MODIFICATION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de prelevement n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-		// break;
+			System.out.println(this.prelevementEdite.montant);
+			this.txtMontant.setText(""+this.prelevementEdite.montant);
+			this.txtBeneficiaire.setText(""+this.prelevementEdite.beneficiaire);
+			this.txtDateRecurrente.setText(""+this.prelevementEdite.dateRecurrente);
+			this.lblTitre.setText("Informations sur le prélèvement a modifier");
+			this.btnOk.setText("Modifier");
+			this.btnCancel.setText("Annuler");
+			// return null;
+			break;
 		case SUPPRESSION:
 			this.lblTitre.setText("Informations sur le prélèvement à supprimer");
 			this.btnOk.setText("Supprimer");

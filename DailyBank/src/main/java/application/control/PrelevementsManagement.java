@@ -98,6 +98,33 @@ public class PrelevementsManagement {
 		
 		return prelev;
 	}
+
+	public Prelevement modifierPrelevement(Prelevement prvmt) {
+		
+		PrelevementEditorPane oep = new PrelevementEditorPane(this.primaryStage, this.dailyBankState);
+		Prelevement prelev = oep.doPrelevementEditorDialog( prvmt, EditionMode.MODIFICATION);
+		
+		if (prelev != null) {
+			try {
+				Access_BD_Prelevements ao = new Access_BD_Prelevements();
+				ao.updatePrelevement(prelev.montant, prelev.dateRecurrente, prelev.beneficiaire, this.compteConcerne.idNumCompte, prelev.idPrelev);
+				
+				
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				prelev = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				prelev = null;
+			}
+		}
+		
+		return prelev;
+	}
+
 	
 	public Prelevement supprimerPrelevement(Prelevement prvmt) {
 		PrelevementEditorPane oep = new PrelevementEditorPane(this.primaryStage, this.dailyBankState);

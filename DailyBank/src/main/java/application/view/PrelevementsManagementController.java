@@ -113,9 +113,9 @@ public class PrelevementsManagementController {
 	// TODO
 	@FXML
 	private void doModifier() {
-		Alert batchAlert = new Alert(AlertType.INFORMATION);
-		batchAlert.setHeaderText("Fonction en développement :) (edit "+ this.selectedPrelevement.idPrelev +")");
-		batchAlert.showAndWait();
+		Prelevement prelev;
+		prelev = this.omDialogController.modifierPrelevement(this.selectedPrelevement);
+		updateInfoCompteClient();
 	}
 
 	// TODO
@@ -141,6 +141,7 @@ public class PrelevementsManagementController {
 	private void validateComponentState() {
 		int selectedIndice = this.lvPrelevements.getSelectionModel().getSelectedIndex();
 		this.btnAjout.setDisable(false);
+		this.btnModifier.setDisable(false);
 		
 		if (selectedIndice >= 0) {
 			this.selectedPrelevement = this.oListPrelevements.get(selectedIndice);

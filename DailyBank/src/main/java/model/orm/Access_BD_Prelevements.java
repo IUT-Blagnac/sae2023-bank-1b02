@@ -148,6 +148,43 @@ public class Access_BD_Prelevements {
 		}
 	}
 
+
+
+	public void updatePrelevement(double montant, int date, String beneficiaire, int idNumCompte,int idprelev) throws DatabaseConnexionException, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			String query = "UPDATE PrelevementAutomatique SET montant = ?, dateRecurrente = ?, beneficiaire = ? WHERE idprelev = ?";
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setDouble(1, montant);
+			pst.setInt(2, date);
+			pst.setString(3, beneficiaire);
+			pst.setInt(4, idprelev);
+
+			
+			
+
+			System.err.println(query);
+			pst.executeUpdate();
+			
+			// PreparedStatement pst2 = con.prepareStatement("SELECT seq_id_prelevAuto.CURRVAL from DUAL");
+			// ResultSet rs2 = pst2.executeQuery();
+			// rs2.next();
+			// int newPrelev  = rs2.getInt(1);
+			
+			// pst.close();
+			// rs2.close();
+			con.commit();
+			
+			// return newPrelev;
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Client, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
+
+
 	/**
 	 * Suppression d'un prélèvement dans la base de données.
 	 * 
