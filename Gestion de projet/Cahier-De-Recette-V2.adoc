@@ -241,6 +241,11 @@ Un compte destinataire doit être sélectionné.
 5+|
 
 |====
+
+
+==== 1.5 Gestion des emprunts :
+
+
 |====
 
 >|Cas de test 4+|Test-01-04-05
