@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -117,10 +118,12 @@ public class EmpruntManagementController {
 			alt.setTitle("Suppression d'un emprunt");
 			alt.setContentText("Vous vous apprêtez à supprimer un emprunt. Voulez-vous continuer ?");
 			alt.showAndWait();
-			Emprunt result = this.emDialogController.supprimerEmprunt(emp);
-			System.out.println("ok");
-			if(result != null) {
-				this.oListEmprunts.remove(emp);
+			if(alt.getResult().equals(ButtonType.OK)) {
+				Emprunt result = this.emDialogController.supprimerEmprunt(emp);
+				System.out.println("ok");
+				if(result != null) {
+					this.oListEmprunts.remove(emp);
+				}
 			}
 		}
 	}
