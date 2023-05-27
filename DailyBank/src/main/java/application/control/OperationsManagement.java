@@ -108,6 +108,7 @@ public class OperationsManagement {
 	/**
 	 * execute la requête de débit sur le compte courant
 	 * @return opération enregistrée ou null si annulation
+	 * @author Bernat
 	 */
 	public Operation enregistrerDebitExeptionnel() {
 
@@ -237,7 +238,9 @@ public class OperationsManagement {
             e.printStackTrace();
         }
     }
-
+	
+	
+	
 	public static void addOperation(PdfPTable table, String date, String operation, String debit, String credit, String solde) {
         table.addCell(date);
         table.addCell(operation);

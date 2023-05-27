@@ -113,6 +113,7 @@ public class VirementManagementController {
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
+		
 	}
 
 	/**
@@ -148,9 +149,9 @@ public class VirementManagementController {
 				// 	public static void showAlert(Stage _fen, String _title, String _message, String _content, AlertType _at) {
 				// AlertUtilities.showAlert(this.primaryStage, "Erreur", "Erreur lors de l'insertion du débit", "Erreur lors de l'insertion du débit", AlertType.ERROR);
 			}
-				
 		}
-				
+		this.primaryStage.close();
+		return;
 	}
 
 	/**
@@ -179,8 +180,9 @@ public class VirementManagementController {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.compteTarget = this.oListCompteCourant.get(selectedIndice);
+			this.btnVirement.setDisable(false);
 		} else {
-
+			this.btnVirement.setDisable(true);
 		}
 	}
 

@@ -66,7 +66,7 @@ public class Access_BD_CompteCourant {
 
 		return alResult;
 	}
-	
+
 	/**
 	 * Recherche de tous les CompteCourant non clôturés de la BD.
 	 *
@@ -75,7 +75,8 @@ public class Access_BD_CompteCourant {
 	 *                                    formée ou autre)
 	 * @throws DatabaseConnexionException Erreur de connexion
 	 */
-	public ArrayList<CompteCourant> getAllActiveCompteCourants() throws DataAccessException, DatabaseConnexionException {
+	public ArrayList<CompteCourant> getAllActiveCompteCourants()
+			throws DataAccessException, DatabaseConnexionException {
 		ArrayList<CompteCourant> alResult = new ArrayList<>();
 
 		try {
@@ -84,7 +85,7 @@ public class Access_BD_CompteCourant {
 			PreparedStatement pst = con.prepareStatement(query);
 			System.err.println(query);
 			ResultSet rs = pst.executeQuery();
-			
+
 			while (rs.next()) {
 				int idNumCompte = rs.getInt("idNumCompte");
 				int debitAutorise = rs.getInt("debitAutorise");
@@ -94,7 +95,7 @@ public class Access_BD_CompteCourant {
 
 				alResult.add(new CompteCourant(idNumCompte, debitAutorise, solde, estCloture, idNumCliTROUVE));
 			}
-			
+
 			rs.close();
 			pst.close();
 		} catch (SQLException e) {
@@ -207,41 +208,49 @@ public class Access_BD_CompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
-	
-	
-	// crée par jimmy
-	public void cloturerCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-	DatabaseConnexionException, ManagementRuleViolation {
-	try {
-
-		CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
-		Connection con = LogToDatabase.getConnexion();
-		String query = "UPDATE CompteCourant SET " + "estCloture = ? " + "WHERE idNumCompte = ?";
-		PreparedStatement pst = con.prepareStatement(query);
-		pst.setString(1, "O");
-		pst.setInt(2, cc.idNumCompte);
-
-		System.err.println(query);
-
-		int result = pst.executeUpdate();
-		pst.close();
-		if (result != 1) {
-			con.rollback();
-			throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
-					"Update anormal (update de moins ou plus d'une ligne)", null, result);
-		}
-		con.commit();
-	} catch (SQLException e) {
-		throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
-	}
-	}
-	
-	
-	
 
 	/**
-	 * Créer un compte pour l'id  fourni (idNumCompte).
+	 * Cloture d'un CompteCourant.
+	 * 
+	 * @param cc IN cc.idNumCompte (clé primaire) doit exister seul
+	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
+	 *                                           ligne
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 * @throws ManagementRuleViolation           Erreur sur le solde courant par
+	 *                                           rapport au débitAutorisé (solde <
+	 *                                           débitAutorisé)
+	 * @author Jimmy
+	 */
+	public void cloturerCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
+			DatabaseConnexionException, ManagementRuleViolation {
+		try {
+
+			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
+			Connection con = LogToDatabase.getConnexion();
+			String query = "UPDATE CompteCourant SET " + "estCloture = ? " + "WHERE idNumCompte = ?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, "O");
+			pst.setInt(2, cc.idNumCompte);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
+	/**
+	 * Créer un compte pour l'id fourni (idNumCompte).
 	 *
 	 * @param idNumCompte id du compte (clé primaire)
 	 * @return Le compte ou null si non trouvé
@@ -249,22 +258,24 @@ public class Access_BD_CompteCourant {
 	 * @throws DataAccessException               Erreur d'accès aux données (requête
 	 *                                           mal formée ou autre)
 	 * @throws DatabaseConnexionException        Erreur de connexion
+	 * @author Bernat
 	 */
 	public void insertCompteCourrant(CompteCourant cc)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
-			
+
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "INSERT INTO COMPTECOURANT VALUES ("+"seq_id_compte.NEXTVAL" + ", " + "?" + ", " + "?" + ", "
-					+ "?" + ", " +"?"+")"; 
-			
+			String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_compte.NEXTVAL" + ", " + "?" + ", " + "?"
+					+ ", "
+					+ "?" + ", " + "?" + ")";
+
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.debitAutorise);
 			pst.setDouble(2, cc.solde);
 			pst.setInt(3, cc.idNumCli);
 			pst.setString(4, cc.estCloture);
-			
+
 			System.err.println(query);
 
 			int result = pst.executeUpdate();
@@ -287,7 +298,7 @@ public class Access_BD_CompteCourant {
 			con.commit();
 			rs.close();
 			pst2.close();
-			
+
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
