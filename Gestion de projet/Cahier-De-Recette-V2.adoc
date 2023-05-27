@@ -359,3 +359,31 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
   
 |====
 
+
+==== 2.3 Relevé pdf :
+
+|====
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Relevé pdf
+>|Objectif 4+| Vérifier qu'il est possible d'enregistrer une relevé au format pdf du bon compte et au bon repertoire
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.2 ^|Cliquer sur le bouton "Relevé" depuis l'interfce d'opérations. ^|La page des débit du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+ ^|All_G_C.2 ^|Selectionner le nom et ou vous voullez le sauvegarder. Et Appuyer sur le bouton enregistrer ^|Lefichier pdf est sauvegardé a l'endroit selectionnée avec le nom ^|aucune ^|OK
+^|All_G_C.3 ^|Selectionner le chemin de asuvegarde du fichier et annuler. ^|Aucun pdf n'est créé. ^|aucune ^|OK  
+|====
+
+
+
+==== 2.3 CRUD - Update prevelement :
+
+|====
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|CRUD - Update prevelement :
+>|Objectif 4+| Verifier qu'il est possible de modifier un prevelement
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.2 ^|Cliquer sur le bouton "Modifier prevelement" depuis l'interface des prevelement. ^|La page de modiffication s’affiche. ^| Un prelevement est sélectionné ^|OK
+ ^|All_G_C.2 ^|rentrer les modiffication et appuyer sur le bouton de validation.^|le prelevement doit etre modifié ^|aucune ^|OK 
+|====
+
