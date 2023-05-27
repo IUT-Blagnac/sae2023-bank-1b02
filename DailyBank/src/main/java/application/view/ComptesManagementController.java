@@ -6,6 +6,7 @@ import application.DailyBankState;
 import application.control.ClientsManagement;
 import application.control.CompteEmpruntPane;
 import application.control.ComptesManagement;
+import application.control.EmpruntManagement;
 import application.control.PrelevementsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,20 +67,6 @@ public class ComptesManagementController {
 		this.validateComponentState();
 	}
 
-	/**
-	 * Affichage des comptes du client
-	 */
-	public void displayDialog() {
-		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
-	}
-
 	// Attributs de la scene + actions
 
 	@FXML
@@ -138,16 +125,12 @@ public class ComptesManagementController {
 		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
 		cm.doPrelevementsManagementDialog();
 	}
-
-	/**
-	 * Simule un emprunt d'une somme définie par le client
-	 * par Hugo Berdinel
-	 */
-
+	
 	@FXML
-	private void doSimulerEmprunt() {
-		CompteEmpruntPane emp = new CompteEmpruntPane(this.primaryStage, this.dailyBankState,this.clientDesComptes);
-		emp.doEmpruntDialog();
+	private void doVoirEmprunts() {
+		
+		EmpruntManagement  em = new EmpruntManagement(primaryStage, dailyBankState, clientDesComptes); 
+		em.doEmpruntManagementDialog();
 	}
 
 	/**
@@ -202,9 +185,24 @@ public class ComptesManagementController {
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
+	
 	/**
 	 * Mise à jour des informations des comptes
 	 */
+	
+	/**
+	 * Affichage des comptes du client
+	 */
+	public void displayDialog() {
+		this.primaryStage.showAndWait();
+	}
+
+	// Gestion du stage
+	private Object closeWindow(WindowEvent e) {
+		this.doCancel();
+		e.consume();
+		return null;
+	}
 
 
 

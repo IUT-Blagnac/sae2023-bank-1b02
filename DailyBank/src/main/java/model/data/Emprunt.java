@@ -6,7 +6,7 @@ package model.data;
  */
 
 public class Emprunt {
-	
+
 	public int idEmprunt;
 	public double tauxEmprunt;
 	public int capitalEmprunt;
@@ -14,7 +14,18 @@ public class Emprunt {
 	private java.util.Date  dte = new java.util.Date();
 	public  java.sql.Date dateDebutEmprunt = new java.sql.Date(dte.getTime());
 	public int idClient;
-	
+
+
+	public Emprunt(int idEmprunt, double tauxE, int capitalE, int dureeE, int idC) {
+		super();
+		this.idEmprunt = idEmprunt;
+		this.tauxEmprunt = tauxE;
+		this.capitalEmprunt = capitalE;
+		this.dureeEmprunt = dureeE;
+		this.idClient = idC;
+	}
+
+
 	public Emprunt(double tauxE, int capitalE, int dureeE, int idC) {
 		super();
 		this.tauxEmprunt = tauxE;
@@ -22,13 +33,13 @@ public class Emprunt {
 		this.dureeEmprunt = dureeE;
 		this.idClient = idC;
 	}
-	
+
 	public Emprunt(Emprunt em) {
 		this(em.tauxEmprunt, em.capitalEmprunt, em.dureeEmprunt, em.idClient);
 	}
-	
+
 	public String toString() {
-		String s = "L'emprunt a été réalisé le " + this.dateDebutEmprunt + ". Le client a emprunté " + this.capitalEmprunt + " avec un taux de " + this.tauxEmprunt + " sur une durée de " + this.dureeEmprunt + ".";
+		String s = "Date de l'emprunt : " + this.dateDebutEmprunt + " | Montant de l'emprunt : " + this.capitalEmprunt + " | Taux de l'emprunt : " + this.tauxEmprunt + " | Durée de l'emprunt : " + this.dureeEmprunt + " mois";
 		return s;
 	}
 }

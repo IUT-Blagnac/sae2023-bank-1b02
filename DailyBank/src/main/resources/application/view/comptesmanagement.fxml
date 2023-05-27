@@ -65,7 +65,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnSimulEmpr" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSimulerEmprunt" text="Simuler emprunts" GridPane.rowIndex="5">
+                        <Button fx:id="btnSimulEmpr" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVoirEmprunts" text="Voir emprunts" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </GridPane.margin>
