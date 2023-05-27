@@ -236,9 +236,40 @@ Un compte destinataire doit être sélectionné.
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
 ^|C_G_C.1    ^|Cliquer sur "Supprimer prélèvement". ^|Une nouvelle fenêtre de suppression s'ouvre.  ^| Un prélèvement est sélectionné ^| OK
-^|C_G_C.2    ^|Appuyer "Supprimer". ^|La fenêtre de suppréssion se ferme, le prélèvement est supprimé.  ^| ... ^| OK
-^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de suppréssion se ferme, le prélèvement n'est pas supprimé.  ^| ... ^| OK
+^|C_G_C.2    ^|Appuyer "Supprimer". ^|La fenêtre de suppression se ferme, le prélèvement est supprimé.  ^| ... ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de suppression se ferme, le prélèvement n'est pas supprimé.  ^| ... ^| OK
 5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-05
+>|Titre 4+|Simuler un emprunt
+>|Objectif 4+| Vérifier qu'il est possible de simuler un emprunt
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Simuler emprunt". ^|Une nouvelle fenêtre de création s'ouvre.  ^| ... ^| OK
+^|C_G_C.2    ^|Appuyer "Valider". ^|La fenêtre de création se ferme, l'emprunt est créé.  ^| Les champs sont non vides et répondes aux attentes ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de création se ferme, l'emprunt n'est pas créé.  ^| ... ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-06
+>|Titre 4+|Supprimer un emprunt
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un emprunt
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Supprimer emprunt". ^|Une fenêtre de confirmation s'ouvre.  ^| Un emprunt est sélectionné ^| OK
+^|C_G_C.2    ^|Appuyer "Valider". ^|La fenêtre de confirmation se ferme, l'emprunt est supprimé.  ^| ... ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de confirmation se ferme, l'emprunt n'est pas supprimé.  ^| ... ^| OK
+5+|
+
 
 |====
 
