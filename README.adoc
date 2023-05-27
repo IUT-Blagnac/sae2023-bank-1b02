@@ -22,10 +22,10 @@
 |2      |Chef d’Agence  | Compte | Débit exceptionnel          |   D   |        |       |
 |2      |Chef d’Agence  | Emprunt | Simuler emprunt            |       |        |   D   |
 |2      |Chef d’Agence  | Emprunt | Simuler assurance          |       |        |   D   |
-|2      |Guichetier     | Compte | Relevé PDF                  |       |        |       |   D
+|2      |Guichetier     | Compte | Relevé PDF                  |       |        |       |   F
 |2      |Guichetier     | CRUD Prélèvement | C                 |       |    D   |       |
 |2      |Guichetier     | CRUD Prélèvement | R                 |       |    D   |       |
-|2      |Guichetier     | CRUD Prélèvement | U                 |       |        |       | D
+|2      |Guichetier     | CRUD Prélèvement | U                 |       |        |       |  F
 |2      |Guichetier     | CRUD Prélèvement | D                 |       |        |       |
 |2      |Batch          | Prélèvements automatiques |          |    D  |        |       |
 |2      |Batch          | Reléves mensuels |                   |    D  |        |       |
