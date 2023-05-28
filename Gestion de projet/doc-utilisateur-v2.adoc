@@ -154,6 +154,7 @@ image:media/debitexeptionnel.PNG"[image,width=600,height=400] +
 Cliquez sur le bouton Effectuer débit, si le montant est valide l'opération va s'effectuer sinon une erreur va s'afficher. +
 image:media/debitexeptionnel2.PNG"[image,width=600,height=400] +
  +
+Afin de vérifier que l'opération s'est bien effectuée, il faut retourner sur la page de gestion des comptes du client et cliquer sur le bouton Voir opérations. +
 
 
 === Simuler emprunt (H.B.)	
@@ -182,6 +183,7 @@ image:media/creerprelevement2.PNG"[image,width=600,height=400] +
 Cliquez sur le bouton "Ajouter prélèvement", si le montant et la date sont valides et qu'un beneficiaire est saisi l'opération va s'effectuer sinon les champs vont s'afficher en rouge et l'operation ne va pas s'efectuer. +
 image:media/creerprelevement3.PNG"[image,width=600,height=400] +
  +
+Afin de vérifier si le prélèvement s'est bien effectué, il faut retourner sur la page de gestion des comptes du client et cliquer sur le bouton "Voir prélèvements". +
 
 === Read prélèvement (AB)	
 === Update prélèvement (JM)	
@@ -204,8 +206,10 @@ image:media/supprimerprelevement.png"[image,width=600,height=400] +
   Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Supprimer" si c'est bien le compte à supprimer +
 image:media/supprimerprelevement2.PNG"[image,width=600,height=400] +
   +
-Veuiilez noter que la suppréssion d'un prélèvement est définitive. +
-  +
+Veuilez noter que la suppréssion d'un prélèvement est définitive. +
+
+Afin de vérifier si le prélèvement s'est bien supprimé, il faut retourner sur la page de gestion des comptes du client et cliquer sur le bouton "Voir prélèvements". +
+
 
 == Batch	
 === Prélèvements automatiques (AB)	
