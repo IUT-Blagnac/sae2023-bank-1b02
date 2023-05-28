@@ -146,13 +146,13 @@ image:media/clientcompte.png"[image,width=600,height=400] +
  +
 La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. +
 Il faut maintenant cliquer sur le bouton Voir opérations. Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Débit exeptionnel" +
-image:media/operations.png"[image,width=600,height=400] +
+image:media/operations.PNG"[image,width=600,height=400] +
  +
 Une fois la fenêtre ouverte, il faut saisir le montant du débit exceptionnel dans la zone de texte prévue à cet effet ainsi que le type d'opération faite. +
-image:media/debitexeptionnel.png"[image,width=600,height=400] +
+image:media/debitexeptionnel.PNG"[image,width=600,height=400] +
  +
 Cliquez sur le bouton Effectuer débit, si le montant est valide l'opération va s'effectuer sinon une erreur va s'afficher. +
-image:media/debitexeptionnel2.png"[image,width=600,height=400] +
+image:media/debitexeptionnel2.PNG"[image,width=600,height=400] +
  +
 
 
@@ -174,13 +174,13 @@ Il faut maintenant cliquer sur le bouton "Voir prélèvements". +
 image:media/voirprelevements.png"[image,width=600,height=400] +
  +
  Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Ajouter prélèvement" +
-image:media/creerprelevement.png"[image,width=600,height=400] +
+image:media/creerprelevement.PNG"[image,width=600,height=400] +
  +
 Une fois la fenêtre ouverte, il faut saisir le montant du prélèvement, la date recurrente ainsi que le bénéficiaire dans les zones de texte prévue à cet effet. +
-image:media/creerprelevement2.png"[image,width=600,height=400] +
+image:media/creerprelevement2.PNG"[image,width=600,height=400] +
  +
 Cliquez sur le bouton "Ajouter prélèvement", si le montant et la date sont valides et qu'un beneficiaire est saisi l'opération va s'effectuer sinon les champs vont s'afficher en rouge et l'operation ne va pas s'efectuer. +
-image:media/creerprelevement3.png"[image,width=600,height=400] +
+image:media/creerprelevement3.PNG"[image,width=600,height=400] +
  +
 
 === Read prélèvement (AB)	
@@ -202,7 +202,7 @@ image:media/voirprelevements.png"[image,width=600,height=400] +
 image:media/supprimerprelevement.png"[image,width=600,height=400] +
   +
   Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Supprimer" si c'est bien le compte à supprimer +
-image:media/supprimerprelevement2.png"[image,width=600,height=400] +
+image:media/supprimerprelevement2.PNG"[image,width=600,height=400] +
   +
 Veuiilez noter que la suppréssion d'un prélèvement est définitive. +
   +
