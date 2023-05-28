@@ -130,11 +130,16 @@ image:media/debitexeptionnel2.PNG"[image,width=600,height=400]
 Afin de vérifier que l'opération s'est bien effectuée, il faut retourner sur la page de gestion des comptes du client et cliquer sur le bouton Voir opérations. 
 
 ==== 2.1.2- Simuler emprunt (H.B.)	
+Pour simuler un emprunt, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton simuler emprunt.
+L'emprunt va être ajouté au compte de l'utilisateur, il pourra être modifié ou supprimé.
 
-==== 2.1.3- Simuler assurance (H.B)	
+==== 2.1.3- Simuler assurance (H.B)
+
 
 === 2.2- Guichetier	
-==== 2.2.1- Relevé PDF (JM)	
+==== 2.2.1- Relevé PDF (JM)
+Pour générer un relevé PDF, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton générer un relevé PDF.
+L'application va ouvrir une fenêtre pour choisir la route de sauvegarde, il va alors générer un fichier PDF dans le dossier.
 
 ==== 2.2.2- Create prélèvement (BS)	
 La création d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients.  
@@ -184,7 +189,11 @@ image:media/voirprelevements.PNG"[image,width=600,height=400]
 
 Une fois la fenêtre ouverte, vous verez les diférents prélèvements du compte, depuis cette fenêtre, vous pouvez ajouter, modifier ou supprimer des prélèvements.
 
-==== 2.3.4- Update prélèvement (JM)	
+==== 2.3.4- Update prélèvement (JM)
+La modification d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients.
+Sur un compte client, il faut cliquer sur le bouton "Voir prélèvements" puis modifier le prélèvement souhaité.
+
+
 ==== 2.3.5- Delete prélèvement (BS)	
 La suppression d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients. 
 
