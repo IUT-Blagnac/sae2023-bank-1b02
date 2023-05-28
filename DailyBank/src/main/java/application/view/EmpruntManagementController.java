@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import application.DailyBankState;
 import application.control.CompteEmpruntPane;
-import application.control.ComptesManagement;
 import application.control.EmpruntManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.data.CompteCourant;
 import model.data.Emprunt;
 
 public class EmpruntManagementController {

@@ -3,8 +3,6 @@ package application.view;
 import java.util.ArrayList;
 
 import application.DailyBankState;
-import application.control.ClientsManagement;
-import application.control.CompteEmpruntPane;
 import application.control.ComptesManagement;
 import application.control.EmpruntManagement;
 import application.control.PrelevementsManagement;
@@ -19,7 +17,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.data.Emprunt;
 import model.orm.Access_BD_CompteCourant;
 
 public class ComptesManagementController {

@@ -1,6 +1,5 @@
 package application.control;
 
-import java.rmi.server.Operation;
 import java.util.ArrayList;
 
 import application.DailyBankApp;
@@ -9,18 +8,14 @@ import application.tools.StageManagement;
 import application.view.VirementManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.orm.Access_BD_CompteCourant;
-import model.orm.Access_BD_Operation;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
-import model.orm.exception.Order;
-import model.orm.exception.Table;
 
 public class VirementManagement {
 

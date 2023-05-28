@@ -1,19 +1,15 @@
 package application.control;
 
-import java.util.ArrayList;
-
 import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.StageManagement;
 import application.view.CompteEmpruntController;
-import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
-import model.data.CompteCourant;
 import model.data.Emprunt;
 import model.orm.Access_BD_Emprunt;
 import model.orm.exception.ApplicationException;

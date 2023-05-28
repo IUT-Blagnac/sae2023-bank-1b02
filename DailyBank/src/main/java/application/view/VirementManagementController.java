@@ -1,31 +1,23 @@
 package application.view;
 
-import java.rmi.server.Operation;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
-import application.control.ComptesManagement;
 import application.control.VirementManagement;
-import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
-import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.orm.Access_BD_CompteCourant;
 import model.orm.Access_BD_Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;

@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.data.CompteCourant;
-import model.data.Employe;
 import model.data.Emprunt;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;

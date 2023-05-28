@@ -12,7 +12,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import application.control.ExceptionDialog;
 import application.control.OperationsManagement;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

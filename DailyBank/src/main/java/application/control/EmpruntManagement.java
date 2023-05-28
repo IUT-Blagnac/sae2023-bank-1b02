@@ -12,11 +12,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
-import model.data.CompteCourant;
 import model.data.Emprunt;
-import model.orm.Access_BD_CompteCourant;
 import model.orm.Access_BD_Emprunt;
-import model.orm.Access_BD_Prelevements;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 

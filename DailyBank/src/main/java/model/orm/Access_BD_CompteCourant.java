@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.data.CompteCourant;
-import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.ManagementRuleViolation;
@@ -226,8 +225,6 @@ public class Access_BD_CompteCourant {
 	public void cloturerCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
 			DatabaseConnexionException, ManagementRuleViolation {
 		try {
-
-			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
 			Connection con = LogToDatabase.getConnexion();
 			String query = "UPDATE CompteCourant SET " + "estCloture = ? " + "WHERE idNumCompte = ?";
 			PreparedStatement pst = con.prepareStatement(query);

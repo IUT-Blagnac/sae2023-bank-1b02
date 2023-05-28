@@ -2,7 +2,6 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.CategorieOperation;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.OperationEditorPaneController;
@@ -12,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.CompteCourant;
-import model.data.Operation;
 import model.data.Prelevement;
 
 public class PrelevementEditorPane {

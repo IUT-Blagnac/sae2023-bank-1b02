@@ -1,6 +1,5 @@
 package application.control;
 
-import java.beans.EventHandler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,8 +18,6 @@ import application.tools.CategorieOperation;
 import application.tools.PairsOfValue;
 import application.tools.StageManagement;
 import application.view.OperationsManagementController;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -43,7 +40,6 @@ public class OperationsManagement {
 	private OperationsManagementController omcViewController;
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
-	private ObservableList<Operation> oListOperations;
 
 	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 

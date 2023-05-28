@@ -1,11 +1,9 @@
 package application.view;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.CompteEmpruntPane;
-import application.control.ComptesManagement;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -29,8 +27,6 @@ public class CompteEmpruntController {
 
 	//Données de la fenêtre
 	private Client clientDesComptes;
-
-	private ObservableList<CompteCourant> oListCompteCourant;
 
 	private double tauxAnnuel;
 	private double tauxEmprunt;

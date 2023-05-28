@@ -1,7 +1,5 @@
 package model.data;
 
-import java.sql.Date;
-
 /*
  * Attributs mis en public car cette classe ne fait que "véhiculer" des données.
  */
