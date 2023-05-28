@@ -1,15 +1,8 @@
-[[doctech]]
 = SAÉ 2.01 - Documentation technique
-
-[[sommaire]]
-== Sommaire
-:doctype: book
-:toc: macro
-:toc-title:
-:toclevels: 3
+:toc:
+:toc-title: Sommaire
+:toclevels: 2
 :sectanchors:
-:toc-placement!:
-
 
 [[introduction]]
 == 0- Introduction
@@ -19,7 +12,7 @@ Ce document présente la documentation technique de l'application DailyBank. Il 
 L'objectif de ce document est de présenter l'architecture de l'application, les fonctionnalités de l'application ainsi que les procédures d'installation et de mise à jour de l'application.
 
 === 0.2- Portée
-Ce document est destiné aux développeurs et aux administrateurs système. Il est à jour au 24/05/2022.
+Ce document est destiné aux développeurs et aux administrateurs système. Il est à jour au 28/05/2022.
 
 === 0.3- Références
 ==== 0.3.1- Documents de référence
@@ -214,7 +207,18 @@ Partie du diagramme de classes concernée :
 image:media/doc-tech/diagramme-creddebcompte.png"[]
 
 ==== 3.1.7- Efectuer un virement (J. M.)
+Cette fonctionalité permet d'effectuer un virement entre deux comptes.
 
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-virementcompte.png"[]
+
+Classes concernées :
+
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-virementcompte.png"[]
 
 
 ==== 3.1.7- Clôturer un compte (J. M.)
