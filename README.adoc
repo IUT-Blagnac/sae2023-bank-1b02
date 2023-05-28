@@ -63,6 +63,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 |         | Doc. Tec. V2 |  link:Gestion%20de%20projet/doc-technique-v2.adoc[lien]        |     
 |         | Code V2    |     link:DailyBank[lien]       | 
 |         | Recette V2 |     link:Gestion%20de%20projet/Cahier-De-Recette-V2.adoc[lien]       | 
+|         | javadoc V2 |     link:JavaDoc[lien]       | 
 |         | `jar` projet |          | 
 
 |===
