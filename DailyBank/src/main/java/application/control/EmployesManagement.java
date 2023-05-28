@@ -58,7 +58,7 @@ public class EmployesManagement {
 	 * getEmployes : récupération de la liste des employés
 	 * 
 	 * @param c IN : critère de recherche
-	 * @return ArrayList<Employe> : liste des employés
+	 * @return Employe : liste des employés
 	 */
 	public Employe modifierEmploye(Employe c) {
 		EmployeEditorPane cep = new EmployeEditorPane(this.primaryStage, this.dailyBankState);
@@ -86,8 +86,6 @@ public class EmployesManagement {
 	 * 
 	 * @return Employe : nouvel employé créé
 	 * 
-	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
-	 * @throws ApplicationException : erreur d'accès à la base de données
 	 */
 	public Employe nouveauEmploye() {
 		Employe employe;
@@ -125,10 +123,8 @@ public class EmployesManagement {
 	 * @param _numEmp IN : numéro de l'employé recherché
 	 * @param _debutNom IN : début du nom de l'employé recherché
 	 * @param _debutPrenom IN : début du prénom de l'employé recherché
-	 * @return ArrayList<Employe> : liste des employés correspondant aux critères de recherche
+	 * @return Employe : liste des employés correspondant aux critères de recherche
 	 * 
-	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
-	 * @throws ApplicationException : erreur d'accès à la base de données
 	 */
 	public ArrayList<Employe> getlisteEmployes(int _numEmp, String _debutNom, String _debutPrenom) {
 		ArrayList<Employe> listeEmp = new ArrayList<>();
@@ -161,8 +157,6 @@ public class EmployesManagement {
 	 * 
 	 * @return Employe : l'employé à supprimer
 	 * 
-	 * @throws DatabaseConnexionException : erreur de connexion à la base de données
-	 * @throws ApplicationException : erreur d'accès à la base de données
 	 */
 	public Employe supprimerEmploye(Employe emp){
 		

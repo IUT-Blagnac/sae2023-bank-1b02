@@ -67,7 +67,7 @@ public class ComptesManagement {
 	
 	/**
 	 * Méthode permettant de gerer les opérations d'un compte
-	 * @param compte
+	 * @param cpt Compte
 	 */
 	public void gererOperationsDUnCompte(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dailyBankState,

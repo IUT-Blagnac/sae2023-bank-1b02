@@ -25,7 +25,7 @@ public class Access_BD_Employe {
 	 * Recherche des employés paramétrée (tous/un seul par id/par nom-prénom).
 	 *
 	 * On recherche : <BR/>
-	 * - un employé précis si idNumEmp <> -1 <BR />
+	 * - un employé précis si idNumEmp -1 <BR />
 	 * - des employés par début nom/prénom si debutNom donné <BR />
 	 * - tous les employés de idAg sinon <BR/>
 	 *

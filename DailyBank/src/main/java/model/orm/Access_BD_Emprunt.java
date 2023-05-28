@@ -26,7 +26,7 @@ public class Access_BD_Emprunt{
 
 	/**
 	 * Ajout d'un Emprunt dans la base de données
-	 * @param idNumClient id du client (clé primaire)
+	 * @param emp Emprunt (clé primaire)
 	 * @throws DataAccessException               Erreur d'accès aux données (requête
 	 *                                           mal formée ou autre)
 	 * @throws DatabaseConnexionException        Erreur de connexion

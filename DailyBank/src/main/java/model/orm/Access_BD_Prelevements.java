@@ -114,7 +114,7 @@ public class Access_BD_Prelevements {
 	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
 	 *                                    formée ou autre)
 	 * @return id du prélèvement inséré
-	 * @authors Bernat & Aidan
+	 * @author Bernat et Aidan
 	 */
 	public int insertPrelevement(double montant, int date, String beneficiaire, int idNumCompte)
 			throws DatabaseConnexionException, DataAccessException {

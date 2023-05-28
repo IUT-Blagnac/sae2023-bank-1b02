@@ -1,7 +1,7 @@
 package model.data;
 
 /**
- * @@author hugob
+ * @author hugob
  * Attributs mis en public car cette classe ne fait que "véhiculer" des données.
  */
 
