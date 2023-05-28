@@ -275,7 +275,18 @@ image:media/doc-tech/diagramme-emprunt.png"[]
 
 
 ==== 3.2.3- Simuler assurance (H. B.)
+Le guichetier peut donc créer une nouvelle assurance, supprimer une assurance existante ou simplement consulter la liste des assurances d’un client.
 
+Use case de la fonctionnalité :
+
+Classes concernées :
+
+* application.view.EmpruntManagementController
+* application.control.EmpruntManagement
+* application.orm.Access_BD_Emprunt
+
+
+Partie du diagramme de classes concernée :
 
 
 ==== 3.2.4- Relevé format PDF (J. M.)
@@ -286,6 +297,11 @@ Use case de la fonctionnalité:
 image:media/doc-tech/usecase-relpdf.png"[]
 
 Classes concernées :
+
+* application.view.OperationManagementController
+* application.tools.GeneratePDF
+* model.orm.Access_BD_CompteCourant
+* model.orm.Access_BD_Client
 
 Partie du diagramme de classes concernée :
 
@@ -321,6 +337,13 @@ image:media/doc-tech/usecase-voireprelevement.png"[]
 
 Classes concernées :
 
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
+
 Partie du diagramme de classes concernée :
 
 image:media/doc-tech/diagramme-voireprelevement.png"[]
@@ -333,6 +356,13 @@ Use case de la fonctionnalité :
 image:media/doc-tech/usecase-updateprel.png"[]
 
 Classes concernées :
+
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
 
 Partie du diagramme de classes concernée :
 
@@ -365,6 +395,11 @@ Use case de la fonctionnalité :
 
 Classes concernées :
 
+* application.view.DailyBankMainFrameController
+* application.control.BatchManagement
+* model.orm.Access_BD_Prelevements
+* model.orm.Access_BD_Operation
+
 Partie du diagramme de classes concernée :
 
 ==== 3.2.10- Relevés mensuels (A. B.)
@@ -373,5 +408,11 @@ Cette fonctionnalité permet de générer des relevés mensuels pour chaque comp
 Use case de la fonctionnalité :
 
 Classes concernées :
+
+* application.view.DailyBankMainFrameController
+* application.control.BatchManagement
+* application.tools.GeneratePDF
+* model.orm.Access_BD_CompteCourant
+* model.orm.Access_BD_Client
 
 Partie du diagramme de classes concernée :
