@@ -1,4 +1,3 @@
-=== Utilisateur
 = S2.01 - Documentation utilisateur  Groupe 1B02
 :toc:
 :toc-title: Sommaire
