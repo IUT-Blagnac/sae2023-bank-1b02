@@ -1,4 +1,4 @@
-= Cahier De Recette - DailyBankApp
+= Cahier De Recette V2- DailyBankApp
 :toc:
 :toc-title: Sommaire
 
@@ -179,10 +179,104 @@ Un compte destinataire doit être sélectionné.
 |====
 
 
+==== 1.4 CRUD Prélèvements :
 
 
+|====
+
+>|Cas de test 4+|Test-01-04-01
+>|Titre 4+|Créer un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de créer un prélèvement
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Ajouter prélèvement" dans Gestion > Clients>Comptes client> Voir prélèvements. ^|Une nouvelle fenêtre de création s'ouvre.  ^| ... ^| OK
+^|C_G_C.2    ^|Remplir les champs avec les valeurs, appuyer "Ajouter". ^|La fenêtre de création se ferme, le prélèvement est créé.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.3    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de création se ferme, aucun prélèvement n'est crée.  ^| Aucune ^| OK
 
 
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-02
+>|Titre 4+|Consulter un prélèvement
+>|Objectif 4+| Consulter les prélèvements d'un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur Gestion > Clients>Comptes client> Voir prélèvements.. ^|Une nouvelle fenêtre s'ouvre avec la fenêtre de consultation.  ^| L'utilisateur est connecté. ^| OK
+
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-03
+>|Titre 4+|Modifier un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de modifier un prélèvement.
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Modifier prélèvement". ^|Une nouvelle fenêtre de modification s'ouvre.  ^| Un prélèvement est sélectionné ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Modifier". ^|La fenêtre de modification se ferme, le prélèvement est modifié.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.3    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de modification se ferme.  ^| Aucune ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-04
+>|Titre 4+|Supprimer un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un prélèvement
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Supprimer prélèvement". ^|Une nouvelle fenêtre de suppression s'ouvre.  ^| Un prélèvement est sélectionné ^| OK
+^|C_G_C.2    ^|Appuyer "Supprimer". ^|La fenêtre de suppression se ferme, le prélèvement est supprimé.  ^| ... ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de suppression se ferme, le prélèvement n'est pas supprimé.  ^| ... ^| OK
+5+|
+
+|====
+
+
+==== 1.5 Gestion des emprunts :
+
+
+|====
+
+>|Cas de test 4+|Test-01-04-05
+>|Titre 4+|Simuler un emprunt
+>|Objectif 4+| Vérifier qu'il est possible de simuler un emprunt
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Simuler emprunt". ^|Une nouvelle fenêtre de création s'ouvre.  ^| ... ^| OK
+^|C_G_C.2    ^|Appuyer "Valider". ^|La fenêtre de création se ferme, l'emprunt est créé.  ^| Les champs sont non vides et répondes aux attentes ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de création se ferme, l'emprunt n'est pas créé.  ^| ... ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-01-04-06
+>|Titre 4+|Supprimer un emprunt
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un emprunt
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Supprimer emprunt". ^|Une fenêtre de confirmation s'ouvre.  ^| Un emprunt est sélectionné ^| OK
+^|C_G_C.2    ^|Appuyer "Valider". ^|La fenêtre de confirmation se ferme, l'emprunt est supprimé.  ^| ... ^| OK
+^|C_G_C.3    ^|Appuyer "Annuler". ^|La fenêtre de confirmation se ferme, l'emprunt n'est pas supprimé.  ^| ... ^| OK
+5+|
+
+
+|====
 
 === 2. Fonctionnalités des chefs d'agence :
 [.text-justify]
@@ -282,3 +376,50 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 5+|
 
 |====
+==== 2.3 Gestion des opérations :
+
+|====
+
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Débit exeptionnel
+>|Objectif 4+| Vérifier qu'il est possible de créer un débit exeptionnel qui ignore les découverts autorisés.
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_R.1 ^|Cliquer sur le bouton "Débit exeptionnel" depuis l'interfce d'opérations. ^|La page des débit du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|C_G_R.2  ^|Rentrer un montant 50 dans le champ "Montant", puis "Valider" ^|Le nouveau solde est +50 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +50 euros
+ ^|OK
+ ^|All_G_COP.4  ^|Rentrer un montant 150 dans le champ "Montant", puis "Annuler". ^|La fenêtre se ferme et aucune opération n'est crée ^| ...
+ ^|OK
+
+  
+|====
+
+
+==== 2.3 Relevé pdf :
+
+|====
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Relevé pdf
+>|Objectif 4+| Vérifier qu'il est possible d'enregistrer une relevé au format pdf du bon compte et au bon repertoire
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.2 ^|Cliquer sur le bouton "Relevé" depuis l'interfce d'opérations. ^|La page des débit du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+ ^|All_G_C.2 ^|Selectionner le nom et ou vous voullez le sauvegarder. Et Appuyer sur le bouton enregistrer ^|Lefichier pdf est sauvegardé a l'endroit selectionnée avec le nom ^|aucune ^|OK
+^|All_G_C.3 ^|Selectionner le chemin de asuvegarde du fichier et annuler. ^|Aucun pdf n'est créé. ^|aucune ^|OK  
+|====
+
+
+
+==== 2.3 CRUD - Update prevelement :
+
+|====
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|CRUD - Update prevelement :
+>|Objectif 4+| Verifier qu'il est possible de modifier un prevelement
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.2 ^|Cliquer sur le bouton "Modifier prevelement" depuis l'interface des prevelement. ^|La page de modiffication s’affiche. ^| Un prelevement est sélectionné ^|OK
+ ^|All_G_C.2 ^|rentrer les modiffication et appuyer sur le bouton de validation.^|le prelevement doit etre modifié ^|aucune ^|OK 
+|====
+

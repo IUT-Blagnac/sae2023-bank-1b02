@@ -35,8 +35,8 @@
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <TextArea fx:id="textMontant" prefHeight="15.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                        <Button fx:id="btnVirement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVirement" text="effectuer le virement" GridPane.rowIndex="2" />
+                        <TextArea fx:id="textMontant" prefHeight="15.0" prefWidth="200.0" text="1" GridPane.rowIndex="1" />
+                        <Button fx:id="btnVirement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVirement" text="Effectuer le virement" GridPane.rowIndex="2" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="193.0" text="Montant" />
                      </children>
                   </GridPane>

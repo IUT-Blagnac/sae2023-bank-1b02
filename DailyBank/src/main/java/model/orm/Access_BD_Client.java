@@ -123,6 +123,7 @@ public class Access_BD_Client {
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, idCli);
 			ResultSet rs = pst.executeQuery();
+			System.err.println(query);
 
 			if (rs.next()) {
 				// Trouvé ...

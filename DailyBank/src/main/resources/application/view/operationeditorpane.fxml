@@ -57,7 +57,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#doAjouter" text="Valider">
+            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#doDebitExep" text="Valider">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>

@@ -214,7 +214,11 @@ public class CompteEditorPaneController {
 	 * @return true si la saisie est valide
 	 */
 	private boolean isSaisieValide() {
-
-		return true;
+		if ( this.compteEdite.debitAutorise < 0) {
+			System.out.println("debit autorisé invalide");
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

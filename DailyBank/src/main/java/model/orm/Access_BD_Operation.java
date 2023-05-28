@@ -64,6 +64,50 @@ public class Access_BD_Operation {
 			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
 		}
 	}
+	
+	/**
+	 * Recherche de toutes les opérations d'un compte dans un mois et année donné.
+	 *
+	 * @param idNumCompte id du compte dont on cherche toutes les opérations
+	 * @return Toutes les opérations du compte, liste vide si pas d'opération
+	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
+	 *                                    formée ou autre)
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 */
+	public ArrayList<Operation> getOperationsInMonth(int idNumCompte, int numMois, int numYear) throws DataAccessException, DatabaseConnexionException {
+		ArrayList<Operation> alResult = new ArrayList<>();
+		String dateBase = numMois +"/"+ numYear;
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			String query = "SELECT * FROM Operation"
+					+ " WHERE idNumCompte = ?"
+					+ " AND dateOp BETWEEN '01/" +dateBase+ "' AND '31/" +dateBase+ "'"
+					+ " ORDER BY dateOp";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, idNumCompte);
+
+			ResultSet rs = pst.executeQuery();
+			System.err.println(query);
+			
+			while (rs.next()) {
+				int idOperation = rs.getInt("idOperation");
+				double montant = rs.getDouble("montant");
+				Date dateOp = rs.getDate("dateOp");
+				Date dateValeur = rs.getDate("dateValeur");
+				int idNumCompteTrouve = rs.getInt("idNumCompte");
+				String idTypeOp = rs.getString("idTypeOp");
+
+				alResult.add(new Operation(idOperation, montant, dateOp, dateValeur, idNumCompteTrouve, idTypeOp));
+			}
+			rs.close();
+			pst.close();
+			return alResult;
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
+		}
+	}
 
 	/**
 	 * Recherche d'une opération par son id.
@@ -142,6 +186,51 @@ public class Access_BD_Operation {
 			CallableStatement call;
 
 			String q = "{call Debiter (?, ?, ?, ?)}";
+			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
+			call = con.prepareCall(q);
+			// Paramètres in
+			call.setInt(1, idNumCompte);
+			// 1 -> valeur du premier paramètre, cf. déf procédure
+			call.setDouble(2, montant);
+			call.setString(3, typeOp);
+			// Paramètres out
+			call.registerOutParameter(4, java.sql.Types.INTEGER);
+			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
+
+			call.execute();
+
+			int res = call.getInt(4);
+
+			if (res != 0) { // Erreur applicative
+				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
+						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}
+	}
+	
+	/**
+	 * Enregistrement d'un débit exeptionnel.
+	 *
+	 * - Enregistre l'opération <BR />
+	 * - Met à jour le solde du compte. <BR />
+	 *
+	 * @param idNumCompte compte débité
+	 * @param montant     montant débité
+	 * @param typeOp      libellé de l'opération effectuée (cf TypeOperation)
+	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
+	 *                                    formée ou autre)
+	 * @throws DatabaseConnexionException Erreur de connexion
+	 */
+	public void insertDebitExeptionnel(int idNumCompte, double montant, String typeOp)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+				
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call DebiterEXEPTIONNEL (?, ?, ?, ?)}";
 			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
 			call = con.prepareCall(q);
 			// Paramètres in

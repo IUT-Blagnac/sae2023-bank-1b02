@@ -16,7 +16,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Emprunt;
 import model.orm.Access_BD_CompteCourant;
+import model.orm.Access_BD_Emprunt;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
@@ -68,6 +70,7 @@ public class ComptesManagement {
 	public void doComptesManagementDialog() {
 		this.cmcViewController.displayDialog();
 	}
+	
 	/**
 	 * Méthode permettant de gerer les opérations d'un compte
 	 * @param compte
@@ -77,7 +80,18 @@ public class ComptesManagement {
 				this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
-
+	
+	/**
+	 * Méthode permettant de voir les prélèvements d'un compte
+	 * @param compte
+	 * @author BALASCH Aidan
+	 */
+	/*
+	public void voirPrelevementsDUnCompte(CompteCourant cpt) {
+		PrelevementsManagement om = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, cpt);
+		om.doPrelevementsManagementDialog();
+	}
+*/
 	/**
 	 * Méthode permettant de créer un compte
 	 * @return compte créé
@@ -126,3 +140,4 @@ public class ComptesManagement {
 		return listeCpt;
 	}
 }
+	

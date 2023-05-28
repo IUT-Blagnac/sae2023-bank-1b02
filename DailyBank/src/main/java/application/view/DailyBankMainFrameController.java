@@ -101,6 +101,10 @@ public class DailyBankMainFrameController {
 	@FXML
 	private MenuItem mitemQuitter;
 	@FXML
+	private MenuItem mitemBatchPrelAuto;
+	@FXML
+	private MenuItem mitemBatchRelMens;
+	@FXML
 	private Button btnConn;
 	@FXML
 	private Button btnDeconn;
@@ -166,11 +170,17 @@ public class DailyBankMainFrameController {
 			this.lblAdrAg.setText(a.adressePostaleAg);
 			this.lblEmpNom.setText(e.nom);
 			this.lblEmpPrenom.setText(e.prenom);
+			
 			if (this.dailyBankState.isChefDAgence()) {
 				this.mitemEmploye.setDisable(false);
+				this.mitemBatchPrelAuto.setDisable(false);
+				this.mitemBatchRelMens.setDisable(false);
 			} else {
 				this.mitemEmploye.setDisable(true);
+				this.mitemBatchPrelAuto.setDisable(true);
+				this.mitemBatchRelMens.setDisable(true);
 			}
+			
 			this.mitemClient.setDisable(false);
 			this.mitemConnexion.setDisable(true);
 			this.mitemDeConnexion.setDisable(false);
@@ -186,6 +196,8 @@ public class DailyBankMainFrameController {
 			this.mitemEmploye.setDisable(true);
 			this.mitemConnexion.setDisable(false);
 			this.mitemDeConnexion.setDisable(true);
+			this.mitemBatchPrelAuto.setDisable(true);
+			this.mitemBatchRelMens.setDisable(true);
 			this.btnConn.setVisible(true);
 			this.btnDeconn.setVisible(false);
 		}
@@ -214,6 +226,19 @@ public class DailyBankMainFrameController {
 				"Livraison prévue\nEn juin " + current_date.getYear(), AlertType.INFORMATION);
 		*/
 		this.dbmfDialogController.gestionEmployes();
+	}
+	
+	/**
+	 * Action menu batch, execute le batch des prélèvements automatiques 
+	 */
+	@FXML
+	private void doBatchPrelAuto() {
+		this.dbmfDialogController.batchPrelAutoExecute();
+	}
+	
+	@FXML
+	private void doBatchRelMens() {
+		this.dbmfDialogController.batchRelMensExecute();
 	}
 
 	/*

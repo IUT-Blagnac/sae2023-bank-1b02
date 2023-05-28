@@ -1,11 +1,13 @@
 package application.view;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
 import application.control.OperationsManagement;
 import application.control.VirementManagement;
+import application.tools.GeneratePDF;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
@@ -27,7 +29,7 @@ public class OperationsManagementController {
 
 	// Contrôleur de Dialogue associé à OperationsManagementController
 	private OperationsManagement omDialogController;
-	
+
 	private VirementManagement vmDialogController;
 
 	// Fenêtre physique ou est la scène contenant le fichier xml contrôlé par this
@@ -48,6 +50,7 @@ public class OperationsManagementController {
 		this.compteConcerne = compte;
 		this.configure();
 	}
+
 	/**
 	 * Configuration de la fenêtre et de ses composants
 	 */
@@ -60,6 +63,7 @@ public class OperationsManagementController {
 		this.updateInfoCompteClient();
 		this.validateComponentState();
 	}
+
 	/**
 	 * Affiche la fenêtre de gestion des opérations
 	 */
@@ -86,6 +90,12 @@ public class OperationsManagementController {
 	private Button btnDebit;
 	@FXML
 	private Button btnCredit;
+	@FXML
+	private Button btnAutre;
+	@FXML
+	private Button btnDebitExep;
+	@FXML
+	private Button btnRelevePdf;
 
 	@FXML
 	private void doCancel() {
@@ -104,13 +114,15 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
+
 	/**
 	 * Enregistre un crédit sur le compte courant
+	 * 
 	 * @author SOLDEVILA Bernat
 	 */
 	@FXML
 	private void doCredit() {
-		
+
 		Operation op = this.omDialogController.enregistrerCredit();
 		if (op != null) {
 			this.updateInfoCompteClient();
@@ -121,29 +133,56 @@ public class OperationsManagementController {
 	// Non implémenté => désactivé
 	@FXML
 	private void doAutre() {
-		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte, this.compteConcerne);
+		this.vmDialogController = new VirementManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte,
+				this.compteConcerne);
 		this.vmDialogController.doVirementManagementDialog();
+		this.updateInfoCompteClient();
+		this.validateComponentState();
+	}
+
+	@FXML
+	private void doDebitExep() {
+
+		Operation op = this.omDialogController.enregistrerDebitExeptionnel();
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
+	}
+
+	@FXML
+	private void doRelevePdf() {
+		LocalDate currentdate = LocalDate.now();
+		int currentMonth = currentdate.getMonthValue();
+		int currentYear = currentdate.getYear();
+		
+		GeneratePDF.genererRelevePdf(clientDuCompte, compteConcerne, currentMonth, currentYear);
 	}
 
 	/**
 	 * valide l'état des composants de la fenêtre
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
+		this.btnDebitExep.setDisable(true);
 
- 		// modifié par jimmy
+		// modifié par jimmy
 		if (compteConcerne.estCloture.equals("O")) {
 			this.btnCredit.setDisable(true);
 			this.btnDebit.setDisable(true);
-		}
-		else {
+			this.btnAutre.setDisable(true);
+			
+		} else {
 			this.btnDebit.setDisable(false);
 			this.btnCredit.setDisable(false);
+			if (this.dailyBankState.isChefDAgence()) {
+				this.btnDebitExep.setDisable(false);
+			}
 		}
 
 	}
+
 	/**
 	 * Met à jour les informations affichées sur le client et le compte courant
 	 */

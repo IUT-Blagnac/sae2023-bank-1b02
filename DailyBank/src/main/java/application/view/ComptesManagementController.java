@@ -3,7 +3,11 @@ package application.view;
 import java.util.ArrayList;
 
 import application.DailyBankState;
+import application.control.ClientsManagement;
+import application.control.CompteEmpruntPane;
 import application.control.ComptesManagement;
+import application.control.EmpruntManagement;
+import application.control.PrelevementsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Emprunt;
 import model.orm.Access_BD_CompteCourant;
 
 public class ComptesManagementController {
@@ -62,20 +67,6 @@ public class ComptesManagementController {
 		this.validateComponentState();
 	}
 
-	/**
-	 * Affichage des comptes du client
-	 */
-	public void displayDialog() {
-		this.primaryStage.showAndWait();
-	}
-
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
-		this.doCancel();
-		e.consume();
-		return null;
-	}
-
 	// Attributs de la scene + actions
 
 	@FXML
@@ -90,6 +81,10 @@ public class ComptesManagementController {
 	private Button btnSupprCompte;
 	@FXML
 	private Button btnCloturerCompte;
+	@FXML
+	private Button btnVoirPrel;
+	@FXML
+	private Button btnSimulEmpr;
 
 	/**
 	 * Fermeture de la fenêtre
@@ -119,6 +114,24 @@ public class ComptesManagementController {
 	@FXML
 	private void doModifierCompte() {
 	}
+	
+	/**
+	 * Voir prélèvements du compte sélectionné
+	 * @author Bernat
+	 */
+	@FXML
+	private void doVoirPrelevement() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		PrelevementsManagement cm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,this.clientDesComptes, this.oListCompteCourant.get(selectedIndice));
+		cm.doPrelevementsManagementDialog();
+	}
+	
+	@FXML
+	private void doVoirEmprunts() {
+		
+		EmpruntManagement  em = new EmpruntManagement(primaryStage, dailyBankState, clientDesComptes); 
+		em.doEmpruntManagementDialog();
+	}
 
 	/**
 	 * suppression du compte sélectionné
@@ -140,15 +153,15 @@ public class ComptesManagementController {
 		if (selectedIndice >= 0) {
 			try {
 				cc.cloturerCompteCourant(cpt);
-				//disable the button on list 
 				this.lvComptes.getSelectionModel();
+				
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
-		
+		this.loadList();
 	}
 /**
  * Ouverture d'une fenêtre de création d'un nouveau compte
@@ -161,6 +174,7 @@ public class ComptesManagementController {
 			this.oListCompteCourant.add(compte);
 		}
 	}
+	
 
 	/**
 	 * Chargement de la liste des comptes du client 
@@ -173,6 +187,26 @@ public class ComptesManagementController {
 	}
 	
 	/**
+	 * Mise à jour des informations des comptes
+	 */
+	
+	/**
+	 * Affichage des comptes du client
+	 */
+	public void displayDialog() {
+		this.primaryStage.showAndWait();
+	}
+
+	// Gestion du stage
+	private Object closeWindow(WindowEvent e) {
+		this.doCancel();
+		e.consume();
+		return null;
+	}
+
+
+
+	/**
 	 * Validation de l'état des composants
 	 */
 	private void validateComponentState() {
@@ -181,18 +215,28 @@ public class ComptesManagementController {
 		this.btnSupprCompte.setDisable(true);
 		this.btnCloturerCompte.setDisable(true);
 		this.btnVoirOpes.setDisable(true);
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+		this.btnVoirPrel.setDisable(true);
 		
-		if (cpt.estCloture.equals("O")) {
-		btnCloturerCompte.setDisable(true);
-		}
-		else {
-			btnCloturerCompte.setDisable(false);
-		}
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+			
+			
 			this.btnVoirOpes.setDisable(false);
-
+			if (cpt.estCloture.equals("O")) {
+				btnCloturerCompte.setDisable(true);
+				btnVoirPrel.setDisable(true);
+			}
+			else {
+				btnVoirPrel.setDisable(false);
+				
+				if (cpt.solde != 0) {
+					this.btnCloturerCompte.setDisable(true);
+				}
+				else {
+					btnCloturerCompte.setDisable(false);
+				}
+			}
 		} else {
 			this.btnVoirOpes.setDisable(true);
 		}

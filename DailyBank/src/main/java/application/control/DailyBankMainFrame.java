@@ -129,4 +129,20 @@ public class DailyBankMainFrame extends Application {
 		EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dailyBankState);
 		cm.doEmployeManagementDialog();
 	}
+	
+	/**
+	 * Lance le batch de prévèvement automatique
+	 */
+	public void batchPrelAutoExecute() {
+		BatchManagement cm = new BatchManagement(this.primaryStage, this.dailyBankState);
+		cm.efectuerPrelevAutomatiques();
+	}
+	
+	/**
+	 * Lance le batch des relevés mensuels
+	 */
+	public void batchRelMensExecute() {
+		BatchManagement cm = new BatchManagement(this.primaryStage, this.dailyBankState);
+		cm.genererRelevesMensuels();
+	}
 }

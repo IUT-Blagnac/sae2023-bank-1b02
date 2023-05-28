@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="350.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.DailyBankMainFrameController">
+<BorderPane prefHeight="350.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.DailyBankMainFrameController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
@@ -37,6 +37,12 @@
                         <MenuItem fx:id="mitemEmploye" disable="true" mnemonicParsing="false" onAction="#doEmployeOption" text="Employés" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Batch">
+                     <items>
+                        <MenuItem fx:id="mitemBatchPrelAuto" disable="true" mnemonicParsing="false" onAction="#doBatchPrelAuto" text="Efect. prélèvs. autom." />
+                        <MenuItem fx:id="mitemBatchRelMens" mnemonicParsing="false" onAction="#doBatchRelMens" text="Gen. reléves mensuels" />
+                     </items>
+                  </Menu>
                 <Menu mnemonicParsing="false" text="?">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#doActionAide" text="Aide" />

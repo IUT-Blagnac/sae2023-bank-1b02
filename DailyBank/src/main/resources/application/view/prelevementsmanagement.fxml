@@ -12,62 +12,39 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PrelevementsManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
             <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER" prefHeight="200.0">
+                  <GridPane alignment="CENTER">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" text="Enregistrer Débit">
+                        <Button fx:id="btnAjout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAjout" text="Ajouter prélèvement" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
                         </Button>
-                        <Button fx:id="btnCredit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" text="Enregistrer Crédit" GridPane.rowIndex="1">
+                        <Button fx:id="btnModifier" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifier" text="Modifier prélèvement" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
                         </Button>
-                        <Button fx:id="btnAutre" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAutre" text="Effectuer un virement" GridPane.rowIndex="2">
+                        <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer prélèvement" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btnRelevePdf" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doRelevePdf" text="Relevé pdf" GridPane.rowIndex="4">
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btnDebitExep" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebitExep" text="Débit exceptionnel" GridPane.rowIndex="3">
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
                         </Button>
                      </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
                   </GridPane>
                </children>
                <BorderPane.margin>
@@ -91,7 +68,7 @@
             </HBox>
          </bottom>
          <center>
-            <ListView fx:id="lvOperations" prefHeight="200.0" prefWidth="200.0" styleClass="courrierNew" BorderPane.alignment="CENTER">
+            <ListView fx:id="lvPrelevements" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
                </BorderPane.margin>

@@ -21,7 +21,7 @@ public class Access_BD_Employe {
 
 	public Access_BD_Employe() {
 	}
-	
+
 	/**
 	 * Recherche des employés paramétrée (tous/un seul par id/par nom-prénom).
 	 *
@@ -75,7 +75,7 @@ public class Access_BD_Employe {
 				pst = con.prepareStatement(query);
 				pst.setInt(1, idAg);
 			}
-			
+
 			System.err.println(query);
 
 			ResultSet rs = pst.executeQuery();
@@ -96,10 +96,10 @@ public class Access_BD_Employe {
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Client, Order.SELECT, "Erreur accès", e);
 		}
-		
+
 		return alResult;
 	}
-	
+
 
 	/**
 	 * Recherche d'un employé par son login / mot de passe.
@@ -161,7 +161,7 @@ public class Access_BD_Employe {
 			throw new DataAccessException(Table.Employe, Order.SELECT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * Insertion d'un employé.
 	 *
@@ -217,7 +217,7 @@ public class Access_BD_Employe {
 			throw new DataAccessException(Table.Client, Order.INSERT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * @author hugob
 	 * 
@@ -265,7 +265,7 @@ public class Access_BD_Employe {
 			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * @author hugob
 	 * 
@@ -286,14 +286,14 @@ public class Access_BD_Employe {
 			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException   {
 		try {
 			Connection con = LogToDatabase.getConnexion();
-			
+
 			String query = "DELETE FROM Employe" +  " WHERE idEmploye = " + "? ";
-			
+
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, employe.idEmploye);
-			
+
 			System.err.println(query);
-			
+
 			int result = pst.executeUpdate();
 			pst.close();
 			if (result != 1) {
@@ -301,9 +301,9 @@ public class Access_BD_Employe {
 				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
 						"Delete anormal (Supression de moins ou plus d'une ligne)", null, result);
 			}
-			
+
 			con.commit();
-			
+
 		}catch (SQLException e) {
 			throw new DataAccessException(Table.Employe, Order.DELETE, "Erreur accès", e);
 		}
