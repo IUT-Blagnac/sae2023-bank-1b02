@@ -137,8 +137,15 @@ L'emprunt va être ajouté au compte de l'utilisateur, il pourra être modifié 
 
 === 2.2- Guichetier	
 ==== 2.2.1- Relevé PDF (JM)
-Pour générer un relevé PDF, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton générer un relevé PDF.
+Pour générer un relevé PDF, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton relevé PDF.
+
+image:media/gestionoperationpdf.png"[image,width=600,height=400]
+
 L'application va ouvrir une fenêtre pour choisir la route de sauvegarde, il va alors générer un fichier PDF dans le dossier.
+image:media/savepdf.png"[image,width=600,height=400]
+
+image:media/pdf1.png"[image,width=600,height=400] 
+image:media/pdf2.png"[image,width=600,height=400]
 
 ==== 2.2.2- Create prélèvement (BS)	
 La création d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients.  
@@ -181,8 +188,8 @@ Une fois le client trouvé, il faut cliquer sur le bouton Comptes client.
 
 image:media/clientcompte.png"[image,width=600,height=400] 
 
-La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. 
-Il faut maintenant cliquer sur le bouton "Voir prélèvements". 
+La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu.
+Il faut maintenant cliquer sur le bouton "Voir prélèvements".
 
 image:media/voirprelevements.PNG"[image,width=600,height=400] 
 
@@ -190,8 +197,10 @@ Une fois la fenêtre ouverte, vous verez les diférents prélèvements du compte
 
 ==== 2.3.4- Update prélèvement (JM)
 La modification d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients.
+
 Sur un compte client, il faut cliquer sur le bouton "Voir prélèvements" puis modifier le prélèvement souhaité.
 
+image:media/modifprevelement.png"[image,width=600,height=400] 
 
 ==== 2.3.5- Delete prélèvement (BS)	
 La suppression d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients. 
@@ -199,7 +208,7 @@ La suppression d’un prélèvement se fait à partir de la page de gestion des 
 La page de gestion des comptes clients s’ouvre alors. Il faut ensuite rechercher le client concerné en cliquant sur le bouton Rechercher. 
 
 image:media/rechercheclient.png"[image,width=600,height=400] 
- 
+
 Une fois le client trouvé, il faut cliquer sur le bouton Comptes client. 
 
 image:media/clientcompte.png"[image,width=600,height=400] 
