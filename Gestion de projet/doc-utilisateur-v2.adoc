@@ -196,7 +196,7 @@ image:media/clientcompte.png"[image,width=600,height=400] +
  +
 La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. +
 Il faut maintenant cliquer sur le bouton "Voir prélèvements". +
-image:media/voirprelevements.png"[image,width=600,height=400] +
+image:media/voirprelevements.PNG"[image,width=600,height=400] +
  +
  Une fois la fenêtre ouverte, il faut séctionner le prélèvement voulu puis cliquer sur le bouton "Supprimer prélèvement" +
 image:media/supprimerprelevement.png"[image,width=600,height=400] +
