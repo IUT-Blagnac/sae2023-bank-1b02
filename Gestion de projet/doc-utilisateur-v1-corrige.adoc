@@ -11,7 +11,7 @@ S2.01 - Documentation technique  Groupe 1B02
 = Sommaire
 . Présentation de l'appplication
 .  Installation / Utilisation
-. Fonctionnement
+. Fonctionnement V1
 .. Chef d’agence
 ... Créer des employés (A. B.)
 ... Voir les employés (A. B.)
@@ -22,12 +22,21 @@ S2.01 - Documentation technique  Groupe 1B02
 ... Créditer / Débiter sur un compte (B. S.)
 ... Effectuer un virement (J. M.)
 ... Clôturer un compte (J. M.)
+. Fonctionnement V2
+.. Chef d’agence
+... Débit exceptionnel (B.S)	
+... Simuler emprunt (H.B.)	
+... Simuler assurance (H.B)	
+.. Guichetier	
+... Relevé PDF (JM)	
+... Create prélèvement (BS)	
+... Read prélèvement (AB)	
+... Update prélèvement (JM)	
+... Delete prélèvement (BS)	
+.. Batch	
+... Prélèvements automatiques (AB)	
+... Relevé mensuels (AB)
 . Résultats produits
-
-- Page de garde, Sommaire ✓
-- Présentation générale, rôle de l' application ✓
-- Installation utilisation ✓
-- Fonctionnement - chaque étudiant identifie sa partie -  Résultats produits avec jeux d'essai commentés ✓
 
 
 = Présentation de  l'appplication
@@ -118,5 +127,21 @@ Lorsque vous voulez clôturer un compte bancaire d’un utilisateur, rendez vous
 image:media/cloturercompte.png"[image,width=600,height=400] +
  +
  
-= Résultats produits
+ 
+= Fonctionnement V2
+== Chef d’agence
+=== Débit exceptionnel (B.S)	
+=== Simuler emprunt (H.B.)	
+=== Simuler assurance (H.B)	
+== Guichetier	
+=== Relevé PDF (JM)	
+=== Create prélèvement (BS)	
+=== Read prélèvement (AB)	
+=== Update prélèvement (JM)	
+=== Delete prélèvement (BS)	
+== Batch	
+=== Prélèvements automatiques (AB)	
+=== Relevé mensuels (AB)
+
+=== Résultats produits
 Voir cahier de recettes.
