@@ -1,12 +1,14 @@
 [.text-center]
-image:media/logo.png"[image,width=124,height=124] +
-S2.01 - Documentation technique  Groupe 1B02 
+image:media/logo.png"[image,width=140,height=124] +
+
+= S2.01 - Documentation utilisateur  Groupe 1B02 
 [.text-center]
 = SAÉ 2.01
 [.text-center]
 === Documentation 
 [.text-center]
-=== technique
+=== Utilisateur
+---
 
 = Sommaire
 . Présentation de l'appplication
