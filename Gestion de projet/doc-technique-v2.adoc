@@ -23,6 +23,11 @@ Ce document est destiné aux développeurs et aux administrateurs système. Il e
 
 === 0.3- Références
 ==== 0.3.1- Documents de référence
+
+* link:./GANTT-V2-REALISE.pdf[GANTT]
+* link:./Cahier-De-Recette-V2.adoc[Cahier de recette]
+* link:./doc-utilisateur-v1-corrige.adoc[Documentation utilisateur]
+
 // Lien doc utilisateur
 // Lien cahier de recette
 
@@ -60,6 +65,7 @@ La version 0 de l'application a ensuite été améliorée, ce qui a engendré la
 
 
 Les nouvelles fonctionnalités implémentées à ajouter aux anciennes  sont les suivantes : 
+
 * Pour un guichetier, créer un nouveau compte, clôturer un compte, créditer un compte et effectuer un virement entre comptes.
 * Pour un chef d'agence, créer un profil d'employé, afficher un profil d'employé, modifier un profil d'employé et supprimer un profil d'employé.
 
@@ -94,7 +100,7 @@ Pour installer l'application, il faut suivre les étapes suivantes :
 image:media/doc-tech/architecture1.png"[]
 image:media/doc-tech/architecture2.png"[]
 
-Les deux images ci-dessus représentent la structure de fichiers de l'application. La version de Java est Java 11 et la base de données de l'application est développée sous Oracle SQL 22.2. Le script de la BD disponible ici : lien.
+Les deux images ci-dessus représentent la structure de fichiers de l'application. La version de Java est Java 11 et la base de données de l'application est développée sous Oracle SQL 22.2. Le script de la BD disponible ici : link:../Resources/SCRIPT-BD.sql[Lien].
 
 
 [[fonctionnalites]]
@@ -393,6 +399,8 @@ Cette fonctionnalité permet de débiter automatiquement les prélèvements du j
 
 Use case de la fonctionnalité :
 
+image:media/doc-tech/usecase-prelauto.png"[]
+
 Classes concernées :
 
 * application.view.DailyBankMainFrameController
@@ -402,10 +410,14 @@ Classes concernées :
 
 Partie du diagramme de classes concernée :
 
+image:media/doc-tech/diagramme-prelauto.png"[]
+
 ==== 3.2.10- Relevés mensuels (A. B.)
 Cette fonctionnalité permet de générer des relevés mensuels pour chaque compte. Elle s'execute manuellement par le chef d'agence.
 
 Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-relmens.png"[]
 
 Classes concernées :
 
@@ -416,3 +428,5 @@ Classes concernées :
 * model.orm.Access_BD_Client
 
 Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-relmens.png"[]
