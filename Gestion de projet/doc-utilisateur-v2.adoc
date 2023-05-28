@@ -1,0 +1,219 @@
+[.text-center]
+image:media/logo.png"[image,width=124,height=124] +
+S2.01 - Documentation technique  Groupe 1B02 
+[.text-center]
+= SAÉ 2.01
+[.text-center]
+=== Documentation 
+[.text-center]
+=== technique
+
+= Sommaire
+. Présentation de l'appplication
+.  Installation / Utilisation
+. Fonctionnement V1
+.. Chef d’agence
+... Créer des employés (A. B.)
+... Voir les employés (A. B.)
+... Modifier les employés (H. B.)
+... Effacer les employés (H. B.)
+.. Guichetier
+... Créer un compte (B. S.)
+... Créditer / Débiter sur un compte (B. S.)
+... Effectuer un virement (J. M.)
+... Clôturer un compte (J. M.)
+. Fonctionnement V2
+.. Chef d’agence
+... Débit exceptionnel (B.S)	
+... Simuler emprunt (H.B.)	
+... Simuler assurance (H.B)	
+.. Guichetier	
+... Relevé PDF (JM)	
+... Create prélèvement (BS)	
+... Read prélèvement (AB)	
+... Update prélèvement (JM)	
+... Delete prélèvement (BS)	
+.. Batch	
+... Prélèvements automatiques (AB)	
+... Relevé mensuels (AB)
+. Résultats produits
+
+
+= Présentation de  l'appplication
+La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
+Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque.
+ Cette application sera déployée dans les 100 agences que compte son réseau.
+	Le rôle de l’application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d’un guichet de la banque.
+
+
+=  Installation / Utilisation
+Tout d’abord nous allons devoir nous rendre sur le repository ou se trouve l’application, sur  github et récupérer la dernière version de l’application disponible. Il faut également prendre en compte qu’il vous faudra une version récente de java. 
+
+Une fois installée vous disposez d’un fichier dailyBank-VX.Jar, cliquez dessus et attendez que la page de connexion s’ouvre. +
+
+image:media/icon.png"[image,width=150,height=150] +
+ +
+ A présent, dès que vous cliquez sur le fichier de l’application vous pourrez accéder à l’application, appuyez sur Connexion pour débuter. +
+  +
+image:media/principal.png"[image,width=400,height=200] +
+ +
+
+= Fonctionnement
+== Chef d’agence
+==== Créer des employés (A. B.)
+Pour la création d’un employé, il est nécessaire de s’identifier en tant que chef d’agence. Une fois sur l’application, on doit aller sur Gestion -> Employés et sur la nouvelle fenêtre, appuyez “Nouveau employé”. Une autre fenêtre va apparaître, après avoir rempli les champs, il suffit d’appuyer sur “Ajouter” pour créer l’employé. 
+image:media/employe.png"[image,width=400,height=200] +
+image:media/nouvelemploye.png"[image,width=400,height=200]  image:media/ajouteremploye.png"[image,width=400,height=200]
+ +
+ +
+==== Voir les employés (A. B.)
+Pour visualiser la liste d’employés, il est nécessaire de s’identifier en tant que chef d’agence. Une fois sur l’application, on doit aller sur Gestion -> Employés. Il est possible de filtrer les résultats avec le numéro, nom et prénom. Une fois remplit, il suffit de cliquer sur “Rechercher” pour tout voir.
+
+==== Modifier les employés (H. B.) 
+Pour modifier un employé de la liste, s’identifier en tant que chef d’agence puis aller dans Gestion -> Employés. Une fois la page de gestion des employés ouverte, cliquer sur “Rechercher” puis sélectionner l’employé à modifier. Cliquer sur le bouton
+“Modifier employé”, puis modifier les champs désirés et finir en appuyant sur “Modifier”. +
+
+image:media/employe.png"[image,width=400,height=200] image:media/rechercheclient.png"[image,width=400,height=200] +
+ +
+image:media/modifemploye.png"[image,width=400,height=200] image:media/modifierlogin.png"[image,width=400,height=200] +
+ +
+
+
+==== Effacer les employés (H. B.) 
+Pour effacer un employé, s’identifier en tant que chef d’agence puis aller dans Gestion -> Employés. Une fois la page de gestion des employés ouverte, cliquer sur “Rechercher” puis sélectionner l’employé à supprimer. Ensuite, cliquer sur le bouton “Effacer employé” puis, dans la nouvelle page qui s’ouvre, cliquer sur le bouton “Supprimer”.
+image:media/employe.png"[image,width=400,height=200] image:media/rechercheclient.png"[image,width=400,height=200] +
+ image:media/effaceremploye.png"[image,width=400,height=200] image:media/modifierlogin.png"[image,width=400,height=200] +
+  +
+  +
+
+
+== Guichetier
+==== Créer un compte (B. S.) 
+Afin de créer un compte, commencez par cliquer sur bouton du menu Gestion puis Clients. +
+ Appuyez tout d’abord sur Rechercher puis sélectionnez le client concerné. Par la suite appuyez sur le bouton "Comptes client".
+ +
+ image:media/client.png"[image,width=600,height=400] + 
+ +
+À partir de cette fenêtre vous pouvez observer les détails des comptes du client, pour continuer la création du nouveau compte appuyez sur Nouveau compte. +
+ +
+ Avec l’ouverture de cette fenêtre vous pouvez saisir le découvert autorisé ainsi que le solde au moment du premier dépôt dans les champs dédiés. Une fois les champs complétés appuyez sur le bouton Ajouter, si il n’y à aucun problème le compte apparaîtra sur la fenêtre précédente. +
+ image:media/gestioncompte.png"[image,width=400,height=200] +
+
+
+==== Créditer / Débiter sur un compte (B. S.)
+
+En repartant depuis le début, cliquez sur bouton du menu Gestion puis Clients, Vous devez avoir cette fenêtre: +
+Appuyez tout d’abord sur Rechercher puis sélectionnez le client concerné. Par la suite appuyez sur le bouton "Comptes client". +
+image:media/clientcompte.png"[image,width=600,height=400] +
+ +
+ Sur cette fenêtre, sélectionnez le compte concerné puis cliquez sur le bouton Voir opérations.
+image:media/gestionope.png"[image,width=600,height=400] +
+ +
+À partir de cette fenêtre sélectionnez soit Enregistrer Débit ou alors Enregistrer Crédit, puis à partir de l’interface qui s’est ouverte vous pouvez sélectionner le type d’opération ainsi que le montant de l’opération.
+image:media/enregistrerope.png"[image,width=600,height=400] +
+ +
+Pour effectuer l’opération, cliquez sur le bouton Effectuer Crédit.
+
+==== Effectuer un virement (J. M.)
+Pour effectuer un virement, il faut voir les opérations d’un compte en banque d’un utilisateur, puis cliquer sur le bouton effectuer un virement, +
+image:media/effectuervirement.png"[image,width=600,height=400] +
+ +
+ Dans la nouvelle fenêtre il suffit de sélectionner le compte crédité (1) et saisir le montant dans la zone de texte (2) puis cliquer sur effectuer un virement (3) +
+image:media/virement.png"[image,width=600,height=400] +
+ +
+
+==== Clôturer un compte (J. M.)
+Lorsque vous voulez clôturer un compte bancaire d’un utilisateur, rendez vous dans la liste de ses comptes et cliquez sur le bouton clôturer. +
+image:media/cloturercompte.png"[image,width=600,height=400] +
+ +
+ 
+ 
+= Fonctionnement V2
+À noter que les fonctionnalités de la V1 sont toujours présentes dans la V2. +
+
+== Chef d’agence
+=== Débit exceptionnel (B.S)
+Le débit exceptionnel est une opération qui permet de débiter un compte client au delà de son découvert autorisé. + 
+ +
+Afin de pouvoir effectuer un débit exceptionnel, il faut tout d’abord se rendre sur la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients. +
+La page de gestion des comptes clients s’ouvre alors. Il faut ensuite rechercher le client concerné en cliquant sur le bouton Rechercher. +
+image:media/rechercheclient.png"[image,width=600,height=400] +
+ +
+Une fois le client trouvé, il faut cliquer sur le bouton Comptes client. +
+image:media/clientcompte.png"[image,width=600,height=400] +
+ +
+La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. +
+Il faut maintenant cliquer sur le bouton Voir opérations. Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Débit exeptionnel" +
+image:media/operations.png"[image,width=600,height=400] +
+ +
+Une fois la fenêtre ouverte, il faut saisir le montant du débit exceptionnel dans la zone de texte prévue à cet effet ainsi que le type d'opération faite. +
+image:media/debitexeptionnel.png"[image,width=600,height=400] +
+ +
+Cliquez sur le bouton Effectuer débit, si le montant est valide l'opération va s'effectuer sinon une erreur va s'afficher. +
+image:media/debitexeptionnel2.png"[image,width=600,height=400] +
+ +
+
+
+=== Simuler emprunt (H.B.)	
+=== Simuler assurance (H.B)	
+== Guichetier	
+=== Relevé PDF (JM)	
+=== Create prélèvement (BS)	
+La création d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients. + 
+
+La page de gestion des comptes clients s’ouvre alors. Il faut ensuite rechercher le client concerné en cliquant sur le bouton Rechercher. +
+image:media/rechercheclient.png"[image,width=600,height=400] +
+ +
+Une fois le client trouvé, il faut cliquer sur le bouton Comptes client. +
+image:media/clientcompte.png"[image,width=600,height=400] +
+ +
+La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. +
+Il faut maintenant cliquer sur le bouton "Voir prélèvements". +
+image:media/voirprelevements.png"[image,width=600,height=400] +
+ +
+ Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Ajouter prélèvement" +
+image:media/creerprelevement.png"[image,width=600,height=400] +
+ +
+Une fois la fenêtre ouverte, il faut saisir le montant du prélèvement, la date recurrente ainsi que le bénéficiaire dans les zones de texte prévue à cet effet. +
+image:media/creerprelevement2.png"[image,width=600,height=400] +
+ +
+Cliquez sur le bouton "Ajouter prélèvement", si le montant et la date sont valides et qu'un beneficiaire est saisi l'opération va s'effectuer sinon les champs vont s'afficher en rouge et l'operation ne va pas s'efectuer. +
+image:media/creerprelevement3.png"[image,width=600,height=400] +
+ +
+
+=== Read prélèvement (AB)	
+=== Update prélèvement (JM)	
+=== Delete prélèvement (BS)	
+La suppression d’un prélèvement se fait à partir de la page de gestion des comptes clients. Pour cela, il faut se rendre sur le menu Gestion puis Clients. +
+
+La page de gestion des comptes clients s’ouvre alors. Il faut ensuite rechercher le client concerné en cliquant sur le bouton Rechercher. +
+image:media/rechercheclient.png"[image,width=600,height=400] +
+ +
+Une fois le client trouvé, il faut cliquer sur le bouton Comptes client. +
+image:media/clientcompte.png"[image,width=600,height=400] +
+ +
+La page de gestion des comptes du client s’ouvre alors. Il faut ensuite selectionner le compte concerné en cliquant sur le compte voulu. +
+Il faut maintenant cliquer sur le bouton "Voir prélèvements". +
+image:media/voirprelevements.png"[image,width=600,height=400] +
+ +
+ Une fois la fenêtre ouverte, il faut séctionner le prélèvement voulu puis cliquer sur le bouton "Supprimer prélèvement" +
+image:media/supprimerprelevement.png"[image,width=600,height=400] +
+  +
+  Une fois la fenêtre ouverte, il faut cliquer sur le bouton "Supprimer" si c'est bien le compte à supprimer +
+image:media/supprimerprelevement2.png"[image,width=600,height=400] +
+  +
+Veuiilez noter que la suppréssion d'un prélèvement est définitive. +
+  +
+
+== Batch	
+=== Prélèvements automatiques (AB)	
+=== Relevé mensuels (AB)
+
+---
+=== Annulation
+L'annulation à tout moment d'une action va simplement fermer la fenêtre en cours et revenir à la fenêtre précédente. +
+
+== Résultats produits
+Voir cahier de recettes. +
+-> link:Cahier-De-Recette-V2.adoc[Cahier de recettes] +
+ +
