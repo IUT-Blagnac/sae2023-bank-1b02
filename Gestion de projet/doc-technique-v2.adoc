@@ -221,7 +221,7 @@ Partie du diagramme de classes concernée :
 image:media/doc-tech/diagramme-virementcompte.png"[]
 
 
-==== 3.1.7- Clôturer un compte (J. M.)
+==== 3.1.8- Clôturer un compte (J. M.)
 Lorsque le guichetier clôture un compte, on ne peut plus effectuer d’opérations sur ce compte mais il reste dans la base de données. Pour plus de détails, voir doc utilisateur.
 
 Use case de la fonctionnalité :
@@ -343,7 +343,7 @@ Cette fonctionnalité permet d’afficher la liste des prélèvements d’un com
 
 Use case de la fonctionnalité :
 
-image:media/doc-tech/usecase-voireprelevement.png"[]
+image:media/doc-tech/usecase-voirprelevement.png"[]
 
 Classes concernées :
 
@@ -356,14 +356,14 @@ Classes concernées :
 
 Partie du diagramme de classes concernée :
 
-image:media/doc-tech/diagramme-voireprelevement.png"[]
+image:media/doc-tech/diagramme-prelevement.png"[]
 
 ==== 3.2.7- Modifier un prélèvement (J. M.)
 Cette fonctionnalité permet de modifier un prélèvement existant.
 
 Use case de la fonctionnalité :
 
-image:media/doc-tech/usecase-updateprel.png"[]
+image:media/doc-tech/diagramme-prelevement.png"[]
 
 Classes concernées :
 
@@ -414,7 +414,7 @@ Classes concernées :
 
 Partie du diagramme de classes concernée :
 
-image:media/doc-tech/diagramme-prelauto.png"[]
+image:media/doc-tech/diagramme-prelevement.png"[]
 
 ==== 3.2.10- Relevés mensuels (A. B.)
 Cette fonctionnalité permet de générer des relevés mensuels pour chaque compte. Elle s'execute manuellement par le chef d'agence.
@@ -433,4 +433,4 @@ Classes concernées :
 
 Partie du diagramme de classes concernée :
 
-image:media/doc-tech/diagramme-relmens.png"[]
+image:media/doc-tech/diagramme-relpdf.png"[]
