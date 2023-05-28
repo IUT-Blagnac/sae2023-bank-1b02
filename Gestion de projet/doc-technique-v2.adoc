@@ -363,7 +363,7 @@ Cette fonctionnalité permet de modifier un prélèvement existant.
 
 Use case de la fonctionnalité :
 
-image:media/doc-tech/diagramme-prelevement.png"[]
+image:media/doc-tech/usecase-modifierprelevement.png"[]
 
 Classes concernées :
 
@@ -376,7 +376,7 @@ Classes concernées :
 
 Partie du diagramme de classes concernée :
 
-image:media/doc-tech/diagramme-updateprel.png"[]
+image:media/doc-tech/diagramme-prelevement.png"[]
 
 ==== 3.2.8- Supprimer un prélèvement (B. S.)
 Cette fonctionnalité permet de supprimer un prélèvement automatique. Cela en ouvrant une interface similaire à celle de création ou mise à jour de prélèvement mais cette fois-ci, les valeurs ne sont pas modifiables. Les valeurs apparaissent à titre indicatif afin de vérifier si c’est bien ce prélèvement qui doit être supprimé.
