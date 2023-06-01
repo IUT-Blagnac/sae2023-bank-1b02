@@ -53,13 +53,13 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 |         | Gantt V2 Prevu|   link:Gestion%20de%20projet/GANTT-V2.pdf[lien]     |     
 |         | Doc. Tec. V1 |    link:Gestion%20de%20projet/Documentation-technique-V1.pdf[lien]      | https://github.com/IUT-Blagnac/sae2023-bank-1b02/blob/main/retour%20doc%20technique%20v1.odt[retour doc technique]   
 |         | Doc User V1 |   link:Gestion%20de%20projet/Documentation-utilisateur.pdf[lien]        | Attention toutes les docs sont demandées en aciidoc. Présenter les utilisateurs et classer les fonctions par utilisateur. Comment je peux vérifier que mon employé a bien été modifié ? 
-|         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | Il manque créditer compte, les virement et le CRUD des employés n'est pas complet. QUand j'ajoute un employé que se passer-il si je ne valide pas ??
+|         | Recette V1  |      link:Gestion%20de%20projet/Cahier-De-Recette-V1.adoc[lien]    | Il manque créditer compte, les virement et le CRUD des employés n'est pas complet. QUand j'ajoute un employé que se passer-il si je ne valide pas ?? 
 |         | javadoc v1 |       |
 |         | jar v1 |       |
 |         | application v1 |       |
 |         | Suivi projet V1|        | Les noms de projets sont peu équivoques planification V2 serait mieux. Ne pas oublier les task list dans les issues.
 | 26/05   | Gantt V2  réalisé| link:Gestion%20de%20projet/GANTT-V2-REALISE.pdf[lien]     | 
-|         | Doc. Util. V2 |      link:Gestion%20de%20projet/doc-utilisateur-v2.adoc[lien]   |         
+|         | Doc. Util. V2 |      link:Gestion%20de%20projet/doc-utilisateur-v2.adoc[lien]   |   Manque version, nom appli, nom des dev, date. La prsentation du CDCU n'est pas adapté à la doc user, la cible n'est pas la même !    Je dois aller sur quel dépôt ? Quelle version java ? Les utilisateurs et rôles ne sont pas présentés. Comment je sais si mon action a bien été effectuée (ex. Debit ou crédit ?). Il faut ordonner les fonctionnalités par utilisateur plutôt que par version. Ne pas renvoyer vers le cahier de recette, ce document n'est pas destiné aux utilisateurs. NOTE 12/20 
 |         | Doc. Tec. V2 |  link:Gestion%20de%20projet/doc-technique-v2.adoc[lien]        |     
 |         | Code V2    |     link:DailyBank[lien]       | 
 |         | Recette V2 |     link:Gestion%20de%20projet/Cahier-De-Recette-V2.adoc[lien]       | 
