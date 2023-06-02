@@ -1,0 +1,436 @@
+= SAÉ 2.01 - Documentation technique
+:toc:
+:toc-title: Sommaire
+:toclevels: 2
+:sectanchors:
+
+[[introduction]]
+== 0- Introduction
+Ce document présente la documentation technique de l'application DailyBank. Il est destiné aux développeurs et aux administrateurs système.
+
+=== 0.1- Objectif
+L'objectif de ce document est de présenter l'architecture de l'application, les fonctionnalités de l'application ainsi que les procédures d'installation et de mise à jour de l'application.
+
+=== 0.2- Portée
+Ce document est destiné aux développeurs et aux administrateurs système. Il est à jour au 28/05/2022.
+
+=== 0.3- Références
+==== 0.3.1- Documents de référence
+
+* link:./GANTT-V2-REALISE.pdf[GANTT]
+* link:./Cahier-De-Recette-V2.adoc[Cahier de recette]
+* link:./doc-utilisateur-v1-corrige.adoc[Documentation utilisateur]
+
+// Lien doc utilisateur
+// Lien cahier de recette
+
+[[presentation]]
+== 1- Présentation de l'application
+
+[[contexte]]
+=== 1.1- Contexte
+La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes. Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires.
+
+Le travail sera basé sur une application existante nommée "Daily Bank" à laquelle nous allons apporter de nouvelles fonctionnalités pour répondre aux nouveaux besoins de la banque. Elle va permettre de gérer les employés : créer un employé, le modifier, le supprimer ou afficher son profil.
+
+Cette application sera déployée dans les 100 agences que compte son réseau. Le rôle de l'application va être de gérer des comptes bancaires, de pouvoir débiter ainsi que créditer soit par virement bancaire soit par une personne physique auprès d'un guichet de la banque.
+
+[[aplication]]
+=== 1.2- Application DailyBank
+[[aplicationv0]]
+==== 1.2.1- Versión 0
+Le diagramme de classe de la version 0 de l'application est le suivant :
+
+image:media/doc-tech/diagrammev0.png"[]
+
+Il permet de mettre en place toutes les fonctionnalitées dont l'application dispose dans sa version 0 : 
+	
+Pour un guichetier, créer un nouveau client, consulter un compte, modifier les infos d'un client et débiter un compte.
+Pour un chef d'agence, rendre un client inactif ainsi que toutes les fonctionnalités d'un guichetier.
+
+Ces fonctionnalités sont représentées par le use case suivant : 
+
+image:media/doc-tech/fonctionalitev0.png"[]
+
+[[aplicationv1]]
+==== 1.2.2- Versión 1
+La version 0 de l'application a ensuite été améliorée, ce qui a engendré la version 1 de l'application. Dans cette version développée par notre équipe, de nouvelles fonctionnalités ont été ajoutées.
+
+
+Les nouvelles fonctionnalités implémentées à ajouter aux anciennes  sont les suivantes : 
+
+* Pour un guichetier, créer un nouveau compte, clôturer un compte, créditer un compte et effectuer un virement entre comptes.
+* Pour un chef d'agence, créer un profil d'employé, afficher un profil d'employé, modifier un profil d'employé et supprimer un profil d'employé.
+
+Ces nouvelles fonctionnalitées peuvent être illustrées par le use case suivant : 
+
+image:media/doc-tech/fonctionalitev1.png"[]
+
+En résumé, l'application permet de gérer les employés et les clients de plusieurs agences bancaires. Chaque agence bancaire comporte deux types d'employés, les guichetiers et les chefs d'agence. Ces derniers ont chacun certaines fonctionnalités à dispositions présentées ci-dessus. Une agence  peut avoir un seul chef d'agence ou aucun chef d'agence et au moins un guichetier. Le chef d'agence peut rendre un client inactif, cela signifie que ce client ne pourra plus effectuer d'opération sur son compte (débit, crédit, virement).  
+
+[[architecture]]
+== 2- Architecture
+
+[[prerequis]]
+=== 2.1- Prérequis
+Pour pouvoir installer l'application, il faut disposer des éléments suivants :
+
+* Système d'exploitation : Windows 7 ou supérieur
+* Version de Java : 1.7 ou supérieur
+* Base de données Oracle fonctionnelle
+
+[[installation]]
+=== 2.2- Installation
+Pour installer l'application, il faut suivre les étapes suivantes :
+
+* Executer le script SQL de création de la base de données
+* Télécharger le fichier Java de l'application
+* Executer le fichier Java de l'application
+
+[[structure]]
+=== 2.3- Structure de l'application
+
+image:media/doc-tech/architecture1.png"[]
+image:media/doc-tech/architecture2.png"[]
+
+Les deux images ci-dessus représentent la structure de fichiers de l'application. La version de Java est Java 11 et la base de données de l'application est développée sous Oracle SQL 22.2. Le script de la BD disponible ici : link:../Resources/SCRIPT-BD.sql[Lien].
+
+
+[[fonctionnalites]]
+== 3- Fonctionnalités
+
+[[fonctionnalitesv1]]
+=== 3.1- Fonctionnalités de la version 1
+==== 3.1.1- Créer un employé (A. B.)
+Lorsque le chef d’agence ajoute un nouvel employé, il est ajouté dans la base de données et dans la liste des employés. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-creeremploye.png"[]
+
+Classes concernées :
+
+* application.control.EmployesManagement ( nouveauEmploye )
+* application.view.EmployesManagementController ( doNouveauEmploye )
+* model.orm.Acces_BD_Employe ( insertEmploye )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-creeremploye.png"[]
+
+==== 3.1.2- Afficher un employé (A. B.)
+Lorsque le chef d’agence utilise la fonctionnalité rechercher, la liste des employés est affichée. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-voiremploye.png"[]
+
+Classes concernées : 
+
+* application.control.EmployesManagement ( getlisteEmployes )
+* application.view.EmployesManagementController ( doRechercher )
+* model.orm.Acces_BD_Employe ( getEmploye )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-voiremploye.png"[]
+
+==== 3.1.3- Modifier un employé (H. B.)
+Lorsque le chef d’agence modifie un employé, les champs modifiés sont changés et les autres sont laissés tels quels. L’identifiant unique de l’employé ne peut cependant pas être modifié pour éviter d’avoir des employés en double. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité : 
+
+image:media/doc-tech/usecase-modifieremploye.png"[]
+
+Classes concernées :
+
+* application.control.EmployesManagement ( modifierEmploye )
+* application.view.EmployesManagementController ( doModifierEmploye )
+* model.orm.Acces_BD_Employe ( updateEmploye )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-modifieremploye.png"[]
+
+
+==== 3.1.4- Supprimer un employé (H. B.)
+Lorsque le chef d’agence supprime un employé, celui-ci est supprimé de la base de données ainsi que de la liste des employés. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité : 
+
+image:media/doc-tech/usecase-effaceremploye.png"[]
+
+Classes concernées : 
+
+* application.control.EmployesManagement ( supprimerEmploye )
+* application.view.EmployesManagementController ( doSupprimerEmploye )
+* model.orm.Acces_BD_Employe  ( removeEmploye )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-effaceremploye.png"[]
+
+==== 3.1.5- Créer un compte (B. S.)
+Lorsque le guichetier crée un nouveau compte, il est ajouté dans la base de données et le débit autorisé est de 0 par défaut. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-creercompte.png"[]
+
+Classes concernées : 
+
+* application.control.ComptesManagement ( creerNouveauCompte )
+* model.orm.Access_BD_CompteCourant ( insertCompteCourrant )
+* application.view.ComptesManagementController ( doNouveauCompte )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-creercompte.png"[]
+
+
+==== 3.1.6- Créditer/Débiter sur un compte (B. S.)
+Lorsque un guichetier effectue un crédit ou un débit sur un compte, le solde de ce compte est modifié, la base de données est modifiée en conséquence. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-creddebcompte.png"[]
+
+Classes concernées:
+
+* application.view.OperationsManagementController ( doCredit )
+* model.orm.Access_BD_Operation ( insertCredit )
+* application.control.OperationsManagement ( enregistrerCredit )
+* application.view.OperationEditorPaneController ( doAjouter -> case crédit , displayDialog -> case crédit )
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-creddebcompte.png"[]
+
+==== 3.1.7- Efectuer un virement (J. M.)
+Cette fonctionalité permet d'effectuer un virement entre deux comptes.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-virementcompte.png"[]
+
+Classes concernées :
+
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-virementcompte.png"[]
+
+
+==== 3.1.8- Clôturer un compte (J. M.)
+Lorsque le guichetier clôture un compte, on ne peut plus effectuer d’opérations sur ce compte mais il reste dans la base de données. Pour plus de détails, voir doc utilisateur.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-cloturercompte.png"[]
+
+Classes concernées : 
+
+* model.orm.Access_BD_CompteCourant (cloturerCompteCourant)
+* application.view.ComptesManagementController(doSupprimerCompte)
+* application.view.ComptesManagementController(validateComponentState)
+* application.view.OperationManagementController(validateComponentState)
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-cloturercompte.png"[]
+
+
+[[fonctionnalitesv2]]
+=== 3.2- Fonctionnalités de la version 2
+==== 3.2.1- Débit exceptionnel (B. S.)
+Cette fonctionnalité permet de débiter un compte en ignorant les limitations du découvert autorisé, seul le chef d’agence est autorisé à effectuer cette opération. Cette opération va s’enregistrer comme une opération normale à l’affichage.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/diagramme-debitexcep.png"[]
+
+Classes concernées :
+
+* application.view.OperationsManagementController
+* model.orm.Access_BD_Operation
+* application.control.OperationsManagement
+* application.view.OperationEditorPaneController
+* application.control.OperationEditorPane
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-debitexcep.png"[]
+
+
+==== 3.2.2- Simuler un emprunt (H. B.)
+Le guichetier peut donc créer un nouvel emprunt, supprimer un emprunt existant ou simplement consulter la liste des emprunts d’un client. Ce ne sont que des simulations, aucun argent n’est débité sur aucun compte.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-emprunt.png"[]
+
+Classes concernées :
+
+* model.orm.Access_BD_Emprunt
+* application.view.CompteEmpruntPaneController
+* application.control.CompteEmpruntPane
+* application.view.EmpruntManagementController
+* application.control.EmpruntManagement
+* application.view.CompteManagement
+* model.data.Emprunt
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-emprunt.png"[]
+
+
+==== 3.2.3- Simuler assurance (H. B.)
+Le guichetier peut donc créer une nouvelle assurance, supprimer une assurance existante ou simplement consulter la liste des assurances d’un client.
+
+Use case de la fonctionnalité :
+
+Classes concernées :
+
+* application.view.EmpruntManagementController
+* application.control.EmpruntManagement
+* application.orm.Access_BD_Emprunt
+
+
+Partie du diagramme de classes concernée :
+
+
+==== 3.2.4- Relevé format PDF (J. M.)
+Cette fonction permet d’exporter les opérations d’un compte sélectionné, la fonction ouvrira une interface de sauvegarde qui vous permet de choisir le chemin où sera sauvegardé le fichier.
+
+Use case de la fonctionnalité:
+
+image:media/doc-tech/usecase-relpdf.png"[]
+
+Classes concernées :
+
+* application.view.OperationManagementController
+* application.tools.GeneratePDF
+* model.orm.Access_BD_CompteCourant
+* model.orm.Access_BD_Client
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-relpdf.png"[]
+
+==== 3.2.5- Creation d'un prélèvement (B. S.)
+Fonctionnalité permettant de créer un nouveau prélèvement, ce dernier permettra de débiter automatiquement chaque mois le montant souhaité.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-prel.png"[]
+
+Classes concernées :
+
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-prel.png"[]
+
+
+==== 3.2.6- Afficher les prélèvements (A. B.)
+Cette fonctionnalité permet d’afficher la liste des prélèvements d’un compte sélectionné.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-voirprelevement.png"[]
+
+Classes concernées :
+
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-prelevement.png"[]
+
+==== 3.2.7- Modifier un prélèvement (J. M.)
+Cette fonctionnalité permet de modifier un prélèvement existant.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-modifierprelevement.png"[]
+
+Classes concernées :
+
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-prelevement.png"[]
+
+==== 3.2.8- Supprimer un prélèvement (B. S.)
+Cette fonctionnalité permet de supprimer un prélèvement automatique. Cela en ouvrant une interface similaire à celle de création ou mise à jour de prélèvement mais cette fois-ci, les valeurs ne sont pas modifiables. Les valeurs apparaissent à titre indicatif afin de vérifier si c’est bien ce prélèvement qui doit être supprimé.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-deleteprel.png"[]
+
+Classes concernées :
+
+* model.orm.Access_BD_Prelevements
+* application.view.PrelevementEditortPaneController
+* application.control.PrelevementEditorPane
+* application.view.PrelevementManagementController
+* application.control.PrelevementManagement
+* application.view.CompteManagement
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-deleteprel.png"[]
+
+==== 3.2.9- Prélèvements automatiques (A. B.)
+Cette fonctionnalité permet de débiter automatiquement les prélèvements du jour. Elle s'execute manuellement par le chef d'agence chaque jour.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-prelauto.png"[]
+
+Classes concernées :
+
+* application.view.DailyBankMainFrameController
+* application.control.BatchManagement
+* model.orm.Access_BD_Prelevements
+* model.orm.Access_BD_Operation
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-prelevement.png"[]
+
+==== 3.2.10- Relevés mensuels (A. B.)
+Cette fonctionnalité permet de générer des relevés mensuels pour chaque compte. Elle s'execute manuellement par le chef d'agence.
+
+Use case de la fonctionnalité :
+
+image:media/doc-tech/usecase-relmens.png"[]
+
+Classes concernées :
+
+* application.view.DailyBankMainFrameController
+* application.control.BatchManagement
+* application.tools.GeneratePDF
+* model.orm.Access_BD_CompteCourant
+* model.orm.Access_BD_Client
+
+Partie du diagramme de classes concernée :
+
+image:media/doc-tech/diagramme-relpdf.png"[]

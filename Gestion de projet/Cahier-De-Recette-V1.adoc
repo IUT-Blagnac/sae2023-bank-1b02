@@ -1,0 +1,284 @@
+= Cahier De Recette - DailyBankApp
+:toc:
+:toc-title: Sommaire
+
+:Entreprise: DailyBank
+:Equipe: 1B02
+
+Créé par : BALASCH, SOLDEVILA, MAURIAC, BERDINEL
+Créé pour :  L'équipe de développement et l'équipe de test de DailyBank 👌
+
+
+== I. Introduction
+=== 1. Objet :
+[.text-justify]
+Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour la société DailyBank. Il a pour but de définir les tests à effectuer sur l'application. Ce document est destiné à l'équipe de développement ainsi qu'à l'équipe de test.
+
+
+
+== II. Pre-Requis :
+[.text-justify]
+L'exécution des tests spécifiés au chapitre suivant requiert :
+
+* Une base de données installée (référence document technique).
+* L'environnement de test tel que spécifié dans la partie "Environnement de test" de ce document.
+* Les fiches de tests. *À vérifier*
+
+
+=== 1. Éléments à tester :
+[.text-justify]
+Les éléments testés concernent les Use-Cases spécifiés dans la *documentation technique*.
+
+
+=== 2. Environnement de test :
+[.text-justify]
+Ordinateur sous Windows ou OS équivalent.
+
+
+
+== III. Cas de test :
+=== 1. Fonctionnalités des guichetiers :
+==== 1.1 Gestion des clients :
+
+|====
+
+>|Cas de test 4+|Test-01-01-01
+>|Titre 4+|Création d'un nouveau client
+>|Objectif 4+| Vérifier qu'il est possible de créer un nouveau client
+
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenêtre de création des clients s'ouvre. ^| aucune ^|OK
+^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouveau client est créé. ^|aucune ^|OK
+^|All_G_C.3 ^|Compléter les champs spécifiés et annuler. ^|Aucun client n'est créé. ^|aucune ^|OK
+
+
+5+|
+
+|====
+
+
+|====
+
+>|Cas de test 4+|Test-01-01-02
+>|Titre 4+|Modification d'un client
+>|Objectif 4+| Vérifier qu'il est possible de modifier un client
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.3 ^|Cliquer sur le bouton "Modifier client". ^|La fenêtre de modification des données du clients s'ouvre. ^|Le client est sélectionné ^|OK
+^|All_G_C.4 ^|Modifier les champs souhaités et confirmer. ^|Retour sur les informations du client. Le client est modifié. ^|La fenêtre modifier client est active ^|OK
+^|All_G_C.5 ^|Modifier les champs souhaités et annuler. ^|Retour sur les informations du client. Le client est inchangé. ^|La fenêtre modifier client est active ^|OK
+
+
+|====
+
+
+==== 1.2 Gestion des comptes bancaires :
+
+
+|====
+
+>|Cas de test 4+|Test-01-02-03
+>|Titre 4+|Consultation d'un compte
+>|Objectif 4+| Vérifier qu'il est possible de consulter un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
+...
+|====
+|====
+>|Cas de test 4+|Test-01-02-03
+>|Titre 4+|Création d'un compte
+>|Objectif 4+| Vérifier qu'il est possible de créer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Nouveau compte". ^|La page de création de compte s’affiche. ^|La gestion des comptes d'un client est ouverte ^|OK
+^|All_G_CB.2 ^|Modifier les champs souhaités et confirmer . ^|La page des comptes du client s’affiche avec le compte crée. ^|Les données sont valides ^|OK
+^|All_G_CB.2 ^|Modifier les champs souhaités et annuler . ^|La page des comptes du client s’affiche sans un nouveau compte. ^|La fenêtre gestion d'un compte est ouverte ^|OK
+...
+
+|====
+|====
+>|Cas de test 4+|Test-01-02-04
+>|Titre 4+|Clôturer un compte
+>|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Cloturer compte". ^|La page de création de cloturation s’affiche. ^|La gestion des comptes d'un client est ouverte, un compte est sélectionné ^|OK
+^|All_G_CB.2 ^|Confirmer . ^|La page des comptes du client s’affiche avec le compte clôture ^|le Compte n'a pas d'argent et n'en doit pas ^|OK
+^|All_G_CB.2 ^|Annuler . ^|La page des comptes du client s’affiche avec aucun changement. ^|... ^|OK
+...
+
+|====
+
+
+
+==== 1.3 Gestion des opérations :
+
+|====
+
+>|Cas de test 4+|Test-01-03-01
+>|Titre 4+|Débiter un compte
+>|Objectif 4+| Vérifier qu'il est possible de débiter un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.1 ^|Cliquer sur le bouton "Enregistrer Débit". ^|La page des débit du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros
+ ^|OK
+^|All_G_COP.3  ^|Rentrer un montant 150 dans le champ "Montant". ^|Le nouveau solde est -50 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros, le découvert
+autorisé est de -100 euros.
+ ^|OK
+^|All_G_COP.4  ^|Rentrer un montant 250 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le compte sélectionné a un solde de +100 euros, le découvert
+autorisé est de -100 euros.
+ ^|OK
+  
+|====
+|====
+ 
+>|Cas de test 4+|Test-01-03-02
+>|Titre 4+|Créditer un compte
+>|Objectif 4+| Vérifier qu'il est possible de créditer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.1 ^|Cliquer sur le bouton "Enregistrer crédit". ^|La page des crédits du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné n'est pas cloturé 
+ ^|OK 
+
+|====
+
+==== 1.3 bis Gestion des virements :
+|====
+
+>|Cas de test 4+|Test-01-03-03
+>|Titre 4+|Effectuer un virement
+>|Objectif 4+| Vérifier qu'il est possible de faire un virement d'effectuer un virement d'un compte à un autre
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.1 ^|Cliquer sur le bouton "Effectuer virement". ^|La page des virements  s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant", appuier sur le bouton "Valider" ^|50 euros nous sont debités et sont crédités au compte sélectionné. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de au moins 50 euros de plus que le découvert autorisé. + 
+Un compte destinataire doit être sélectionné.
+ ^|OK
+ ^|All_G_COP.3  ^|Rentrer un montant 50 dans le champ "Montant", appuier sur le bouton "Annuler" ^|La fenêtre de virement se ferme, aucun argent n'est débité ni crédité a personne^| Un compte destinataire doit être sélectionné.
+ ^|OK
+  
+|====
+
+
+
+
+
+
+
+=== 2. Fonctionnalités des chefs d'agence :
+[.text-justify]
+Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, ainsi que d'autres qui leur sont réservées.
+
+==== 2.1 Gestion des clients :
+
+|====
+
+>|Cas de test 4+|Test-02-01-01
+>|Titre 4+|Rendre inactif un client
+>|Objectif 4+| Vérifier qu'il est possible de rendre un client inactif
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Sélectionner le bouton "Inactif" et confirmer. ^|...  ^|Un client actif est sélectionné ... ^| ...
+
+
+
+|====
+
+==== 2.2 Creation d'un employé :
+
+|====
+
+>|Cas de test 4+|Test-02-01-02
+>|Titre 4+|Créer un employé
+>|Objectif 4+| Vérifier qu'il est possible de créer un compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Nouveau employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de création s'ouvre.  ^| ... ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Ajouter". ^|La fenêtre de création se ferme, l'employé est créé.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de création se ferme, aucun employé n'est crée.  ^| Aucune ^| OK
+
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Consulter un employé
+>|Objectif 4+| Consulter les compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur Gestion > Employés. ^|Une nouvelle fenêtre s'ouvre avec la fenêtre de consultation.  ^| L'utilisateur est connecté. ^| OK
+^|C_G_C.1    ^|Cliquer sur le bouton "Rechercher". ^|Les comptes des employés s'affichent.  ^|... ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-04
+>|Titre 4+|Modifier un employé
+>|Objectif 4+| Vérifier qu'il est possible de modifier un compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Modifier employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de modification s'ouvre.  ^| Un employé est sélectionné ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Ajouter". ^|La fenêtre de modification se ferme, l'employé est modifié.  ^| Les valeurs sont valides. ^| OK
+^|C_G_C.2    ^|Remplir les champs avec des valeurs, appuyer "Annuler". ^|La fenêtre de modification se ferme.  ^| Aucune ^| OK
+5+|
+
+|====
+|====
+
+>|Cas de test 4+|Test-02-01-05
+>|Titre 4+|Supprimer un employé
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un compte employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Cliquer sur "Effacer employé" dans Gestion > Employés. ^|Une nouvelle fenêtre de création s'ouvre.  ^| Un employé est sélectionné ^| OK
+^|C_G_C.2    ^|Appuyer "Supprimer". ^|La fenêtre de suppréssion se ferme, l'employé est supprimé.  ^| ... ^| OK
+^|C_G_C.2    ^|Appuyer "Annuler". ^|La fenêtre de suppréssion se ferme, l'employé n'est pas supprimé.  ^| ... ^| OK
+5+|
+
+|====
+
+==== 2.3 Visualisation d'employés :
+
+|====
+
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Visualiser les employés
+>|Objectif 4+| Vérifier qu'il est possible de créer visualiser les employés de son agence.
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_R.1    ^|Cliquer sur Gestion, onglet Employés. ^|Une nouvelle fenêtre s'ouvre. ^| ... ^| OK
+^|C_G_R.2    ^|Cliquer sur "Rechercher", appliquant les filtres (optionnel). ^|La liste d'employés s'affiche dans la nouvelle fenêtre.  ^| Les filtres sont bons, il existe des employés. ^| OK
+5+|
+
+|====

@@ -1,0 +1,68 @@
+################################################################################
+
+= Cahier des charges +
+Equipe : 1B2 (Berdinel - Soldevilla - Mauriac - Balasch) +
+Version : 2.0 +
+Date : 16/05/2023 +
+Projet : Daily Bank +
+################################################################################
+
+== Sommaire : +
+ 1 - Sujet +
+ 2 - Analyse de la v1 +
+ 3 - Besoins de l'application +
+ 4 - Contraintes techniques et organisationnelles +
+  
+=== 1 - Sujet
+
+  Contexte :
+   La banque DailyBank souhaite développer une application de gestion des comptes clients en utilisant JAVA-Oracle pour remplacer plusieurs outils obsolètes.
+   Cette initiative s'inscrit dans le cadre de la restructuration de ses services bancaires. 
+   Le travail sera basé sur une application existante nommée "Daily Bank" qui nécessitera des ajustements pour répondre aux nouveaux besoins de la banque.
+   Cette application sera déployée dans les 100 agences que compte son réseau.
+
+  Objectifs :
+    Ajouter les nouvelles fonctionnalités nécessaires à la v1 afin de permettre à l'application d'être complète et en capacité d'être mise en service.
+    L'objectif est donc de concrétiser l'application et de pouvoir présenter à la banque un projet complet dans les temps.
+
+=== 2 - Analyse de la V1
+
+    Dans la v1, un chef d’agence peut :
+    Rendre inactif un client
+    Créer un profil pour les nouveaux employés
+    Accéder aux profils des employés
+    Modifier le profil des employés 
+    Supprimer un employé 
+  
+    Un guichetier peut :
+    Créer un nouveau client
+    Consulter un compte
+    Modifier les informations d'un client (adresse, téléphone, ...)
+    Débiter un compte 
+    Créditer un compte
+    Clôturer un compte
+    Effectuer un virement 
+    Créer un compte bancaire
+
+=== 3 - Besoins de la v2 de l'application
+
+  Dans la v2 de l'application, un guichetier devra être en capacité de :
+   Générer un relevé mensuel d'un compte en PDF
+   Faire le CRUD des prélèvements automatique
+  
+  un chef d'agence doit pouvoir :
+    Effectuer un débit exceptionnel
+    Simuler un emprunt
+    Simuler une assurance d'emprunt
+  
+=== 4 - Contraintes techniques & organisationnelles
+
+  L'équipe doit faire attention à respecter ces contraintes afin de livrer un projet conforme à l'objectif :
+    - Définir un même outil de travail pour toute l'équipe afin de faciliter les échanges et la structuration du code
+    - Intégrer toutes les fonctionnalités nécessaires à l'application
+    - Répartir efficacement les tâches en fonction des préférences et facilités de chacun
+    - Respecter la date butoir (26/05/2023)
+    - Assurer un suivi d'avancement du projet afin de toujours être capable de situer la progression de celui-ci
+    
+  C'est un projet qui demande de l'implication et de l'organisation, et cette seconde version (probablement finale) sera le fruit de notre
+  travail que nous soumettrons à la banque.

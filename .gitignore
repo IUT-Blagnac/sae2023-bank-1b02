@@ -1,0 +1,7 @@
+
+.metadata
+DailyBank/target/
+DailyBank/releves/*.pdf
+DailyBank/.classpath
+DailyBank/.settings/org.eclipse.jdt.apt.core.prefs
+DailyBank/.settings/org.eclipse.jdt.core.prefs
