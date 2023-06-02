@@ -82,7 +82,7 @@ public class Access_BD_Operation {
 			Connection con = LogToDatabase.getConnexion();
 			String query = "SELECT * FROM Operation"
 					+ " WHERE idNumCompte = ?"
-					+ " AND dateOp BETWEEN '01/" +dateBase+ "' AND '31/" +dateBase+ "'"
+					+ " AND dateOp BETWEEN '01/" +dateBase+ "' AND '30/" +dateBase+ "'"
 					+ " ORDER BY dateOp";
 
 			PreparedStatement pst = con.prepareStatement(query);
